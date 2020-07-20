@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import image from "../img/dnbkamer.jpg";
 
 const bodyStyle = {
@@ -24,7 +26,7 @@ export default class Roomcard extends Component {
   render() {
     return (
       <div style={bodyStyle}>
-        <img style={imageStyle} src={image} />
+        <img alt="roomimage" style={imageStyle} src={image} />
         <h2>{this.props.title}</h2>
         <p>{this.props.description}</p>
         <ul>
@@ -32,7 +34,15 @@ export default class Roomcard extends Component {
           <li>{this.props.capacity}</li>
           <li>{this.props.setups}</li>
         </ul>
-        <button style={buttonStyle}>Reserveren</button>
+        <Link to="/test">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={buttonStyle}
+          >
+            Meer informatie
+          </motion.button>
+        </Link>
       </div>
     );
   }

@@ -25,7 +25,7 @@ export default class header extends Component {
   render() {
     return (
       <div style={headerStyle}>
-        <img src={logo} />
+        <img alt="headerlogo" src={logo} />
         <ul style={navStyle}>
           <li style={listStyle}>Vergaderruimtes</li>
           <li style={listStyle}>inloggen</li>

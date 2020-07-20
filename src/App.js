@@ -1,4 +1,6 @@
 import React from "react";
+import { Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LandingPageContainer from "./components/LandingPageContainer";
@@ -8,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <Header />
-      <LandingPageContainer />
+      <Route path="/" exact component={LandingPageContainer} />
       <Footer />
     </div>
   );
