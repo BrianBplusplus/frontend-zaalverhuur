@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header'
-import Footer from './components/Footer';
-import LandingPageContainer from './components/LandingPageContainer';
+import React from "react";
+import { Route } from "react-router-dom";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import LandingPageContainer from "./components/LandingPageContainer";
+import RoomDetailpage from "./components/RoomDetailpage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-
+      <header className="App-header"></header>
       <Header />
-      <LandingPageContainer />
+      <Route path="/" exact component={LandingPageContainer} />
+      <Route path="/denieuwezaal" exact component={RoomDetailpage} />
       <Footer />
     </div>
   );
