@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
 import logo from "../img/dnblogo.jpg";
 
 const headerStyle = {
   display: "flex",
   justifyContent: "space-between",
-  padding: "10px",
+
+  width: "80%",
+  padding: "15px",
+  margin: "auto",
 };
 
 const navStyle = {
