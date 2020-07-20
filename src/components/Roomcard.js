@@ -34,7 +34,7 @@ export default class Roomcard extends Component {
           <li>{this.props.capacity}</li>
           <li>{this.props.setups}</li>
         </ul>
-        <Link to="/test">
+        <Link to={`/denieuwezaal`}>
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Roomcard from "./Roomcard";
+import Roomcard from "./RoomCard";
 
 const bodyStyle = {
   display: "flex",
