@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Roomcard from "./RoomCard";
+import RoomCard from "./RoomCard";
 
 const bodyStyle = {
   display: "flex",
@@ -14,35 +14,35 @@ export default class LandingPageContainer extends Component {
   render() {
     return (
       <div style={bodyStyle}>
-        <Roomcard
+        <RoomCard
           title="De nieuwe zaal"
           description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
           surfacearea="143 m2"
           capacity="max. 112"
           setups="Opstellingen"
         />
-        <Roomcard
+        <RoomCard
           title="De nieuwe zaal"
           description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
           surfacearea="143 m2"
           capacity="max. 112"
           setups="Opstellingen"
         />
-        <Roomcard
+        <RoomCard
           title="De nieuwe zaal"
           description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
           surfacearea="143 m2"
           capacity="max. 112"
           setups="Opstellingen"
         />
-        <Roomcard
+        <RoomCard
           title="De nieuwe zaal"
           description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
           surfacearea="143 m2"
           capacity="max. 112"
           setups="Opstellingen"
         />
-        <Roomcard
+        <RoomCard
           title="De nieuwe zaal"
           description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
           surfacearea="143 m2"

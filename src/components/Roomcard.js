@@ -22,7 +22,7 @@ const buttonStyle = {
   padding: "20px",
 };
 
-export default class Roomcard extends Component {
+export default class RoomCard extends Component {
   render() {
     return (
       <div style={bodyStyle}>
