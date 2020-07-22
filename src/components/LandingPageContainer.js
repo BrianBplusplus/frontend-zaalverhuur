@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RentalRooms from "./RentalRooms";
 
-const bodyStyle = {
+const divStyle = {
   display: "flex",
   flexWrap: "wrap",
   backgroundColor: "#fff",
@@ -11,22 +11,34 @@ const bodyStyle = {
   margin: "auto",
 };
 
-function LandingPageContainer() {
+const LandingPageContainer = () => {
   const [data, setData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/`
-      );
-      console.log("API response", response);
-      setData(response.data);
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/`
+        );
+        console.log("API response", response);
+        setData(response.data);
+      } catch (error) {
+        setIsError(true);
+      }
+      setIsLoading(false);
     };
     fetchAPI();
   }, []);
 
   return (
-    <div style={bodyStyle}>
+    <div style={divStyle}>
+      {isLoading && <div>Loading</div>}
+      {isError && <div>Error</div>}
+
       {data &&
         data.map((mappedData) => {
           return (
@@ -42,6 +54,6 @@ function LandingPageContainer() {
         })}
     </div>
   );
-}
+};
 
 export default LandingPageContainer;

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from "../img/dnblogo.jpg";
 
-const headerStyle = {
+const divStyle = {
   display: "flex",
   justifyContent: "space-between",
 
@@ -21,17 +21,17 @@ const listStyle = {
   margin: "0 10px",
 };
 
-export default class header extends Component {
-  render() {
-    return (
-      <div style={headerStyle}>
-        <img alt="headerlogo" src={logo} />
-        <ul style={navStyle}>
-          <li style={listStyle}>Vergaderruimtes</li>
-          <li style={listStyle}>inloggen</li>
-          <li style={listStyle}>Terug naar Bibliotheek</li>
-        </ul>
-      </div>
-    );
-  }
-}
+const Header = () => {
+  return (
+    <div style={divStyle}>
+      <img alt="headerlogo" src={logo} />
+      <ul style={navStyle}>
+        <li style={listStyle}>Vergaderruimtes</li>
+        <li style={listStyle}>inloggen</li>
+        <li style={listStyle}>Terug naar Bibliotheek</li>
+      </ul>
+    </div>
+  );
+};
+
+export default Header;
