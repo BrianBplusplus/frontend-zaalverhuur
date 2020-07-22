@@ -16,15 +16,21 @@ export default class LandingPageContainer extends Component {
     titles: "",
   };
 
-  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`).then((response) => {
+  async componentDidMount() {
+    try {
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users`
+      );
+      console.log("API response", response);
       const fetchedTitles = response.data;
-      console.log("api test", fetchedTitles);
       this.setState({ titles: fetchedTitles });
-    });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
+    console.log("this.state", this.state);
     return (
       <div style={bodyStyle}>
         {this.state.titles &&
