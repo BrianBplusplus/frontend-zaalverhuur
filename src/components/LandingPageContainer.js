@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Roomcard from "./Roomcard";
+import RentalRooms from "./RentalRooms";
 
 const bodyStyle = {
   display: "flex",
@@ -12,31 +12,31 @@ const bodyStyle = {
 };
 
 function LandingPageContainer() {
-  const [title, setTitles] = useState("");
+  const [data, setData] = useState("");
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const response = await await axios.get(
-        `https://jsonplaceholder.typicode.com/users`
+      const response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/`
       );
       console.log("API response", response);
-      setTitles(response.data);
+      setData(response.data);
     };
     fetchAPI();
   }, []);
 
   return (
     <div style={bodyStyle}>
-      {title &&
-        title.map((mappedTitle) => {
+      {data &&
+        data.map((mappedData) => {
           return (
-            <Roomcard
-              key={mappedTitle.id}
-              title={mappedTitle.name}
-              description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
-              surfacearea="143 m2"
-              capacity="max. 112"
-              setups="opstellingen"
+            <RentalRooms
+              key={mappedData.id}
+              title={mappedData.name}
+              description={mappedData.company.catchPhrase}
+              surfacearea={mappedData.address.geo.lat}
+              capacity={mappedData.address.geo.lng}
+              setups={mappedData.address.street}
             />
           );
         })}
