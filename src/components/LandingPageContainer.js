@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import RentalRooms from "./RentalRooms";
+import LoadingSpinner from "./animations/LoadingSpinner";
 
 const divStyle = {
   display: "flex",
@@ -36,7 +38,7 @@ const LandingPageContainer = () => {
 
   return (
     <div style={divStyle}>
-      {isLoading && <div>Loading</div>}
+      {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
       {data &&

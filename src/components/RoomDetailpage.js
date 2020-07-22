@@ -3,6 +3,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 
+import LoadingSpinner from "./animations/LoadingSpinner";
+
 const divStyle = {
   textAlign: "center",
   backgroundColor: "#fff",
@@ -44,21 +46,23 @@ const RoomDetailpage = () => {
 
   return (
     <div style={divStyle}>
-      {isLoading && <div>Loading</div>}
+      {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
       {data && <h2>{data.name}</h2>}
       {data && <p>{data.company.catchPhrase}</p>}
 
-      <Link to="/">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          style={buttonStyle}
-        >
-          Terug naar de homepage
-        </motion.button>
-      </Link>
+      {data && (
+        <Link to="/">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={buttonStyle}
+          >
+            Terug naar de homepage
+          </motion.button>
+        </Link>
+      )}
     </div>
   );
 };
