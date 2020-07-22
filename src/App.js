@@ -12,7 +12,7 @@ function App() {
       <header className="App-header"></header>
       <Header />
       <Route path="/" exact component={LandingPageContainer} />
-      <Route path="/denieuwezaal" exact component={RoomDetailpage} />
+      <Route path="/:id" exact component={RoomDetailpage} />
       <Footer />
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import image from "../img/dnbkamer.jpg";
@@ -33,7 +33,7 @@ const RentalRooms = (props) => {
         <li>{props.capacity}</li>
         <li>{props.setups}</li>
       </ul>
-      <Link to={`/denieuwezaal`}>
+      <Link to={`/${props.link}`}>
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

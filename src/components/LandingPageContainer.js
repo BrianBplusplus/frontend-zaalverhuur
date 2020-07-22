@@ -43,6 +43,7 @@ const LandingPageContainer = () => {
         data.map((mappedData) => {
           return (
             <RentalRooms
+              link={mappedData.id}
               key={mappedData.id}
               title={mappedData.name}
               description={mappedData.company.catchPhrase}
