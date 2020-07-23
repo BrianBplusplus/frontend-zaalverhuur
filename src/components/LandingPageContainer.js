@@ -4,16 +4,16 @@ import axios from "axios";
 import RentalRooms from "./RentalRooms";
 import LoadingSpinner from "./animations/LoadingSpinner";
 
-const divStyle = {
-  display: "flex",
-  flexWrap: "wrap",
-  backgroundColor: "#fff",
-  width: "80%",
-  padding: "15px",
-  margin: "auto",
-};
-
 const LandingPageContainer = () => {
+  const divStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    backgroundColor: "#fff",
+    width: "80%",
+    padding: "15px",
+    margin: "auto",
+  };
+
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -30,6 +30,7 @@ const LandingPageContainer = () => {
         setData(response.data);
       } catch (error) {
         setIsError(true);
+        console.error(error);
       }
       setIsLoading(false);
     };
@@ -38,7 +39,7 @@ const LandingPageContainer = () => {
 
   return (
     <div style={divStyle}>
-      {isLoading && <LoadingSpinner />}
+      {isLoading == true && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
       {data &&

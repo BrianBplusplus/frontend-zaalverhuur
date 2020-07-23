@@ -5,22 +5,22 @@ import { Link, useParams } from "react-router-dom";
 
 import LoadingSpinner from "./animations/LoadingSpinner";
 
-const divStyle = {
-  textAlign: "center",
-  backgroundColor: "#fff",
-  width: "80%",
-  padding: "15px",
-  margin: "auto",
-};
-
-const buttonStyle = {
-  color: "#fff",
-  backgroundColor: "#ed008c",
-  border: "none",
-  padding: "20px",
-};
-
 const RoomDetailpage = () => {
+  const divStyle = {
+    textAlign: "center",
+    backgroundColor: "#fff",
+    width: "80%",
+    padding: "15px",
+    margin: "auto",
+  };
+
+  const buttonStyle = {
+    color: "#fff",
+    backgroundColor: "#ed008c",
+    border: "none",
+    padding: "20px",
+  };
+
   const params = useParams();
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +38,7 @@ const RoomDetailpage = () => {
         setData(response.data);
       } catch (error) {
         setIsError(true);
+        console.error(error);
       }
       setIsLoading(false);
     };

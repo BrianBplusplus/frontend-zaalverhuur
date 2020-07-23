@@ -3,26 +3,26 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import image from "../img/dnbkamer.jpg";
 
-const divStyle = {
-  width: "230px",
-  boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
-  textAlign: "center",
-  padding: "10px",
-  margin: "10px 10px",
-};
-
-const imageStyle = {
-  maxWidth: "100%",
-};
-
-const buttonStyle = {
-  color: "#fff",
-  backgroundColor: "#ed008c",
-  border: "none",
-  padding: "20px",
-};
-
 const RentalRooms = (props) => {
+  const divStyle = {
+    width: "230px",
+    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    textAlign: "center",
+    padding: "10px",
+    margin: "10px 10px",
+  };
+
+  const imageStyle = {
+    maxWidth: "100%",
+  };
+
+  const buttonStyle = {
+    color: "#fff",
+    backgroundColor: "#ed008c",
+    border: "none",
+    padding: "20px",
+  };
+
   return (
     <div style={divStyle}>
       <img alt="roomimage" style={imageStyle} src={image} />
