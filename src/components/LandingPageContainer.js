@@ -1,52 +1,63 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Roomcard from "./Roomcard";
 
-const bodyStyle = {
-  display: "flex",
-  flexWrap: "wrap",
-  backgroundColor: "#fff",
-  width: "80%",
-  padding: "15px",
-  margin: "auto",
-};
+import RentalRooms from "./RentalRooms";
+import LoadingSpinner from "./animations/LoadingSpinner";
 
-export default class LandingPageContainer extends Component {
-  state = {
-    titles: "",
+const LandingPageContainer = () => {
+  const divStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    backgroundColor: "#fff",
+    width: "80%",
+    padding: "15px",
+    margin: "auto",
   };
 
-  async componentDidMount() {
-    try {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/users`
-      );
-      console.log("API response", response);
-      const fetchedTitles = response.data;
-      this.setState({ titles: fetchedTitles });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [data, setData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  render() {
-    console.log("this.state", this.state);
-    return (
-      <div style={bodyStyle}>
-        {this.state.titles &&
-          this.state.titles.map((mappedTitle) => {
-            return (
-              <Roomcard
-                key={mappedTitle.id}
-                title={mappedTitle.name}
-                description="De nieuwe zaal is onze grootste zaal en is dé plek voor events!"
-                surfacearea="143 m2"
-                capacity="max. 112"
-                setups="opstellingen"
-              />
-            );
-          })}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    const fetchAPI = async () => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/`
+        );
+        console.log("API response", response);
+        setData(response.data);
+      } catch (error) {
+        setIsError(true);
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
+    fetchAPI();
+  }, []);
+
+  return (
+    <div style={divStyle}>
+      {isLoading == true && <LoadingSpinner />}
+      {isError && <div>Error</div>}
+
+      {data &&
+        data.map((mappedData) => {
+          return (
+            <RentalRooms
+              link={mappedData.id}
+              key={mappedData.id}
+              title={mappedData.name}
+              description={mappedData.company.catchPhrase}
+              surfacearea={mappedData.address.geo.lat}
+              capacity={mappedData.address.geo.lng}
+              setups={mappedData.address.street}
+            />
+          );
+        })}
+    </div>
+  );
+};
+
+export default LandingPageContainer;

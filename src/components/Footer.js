@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-const bodyStyle = {
-  color: "#fff",
-  backgroundColor: "#505450",
-  width: "80%",
-  padding: "15px",
-  margin: " 20px auto",
+const Footer = () => {
+  const divStyle = {
+    color: "#fff",
+    backgroundColor: "#505450",
+    width: "80%",
+    padding: "15px",
+    margin: " 20px auto",
+  };
+
+  return <div style={divStyle}>Footer Content</div>;
 };
 
-export default class Footer extends Component {
-  render() {
-    return <div style={bodyStyle}>Footer Content</div>;
-  }
-}
+export default Footer;
