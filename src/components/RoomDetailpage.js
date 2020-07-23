@@ -17,7 +17,6 @@ const RoomDetailpage = () => {
   const buttonStyle = {
     color: "#fff",
     backgroundColor: "#ed008c",
-    border: "none",
     padding: "20px",
   };
 
@@ -53,6 +52,19 @@ const RoomDetailpage = () => {
       {data && <h2>{data.name}</h2>}
       {data && <p>{data.company.catchPhrase}</p>}
 
+      {data && (
+        <Link to="/">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={buttonStyle}
+          >
+            Reserveren
+          </motion.button>
+        </Link>
+      )}
+      <br></br>
+      <br></br>
       {data && (
         <Link to="/">
           <motion.button

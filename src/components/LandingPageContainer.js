@@ -39,7 +39,7 @@ const LandingPageContainer = () => {
 
   return (
     <div style={divStyle}>
-      {isLoading == true && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
       {data &&
