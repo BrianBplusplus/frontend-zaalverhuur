@@ -19,6 +19,8 @@ const RoomDetailpage = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchAPI = async () => {
       setIsLoading(true);
       setIsError(false);

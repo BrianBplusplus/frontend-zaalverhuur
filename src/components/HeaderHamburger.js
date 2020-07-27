@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import HamburgerIcon from "./assets/HamburgerIcon";
 import logo from "../img/dnblogo.jpg";
 
 const HeaderHamburger = () => {
@@ -50,7 +51,9 @@ const HeaderHamburger = () => {
         <Link to="/">
           <img style={imageStyle} alt="headerlogo" src={logo} />
         </Link>
-        <button onClick={() => handleOpen()}>Hamburger</button>
+        <div onClick={() => handleOpen()}>
+          <HamburgerIcon />
+        </div>
       </div>
 
       <motion.ul
