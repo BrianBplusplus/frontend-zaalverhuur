@@ -8,9 +8,10 @@ const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "space-around",
     backgroundColor: "#fff",
-    width: "80%",
+    // width: "80%",
+    maxWidth: "1000px",
     padding: "15px",
     margin: "auto",
   };

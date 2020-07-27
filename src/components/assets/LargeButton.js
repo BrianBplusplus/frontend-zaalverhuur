@@ -8,6 +8,10 @@ const LargeButton = (props) => {
     border: "none",
     borderRadius: "40px",
     padding: "20px",
+
+    font: "inherit",
+    outline: "inherit",
+    cursor: "pointer",
   };
 
   return (

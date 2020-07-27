@@ -7,9 +7,13 @@ import LandingPageContainer from "./components/LandingPageContainer";
 import RoomDetailpage from "./components/RoomDetailpage";
 
 function App() {
+  const divStyle = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <div style={divStyle} className="react-content">
       <Header />
       <Route path="/" exact component={LandingPageContainer} />
       <Route path="/:id" exact component={RoomDetailpage} />

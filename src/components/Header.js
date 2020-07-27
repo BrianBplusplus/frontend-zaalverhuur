@@ -7,8 +7,7 @@ const Header = () => {
     flexWrap: "wrap",
     justifyContent: "space-between",
 
-    width: "80%",
-    padding: "15px",
+    padding: "20px",
     margin: "auto",
   };
 

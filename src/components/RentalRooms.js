@@ -28,7 +28,7 @@ const RentalRooms = (props) => {
   };
 
   const divStyleMobile = {
-    width: "80%",
+    width: "70%",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     padding: "10px",
