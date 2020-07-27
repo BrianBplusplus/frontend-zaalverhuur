@@ -6,6 +6,7 @@ const LargeButton = (props) => {
     color: "#fff",
     backgroundColor: "#ed008c",
     border: "none",
+    borderRadius: "40px",
     padding: "20px",
   };
 

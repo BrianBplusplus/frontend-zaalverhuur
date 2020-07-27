@@ -1,10 +1,7 @@
 import React from "react";
 import logo from "../img/dnblogo.jpg";
-import { useMediaQuery } from "react-responsive";
 
 const Header = () => {
-  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1244 });
-
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -32,9 +29,7 @@ const Header = () => {
 
   return (
     <div style={divStyle}>
-      {isDesktopOrLaptop && (
-        <img style={imageStyle} alt="headerlogo" src={logo} />
-      )}
+      <img style={imageStyle} alt="headerlogo" src={logo} />
 
       <ul style={navStyle}>
         <li style={listStyle}>Vergaderruimtes</li>

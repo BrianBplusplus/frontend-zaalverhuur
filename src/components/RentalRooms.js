@@ -7,12 +7,12 @@ import LargeButton from "./assets/LargeButton";
 import image from "../img/dnbkamer.jpg";
 
 const RentalRooms = (props) => {
-  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1224 });
+  const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const divStyleDesktop = {
-    width: "290px",
+    width: "280px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     padding: "10px",
@@ -40,10 +40,14 @@ const RentalRooms = (props) => {
   };
 
   return (
-    <div style={divStyleDesktop}>
-      {isDesktopOrLaptop && <p>isDesktopOrLaptop</p>}
-      {isTablet && <p>isTablet</p>}
-      {isMobile && <p>isMobile</p>}
+    <div
+      style={
+        (isDesktop && divStyleDesktop) ||
+        (isTablet && divStyleTablet) ||
+        (isMobile && divStyleMobile) ||
+        divStyleDesktop
+      }
+    >
       <img alt="roomimage" style={imageStyle} src={image} />
       <h2>{props.title}</h2>
       <p>{props.description}</p>
