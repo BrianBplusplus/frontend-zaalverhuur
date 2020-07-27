@@ -10,8 +10,7 @@ const LandingPageContainer = () => {
     flexWrap: "wrap",
     justifyContent: "space-around",
     backgroundColor: "#fff",
-    // width: "80%",
-    maxWidth: "1000px",
+    maxWidth: "1300px",
     padding: "15px",
     margin: "auto",
   };

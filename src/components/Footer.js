@@ -3,6 +3,7 @@ import React from "react";
 const Footer = () => {
   const divStyle = {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
     color: "#fff",
     backgroundColor: "#000",

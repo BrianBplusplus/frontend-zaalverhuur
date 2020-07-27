@@ -9,7 +9,6 @@ const RoomDetailpage = () => {
   const divStyle = {
     textAlign: "center",
     backgroundColor: "#fff",
-    width: "80%",
     padding: "15px",
     margin: "auto",
   };

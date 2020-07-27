@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../img/dnblogo.jpg";
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
   };
 
   const imageStyle = {
-    height: "100%",
+    // height: "100%",
   };
 
   const listStyle = {
@@ -28,8 +29,9 @@ const Header = () => {
 
   return (
     <div style={divStyle}>
-      <img style={imageStyle} alt="headerlogo" src={logo} />
-
+      <Link to="/">
+        <img style={imageStyle} alt="headerlogo" src={logo} />
+      </Link>
       <ul style={navStyle}>
         <li style={listStyle}>Vergaderruimtes</li>
         <li style={listStyle}>inloggen</li>
