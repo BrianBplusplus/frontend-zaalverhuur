@@ -19,7 +19,7 @@ const HeaderHamburger = () => {
   const divHeight = open ? "170px" : "35px";
 
   const variants = {
-    open: { opacity: 1, x: 0 },
+    open: { opacity: 1, x: "0" },
     closed: { opacity: 0, x: "-100%" },
   };
 
@@ -40,15 +40,18 @@ const HeaderHamburger = () => {
     fontSize: "20px",
   };
 
+  const linkStyle = {
+    maxWidth: "85%",
+  };
+
   const imageStyle = {
     width: "100%",
-    maxWidth: "200px",
   };
 
   return (
     <div style={divStyle}>
       <div style={navStyle}>
-        <Link to="/">
+        <Link style={linkStyle} to="/">
           <img style={imageStyle} alt="headerlogo" src={logo} />
         </Link>
         <div onClick={() => handleOpen()}>
