@@ -30,6 +30,7 @@ const HeaderHamburger = () => {
 
   const navStyle = {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
   };
 
@@ -38,7 +39,10 @@ const HeaderHamburger = () => {
     fontSize: "20px",
   };
 
-  const imageStyle = {};
+  const imageStyle = {
+    width: "100%",
+    maxWidth: "200px",
+  };
 
   return (
     <div style={divStyle}>
