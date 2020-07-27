@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 
-import LoadingSpinner from "./animations/LoadingSpinner";
+import LoadingSpinner from "./assets/LoadingSpinner";
+import LargeButton from "./assets/LargeButton";
 
 const RoomDetailpage = () => {
   const divStyle = {
@@ -12,12 +12,6 @@ const RoomDetailpage = () => {
     width: "80%",
     padding: "15px",
     margin: "auto",
-  };
-
-  const buttonStyle = {
-    color: "#fff",
-    backgroundColor: "#ed008c",
-    padding: "20px",
   };
 
   const params = useParams();
@@ -42,7 +36,7 @@ const RoomDetailpage = () => {
       setIsLoading(false);
     };
     fetchAPI();
-  }, []);
+  }, [params]);
 
   return (
     <div style={divStyle}>
@@ -54,26 +48,14 @@ const RoomDetailpage = () => {
 
       {data && (
         <Link to="/">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            style={buttonStyle}
-          >
-            Reserveren
-          </motion.button>
+          <LargeButton text="Reserveren" />
         </Link>
       )}
       <br></br>
       <br></br>
       {data && (
         <Link to="/">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            style={buttonStyle}
-          >
-            Terug naar de homepage
-          </motion.button>
+          <LargeButton text="Terug naar de homepage" />
         </Link>
       )}
     </div>

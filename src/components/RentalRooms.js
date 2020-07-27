@@ -1,7 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+
+import LargeButton from "./assets/LargeButton";
 
 import image from "../img/dnbkamer.jpg";
 
@@ -38,13 +39,6 @@ const RentalRooms = (props) => {
     maxWidth: "100%",
   };
 
-  const buttonStyle = {
-    color: "#fff",
-    backgroundColor: "#ed008c",
-    border: "none",
-    padding: "20px",
-  };
-
   return (
     <div style={divStyleDesktop}>
       {isDesktopOrLaptop && <p>isDesktopOrLaptop</p>}
@@ -59,13 +53,7 @@ const RentalRooms = (props) => {
         <li>{props.setups}</li>
       </ul>
       <Link to={`/${props.link}`}>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          style={buttonStyle}
-        >
-          Meer informatie
-        </motion.button>
+        <LargeButton text="Meer informatie" />
       </Link>
     </div>
   );

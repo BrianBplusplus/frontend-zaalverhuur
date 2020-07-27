@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import RentalRooms from "./RentalRooms";
-import LoadingSpinner from "./animations/LoadingSpinner";
+import LoadingSpinner from "./assets/LoadingSpinner";
 
 const LandingPageContainer = () => {
   const divStyle = {
