@@ -41,7 +41,7 @@ const HeaderHamburger = () => {
   };
 
   const linkStyle = {
-    maxWidth: "85%",
+    maxWidth: "80%",
   };
 
   const imageStyle = {
@@ -65,9 +65,7 @@ const HeaderHamburger = () => {
         variants={variants}
       >
         <li>Vergaderruimtes</li>
-        <br></br>
         <li>Inloggen</li>
-        <br></br>
         <li>Terug naar Bibliotheek</li>
       </motion.ul>
     </div>
