@@ -7,6 +7,7 @@ import LargeButton from "./assets/LargeButton";
 
 const RoomDetailpage = () => {
   const divStyle = {
+    minHeight: "30vh",
     textAlign: "center",
     backgroundColor: "#fff",
     padding: "15px",

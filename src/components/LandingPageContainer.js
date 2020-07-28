@@ -11,11 +11,12 @@ const LandingPageContainer = () => {
     justifyContent: "space-around",
     backgroundColor: "#fff",
     maxWidth: "1300px",
+    minHeight: "70vh",
     padding: "15px",
     margin: "auto",
   };
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -45,20 +46,19 @@ const LandingPageContainer = () => {
       {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
-      {data &&
-        data.map((mappedData) => {
-          return (
-            <RentalRooms
-              link={mappedData.id}
-              key={mappedData.id}
-              title={mappedData.name}
-              description={mappedData.company.catchPhrase}
-              surfacearea={mappedData.address.geo.lat}
-              capacity={mappedData.address.geo.lng}
-              setups={mappedData.address.street}
-            />
-          );
-        })}
+      {data.map((mappedData) => {
+        return (
+          <RentalRooms
+            link={mappedData.id}
+            key={mappedData.id}
+            title={mappedData.name}
+            description={mappedData.company.catchPhrase}
+            surfacearea={mappedData.address.geo.lat}
+            capacity={mappedData.address.geo.lng}
+            setups={mappedData.address.street}
+          />
+        );
+      })}
     </div>
   );
 };

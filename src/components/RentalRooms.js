@@ -7,12 +7,13 @@ import LargeButton from "./assets/LargeButton";
 import image from "../img/dnbkamer.jpg";
 
 const RentalRooms = (props) => {
-  const isDesktop = useMediaQuery({ minWidth: 1224 });
+  // const isDesktop = useMediaQuery({ minWidth: 1224 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const divStyleDesktop = {
     width: "320px",
+    minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     paddingBottom: "10px",
@@ -21,6 +22,7 @@ const RentalRooms = (props) => {
 
   const divStyleTablet = {
     width: "40%",
+    minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     paddingBottom: "10px",
@@ -28,7 +30,8 @@ const RentalRooms = (props) => {
   };
 
   const divStyleMobile = {
-    // width: "70%",
+    width: "100%",
+    minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     paddingBottom: "10px",
@@ -37,14 +40,14 @@ const RentalRooms = (props) => {
 
   const imageStyle = {
     maxWidth: "100%",
+    minHeight: "150px",
   };
 
   return (
     <div
       style={
-        (isDesktop && divStyleDesktop) ||
-        (isTablet && divStyleTablet) ||
         (isMobile && divStyleMobile) ||
+        (isTablet && divStyleTablet) ||
         divStyleDesktop
       }
     >
