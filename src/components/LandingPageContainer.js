@@ -42,12 +42,12 @@ const LandingPageContainer = () => {
     fetchAPI();
   }, []);
 
-  console.log("env test", envVariableTest);
-
   return (
     <div style={divStyle}>
       {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
+
+      <p>123123123 {envVariableTest}</p>
 
       {data.map((mappedData) => {
         return (
