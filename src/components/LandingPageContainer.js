@@ -16,7 +16,6 @@ const LandingPageContainer = () => {
     margin: "auto",
   };
 
-  const envVariableTest = process.env.TEST_CLIENT_ID;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -46,8 +45,6 @@ const LandingPageContainer = () => {
     <div style={divStyle}>
       {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
-
-      <p>123123123 {envVariableTest}</p>
 
       {data.map((mappedData) => {
         return (
