@@ -16,6 +16,7 @@ const LandingPageContainer = () => {
     margin: "auto",
   };
 
+  const envVariableTest = process.env.TEST_CLIENT_ID;
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -40,6 +41,8 @@ const LandingPageContainer = () => {
     };
     fetchAPI();
   }, []);
+
+  console.log("env test", envVariableTest);
 
   return (
     <div style={divStyle}>
