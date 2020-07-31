@@ -62,6 +62,7 @@ const HeaderHamburger = () => {
       <motion.ul
         style={ulStyle}
         animate={open ? "open" : "closed"}
+        initial={false}
         variants={variants}
       >
         <li>Vergaderruimtes</li>

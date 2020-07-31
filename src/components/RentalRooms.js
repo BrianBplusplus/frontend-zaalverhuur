@@ -12,7 +12,7 @@ const RentalRooms = (props) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const divStyleDesktop = {
-    width: "320px",
+    width: "30%",
     minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
@@ -21,7 +21,7 @@ const RentalRooms = (props) => {
   };
 
   const divStyleTablet = {
-    width: "40%",
+    width: "45%",
     minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
@@ -31,6 +31,7 @@ const RentalRooms = (props) => {
 
   const divStyleMobile = {
     width: "100%",
+    maxWidth: "400px",
     minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
@@ -54,11 +55,7 @@ const RentalRooms = (props) => {
       <img alt="roomimage" style={imageStyle} src={image} />
       <h2>{props.title}</h2>
       <p>{props.description}</p>
-      <ul>
-        <li>{props.surfacearea}</li>
-        <li>{props.capacity}</li>
-        <li>{props.setups}</li>
-      </ul>
+
       <Link to={`/${props.link}`}>
         <LargeButton text="Meer informatie" />
       </Link>

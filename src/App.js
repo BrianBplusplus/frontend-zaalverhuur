@@ -4,10 +4,9 @@ import { useMediaQuery } from "react-responsive";
 
 import Header from "./components/Header";
 import HeaderHamburger from "./components/HeaderHamburger";
-import Footer from "./components/Footer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import RoomDetailpage from "./components/RoomDetailpage";
-
+import Footer from "./components/Footer";
 function App() {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
 
@@ -20,8 +19,10 @@ function App() {
     <div style={divStyle} className="react-content">
       {isDesktop && <Header />}
       {!isDesktop && <HeaderHamburger />}
+
       <Route path="/" exact component={LandingPageContainer} />
       <Route path="/:id" exact component={RoomDetailpage} />
+
       <Footer />
     </div>
   );

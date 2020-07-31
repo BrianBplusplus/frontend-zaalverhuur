@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import RentalRooms from "./RentalRooms";
+import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 
 const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "center",
     backgroundColor: "#fff",
     maxWidth: "1300px",
     minHeight: "70vh",
@@ -48,9 +49,10 @@ const LandingPageContainer = () => {
 
       {data.map((mappedData) => {
         return (
-          <RentalRooms
+          <LandingPageCard
             link={mappedData.id}
             key={mappedData.id}
+            width={"40vh"}
             title={mappedData.name}
             description={mappedData.company.catchPhrase}
             surfacearea={mappedData.address.geo.lat}
