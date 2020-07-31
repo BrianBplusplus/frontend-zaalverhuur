@@ -35,7 +35,7 @@ const LandingPageCard = (props) => {
     color: "#fff",
     textShadow: "1px 1px #000",
 
-    width: `${isSelected ? "80%" : props.width}`,
+    width: `${isSelected ? "50%" : props.width}`,
     height: `${isSelected ? "80vh" : "400px"}`,
     position: `${isSelected ? "absolute" : "relative"}`,
     zIndex: `${isSelected ? "1" : "0"}`,
@@ -53,8 +53,8 @@ const LandingPageCard = (props) => {
   };
 
   const imageStyle = {
-    maxWidth: "100%",
-    minHeight: "150px",
+    width: "100%",
+    height: "100%",
   };
 
   return (
@@ -68,12 +68,10 @@ const LandingPageCard = (props) => {
       <div style={backgroundStyle}></div>
       <h2>{props.title}</h2>
       <p>{props.description}</p>
-
       <Link to={`/${props.link}`}>
         {isSelected && <LargeButton text="Meer informatie" />}
       </Link>
-
-      {isSelected && <div>textexettset</div>}
+      <div>textexettset</div>
     </motion.div>
   );
 };

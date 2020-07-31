@@ -14,34 +14,40 @@ const RentalRooms = (props) => {
   const divStyleDesktop = {
     width: "30%",
     minHeight: "300px",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    boxShadow: "grey 1px 1px 5px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "10px 10px",
+    borderRadius: "15px",
   };
 
   const divStyleTablet = {
     width: "45%",
+    maxWidth: "400px",
     minHeight: "300px",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    boxShadow: "grey 1px 1px 5px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "10px 10px",
+    borderRadius: "15px",
   };
 
   const divStyleMobile = {
     width: "100%",
     maxWidth: "400px",
     minHeight: "300px",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    boxShadow: "grey 1px 1px 5px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "10px 10px",
+    borderRadius: "15px",
   };
 
   const imageStyle = {
     maxWidth: "100%",
     minHeight: "150px",
+    borderTopLeftRadius: "15px",
+    borderTopRightRadius: "15px",
   };
 
   return (

@@ -49,7 +49,7 @@ const LandingPageContainer = () => {
 
       {data.map((mappedData) => {
         return (
-          <LandingPageCard
+          <RentalRooms
             link={mappedData.id}
             key={mappedData.id}
             width={"40vh"}
