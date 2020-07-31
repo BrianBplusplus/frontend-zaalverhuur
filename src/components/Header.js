@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../img/dnblogo.jpg";
 
 const Header = () => {
   const divStyle = {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
 
-    width: "80%",
-    padding: "15px",
+    padding: "20px",
     margin: "auto",
   };
 
@@ -18,13 +19,19 @@ const Header = () => {
     padding: "0",
   };
 
+  const imageStyle = {
+    // height: "100%",
+  };
+
   const listStyle = {
     margin: "0 10px",
   };
 
   return (
     <div style={divStyle}>
-      <img alt="headerlogo" src={logo} />
+      <Link to="/">
+        <img style={imageStyle} alt="headerlogo" src={logo} />
+      </Link>
       <ul style={navStyle}>
         <li style={listStyle}>Vergaderruimtes</li>
         <li style={listStyle}>inloggen</li>

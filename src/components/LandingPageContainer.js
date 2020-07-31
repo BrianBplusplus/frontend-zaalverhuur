@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import RentalRooms from "./RentalRooms";
-import LoadingSpinner from "./animations/LoadingSpinner";
+import LoadingSpinner from "./assets/LoadingSpinner";
 
 const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "space-around",
     backgroundColor: "#fff",
-    width: "80%",
+    maxWidth: "1300px",
+    minHeight: "70vh",
     padding: "15px",
     margin: "auto",
   };
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchAPI = async () => {
       setIsLoading(true);
       setIsError(false);
@@ -39,23 +43,22 @@ const LandingPageContainer = () => {
 
   return (
     <div style={divStyle}>
-      {isLoading == true && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
-      {data &&
-        data.map((mappedData) => {
-          return (
-            <RentalRooms
-              link={mappedData.id}
-              key={mappedData.id}
-              title={mappedData.name}
-              description={mappedData.company.catchPhrase}
-              surfacearea={mappedData.address.geo.lat}
-              capacity={mappedData.address.geo.lng}
-              setups={mappedData.address.street}
-            />
-          );
-        })}
+      {data.map((mappedData) => {
+        return (
+          <RentalRooms
+            link={mappedData.id}
+            key={mappedData.id}
+            title={mappedData.name}
+            description={mappedData.company.catchPhrase}
+            surfacearea={mappedData.address.geo.lat}
+            capacity={mappedData.address.geo.lng}
+            setups={mappedData.address.street}
+          />
+        );
+      })}
     </div>
   );
 };

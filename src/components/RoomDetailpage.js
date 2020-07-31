@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 
-import LoadingSpinner from "./animations/LoadingSpinner";
+import LoadingSpinner from "./assets/LoadingSpinner";
+import LargeButton from "./assets/LargeButton";
 
 const RoomDetailpage = () => {
   const divStyle = {
+    minHeight: "30vh",
     textAlign: "center",
     backgroundColor: "#fff",
-    width: "80%",
     padding: "15px",
     margin: "auto",
-  };
-
-  const buttonStyle = {
-    color: "#fff",
-    backgroundColor: "#ed008c",
-    border: "none",
-    padding: "20px",
   };
 
   const params = useParams();
@@ -27,6 +20,8 @@ const RoomDetailpage = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchAPI = async () => {
       setIsLoading(true);
       setIsError(false);
@@ -43,7 +38,7 @@ const RoomDetailpage = () => {
       setIsLoading(false);
     };
     fetchAPI();
-  }, []);
+  }, [params]);
 
   return (
     <div style={divStyle}>
@@ -55,13 +50,14 @@ const RoomDetailpage = () => {
 
       {data && (
         <Link to="/">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            style={buttonStyle}
-          >
-            Terug naar de homepage
-          </motion.button>
+          <LargeButton text="Reserveren" />
+        </Link>
+      )}
+      <br></br>
+      <br></br>
+      {data && (
+        <Link to="/">
+          <LargeButton text="Terug naar de homepage" />
         </Link>
       )}
     </div>
