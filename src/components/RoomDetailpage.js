@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import DatePicker from "./assets/DatePicker";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
@@ -48,11 +49,17 @@ const RoomDetailpage = () => {
       {data && <h2>{data.name}</h2>}
       {data && <p>{data.company.catchPhrase}</p>}
 
+      <DatePicker />
+
+      <br></br>
+      <br></br>
+
       {data && (
         <Link to="/">
           <LargeButton text="Reserveren" />
         </Link>
       )}
+
       <br></br>
       <br></br>
       {data && (

@@ -17,7 +17,7 @@ const RentalRooms = (props) => {
     boxShadow: "grey 1px 1px 5px 1px",
     textAlign: "center",
     paddingBottom: "10px",
-    margin: "10px 10px",
+    margin: "15px 15px",
     borderRadius: "15px",
   };
 

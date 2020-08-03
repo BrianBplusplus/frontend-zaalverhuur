@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { motion, AnimateSharedLayout } from "framer-motion";
 
 import RentalRooms from "./RentalRooms";
 import LandingPageCard from "./LandingPageCard";
@@ -43,25 +44,26 @@ const LandingPageContainer = () => {
   }, []);
 
   return (
-    <div style={divStyle}>
-      {isLoading && <LoadingSpinner />}
-      {isError && <div>Error</div>}
+    <AnimateSharedLayout>
+      <motion.div style={divStyle}>
+        {isLoading && <LoadingSpinner />}
+        {isError && <div>Error</div>}
 
-      {data.map((mappedData) => {
-        return (
-          <RentalRooms
-            link={mappedData.id}
-            key={mappedData.id}
-            width={"40vh"}
-            title={mappedData.name}
-            description={mappedData.company.catchPhrase}
-            surfacearea={mappedData.address.geo.lat}
-            capacity={mappedData.address.geo.lng}
-            setups={mappedData.address.street}
-          />
-        );
-      })}
-    </div>
+        {data.map((mappedData) => {
+          return (
+            <LandingPageCard
+              link={mappedData.id}
+              key={mappedData.id}
+              title={mappedData.name}
+              description={mappedData.company.catchPhrase}
+              surfacearea={mappedData.address.geo.lat}
+              capacity={mappedData.address.geo.lng}
+              setups={mappedData.address.street}
+            />
+          );
+        })}
+      </motion.div>
+    </AnimateSharedLayout>
   );
 };
 

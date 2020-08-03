@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import LargeButton from "./assets/LargeButton";
-import image from "../img/dnbkamer.jpg";
+import image1 from "../img/dnbkamer.jpg";
+import image2 from "../img/dnbkamer2.jpg";
 
 const LandingPageCard = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -18,7 +19,7 @@ const LandingPageCard = (props) => {
       setIsSelected(false);
       console.log("closed ", props.title);
     } else {
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
       setIsSelected(true);
       console.log("opened ", props.title);
     }
@@ -26,7 +27,7 @@ const LandingPageCard = (props) => {
 
   const divStyle = {
     margin: "20px",
-    backgroundImage: `url("${image}")`,
+    backgroundImage: `url("${image2}")`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     borderRadius: "15px",
@@ -35,7 +36,7 @@ const LandingPageCard = (props) => {
     color: "#fff",
     textShadow: "1px 1px #000",
 
-    width: `${isSelected ? "50%" : props.width}`,
+    width: `${isSelected ? "50%" : "30%"}`,
     height: `${isSelected ? "80vh" : "400px"}`,
     position: `${isSelected ? "absolute" : "relative"}`,
     zIndex: `${isSelected ? "1" : "0"}`,
