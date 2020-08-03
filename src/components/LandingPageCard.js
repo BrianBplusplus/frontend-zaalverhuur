@@ -27,7 +27,7 @@ const LandingPageCard = (props) => {
 
     maxWidth: "1000px",
     marginTop: `${isSelected ? "-200px" : "0px"}`,
-    width: `${isSelected ? "50%" : "30%"}`,
+    width: `${isSelected ? "50%" : `${props.width}`}`,
     height: `${isSelected ? "80vh" : "400px"}`,
     position: `${isSelected ? "fixed" : "relative"}`,
     zIndex: `${isSelected ? "2" : "0"}`,

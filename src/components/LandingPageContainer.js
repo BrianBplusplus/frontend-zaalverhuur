@@ -63,6 +63,7 @@ const LandingPageContainer = () => {
               key={mappedData.id}
               title={mappedData.name}
               description={mappedData.company.catchPhrase}
+              width={(mappedData.id * 2) % 3 === 2 ? "60%" : "30%"}
             />
           );
         })}
