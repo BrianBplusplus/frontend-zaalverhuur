@@ -10,7 +10,7 @@ const HeaderImage = () => {
     marginBottom: "15px",
     objectFit: "cover",
   };
-  return <img style={imageStyle} src={image} />;
+  return <img alt="headerimage" style={imageStyle} src={image} />;
 };
 
 export default HeaderImage;

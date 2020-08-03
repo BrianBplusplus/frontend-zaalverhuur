@@ -21,14 +21,6 @@ const LandingPageContainer = () => {
     margin: "auto",
   };
 
-  const h2Style = {
-    color: "#ed008c",
-    backgroundColor: "#fff",
-    textAlign: "center",
-    margin: "0",
-    paddingTop: "20px",
-  };
-
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -71,9 +63,6 @@ const LandingPageContainer = () => {
               key={mappedData.id}
               title={mappedData.name}
               description={mappedData.company.catchPhrase}
-              surfacearea={mappedData.address.geo.lat}
-              capacity={mappedData.address.geo.lng}
-              setups={mappedData.address.street}
             />
           );
         })}

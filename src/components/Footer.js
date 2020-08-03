@@ -2,6 +2,7 @@ import React from "react";
 
 const Footer = () => {
   const divStyle = {
+    fontFamily: "Open Sans, sans-serif",
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
@@ -17,8 +18,8 @@ const Footer = () => {
   };
 
   const ulStyle = {
-    listStyle: "none",
-    padding: "0",
+    // listStyle: "none",
+    //  padding: "0",
   };
 
   return (

@@ -14,17 +14,6 @@ const LandingPageCard = (props) => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
-  const handleIsSelected = () => {
-    console.log("handleIsSelected has been pressed");
-    if (isSelected === true) {
-      setIsSelected(false);
-      console.log("closed ", props.title);
-    } else {
-      setIsSelected(true);
-      console.log("opened ", props.title);
-    }
-  };
-
   const divStyle = {
     margin: "20px",
     backgroundImage: `url("${image2}")`,
@@ -34,7 +23,6 @@ const LandingPageCard = (props) => {
     boxShadow: "grey 2px 2px 2px",
 
     color: "#fff",
-    textShadow: "1px 1px #000",
     textAlign: "center",
 
     maxWidth: "1000px",
@@ -42,13 +30,13 @@ const LandingPageCard = (props) => {
     width: `${isSelected ? "50%" : "30%"}`,
     height: `${isSelected ? "80vh" : "400px"}`,
     position: `${isSelected ? "fixed" : "relative"}`,
-    zIndex: `${isSelected ? "1" : "0"}`,
+    zIndex: `${isSelected ? "2" : "0"}`,
   };
 
   const backgroundStyle = {
     width: "100%",
     height: "20%",
-    backgroundColor: "rgb(0 0 0 / 0.5)",
+    backgroundColor: "rgb(0 0 0 / 0.5)", //"#ed008c",
     borderTopLeftRadius: "15px",
     borderTopRightRadius: "15px",
     position: "absolute",
@@ -56,9 +44,15 @@ const LandingPageCard = (props) => {
     zIndex: "-1",
   };
 
-  const imageStyle = {
-    width: "100%",
-    height: "100%",
+  const handleIsSelected = () => {
+    console.log("handleIsSelected has been pressed");
+    if (isSelected === true) {
+      setIsSelected(false);
+      console.log("closed ", props.title);
+    } else {
+      setIsSelected(true);
+      console.log("opened ", props.title);
+    }
   };
 
   return (
