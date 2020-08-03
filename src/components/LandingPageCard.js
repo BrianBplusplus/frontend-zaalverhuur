@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import LargeButton from "./assets/LargeButton";
 import image1 from "../img/dnbkamer.jpg";
 import image2 from "../img/dnbkamer2.jpg";
+import image3 from "../img/hetNieuweLokaal.jpeg";
 
 const LandingPageCard = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -19,7 +20,6 @@ const LandingPageCard = (props) => {
       setIsSelected(false);
       console.log("closed ", props.title);
     } else {
-      // window.scrollTo(0, 0);
       setIsSelected(true);
       console.log("opened ", props.title);
     }
@@ -35,10 +35,13 @@ const LandingPageCard = (props) => {
 
     color: "#fff",
     textShadow: "1px 1px #000",
+    textAlign: "center",
 
+    maxWidth: "1000px",
+    marginTop: `${isSelected ? "-200px" : "0px"}`,
     width: `${isSelected ? "50%" : "30%"}`,
     height: `${isSelected ? "80vh" : "400px"}`,
-    position: `${isSelected ? "absolute" : "relative"}`,
+    position: `${isSelected ? "fixed" : "relative"}`,
     zIndex: `${isSelected ? "1" : "0"}`,
   };
 
@@ -68,11 +71,10 @@ const LandingPageCard = (props) => {
     >
       <div style={backgroundStyle}></div>
       <h2>{props.title}</h2>
-      <p>{props.description}</p>
+      {isSelected && <p>{props.description}</p>}
       <Link to={`/${props.link}`}>
         {isSelected && <LargeButton text="Meer informatie" />}
       </Link>
-      <div>textexettset</div>
     </motion.div>
   );
 };

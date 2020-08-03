@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const LoadingSpinner = () => {
   const divStyle = {
-    position: "relative",
+    position: "absolute",
     width: "3rem",
     height: "3rem",
     boxSizing: "border-box",
