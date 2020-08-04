@@ -4,6 +4,7 @@ import { motion, AnimateSharedLayout } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import HeaderImage from "./HeaderImage";
+import HeaderInfo from "./HeaderInfo";
 import RentalRooms from "./RentalRooms";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
@@ -51,6 +52,7 @@ const LandingPageContainer = () => {
   return (
     <AnimateSharedLayout>
       {!isMobile && <HeaderImage />}
+      <HeaderInfo />
 
       <motion.div initial={false} style={divStyle}>
         {isLoading && <LoadingSpinner />}
@@ -58,7 +60,7 @@ const LandingPageContainer = () => {
 
         {data.map((mappedData) => {
           return (
-            <LandingPageCard
+            <RentalRooms
               link={mappedData.id}
               key={mappedData.id}
               title={mappedData.name}

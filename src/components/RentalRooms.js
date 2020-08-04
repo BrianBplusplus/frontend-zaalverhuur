@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 
 import LargeButton from "./assets/LargeButton";
 
-import image from "../img/dnbkamer.jpg";
+import image from "../img/hetNieuweLokaal.jpeg";
 
 const RentalRooms = (props) => {
   // const isDesktop = useMediaQuery({ minWidth: 1224 });
@@ -14,40 +14,40 @@ const RentalRooms = (props) => {
   const divStyleDesktop = {
     width: "30%",
     minHeight: "300px",
-    boxShadow: "grey 1px 1px 5px 1px",
+    boxShadow: "#dedede 1px 1px 5px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "15px 15px",
-    borderRadius: "15px",
+    borderRadius: "3px",
   };
 
   const divStyleTablet = {
     width: "45%",
     maxWidth: "400px",
     minHeight: "300px",
-    boxShadow: "grey 1px 1px 5px 1px",
+    boxShadow: "#dedede 1px 1px 1px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "10px 10px",
-    borderRadius: "15px",
+    borderRadius: "3px",
   };
 
   const divStyleMobile = {
     width: "100%",
     maxWidth: "400px",
     minHeight: "300px",
-    boxShadow: "grey 1px 1px 5px 1px",
+    boxShadow: "#dedede 1px 1px 1px 1px",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "10px 10px",
-    borderRadius: "15px",
+    borderRadius: "3px",
   };
 
   const imageStyle = {
     maxWidth: "100%",
     minHeight: "150px",
-    borderTopLeftRadius: "15px",
-    borderTopRightRadius: "15px",
+    borderTopLeftRadius: "3px",
+    borderTopRightRadius: "3px",
   };
 
   return (

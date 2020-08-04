@@ -19,14 +19,14 @@ const LandingPageCard = (props) => {
     backgroundImage: `url("${image2}")`,
     backgroundSize: "cover",
     backgroundPosition: "center",
-    borderRadius: "15px",
-    boxShadow: "grey 2px 2px 2px",
+    borderRadius: "3px",
+    boxShadow: "#dedede 2px 2px 2px",
 
     color: "#fff",
     textAlign: "center",
 
     maxWidth: "1000px",
-    marginTop: `${isSelected ? "-200px" : "0px"}`,
+    marginTop: `${isSelected ? "-370px" : "0px"}`,
     width: `${isSelected ? "50%" : `${props.width}`}`,
     height: `${isSelected ? "80vh" : "400px"}`,
     position: `${isSelected ? "fixed" : "relative"}`,
@@ -37,8 +37,8 @@ const LandingPageCard = (props) => {
     width: "100%",
     height: "20%",
     backgroundColor: "rgb(0 0 0 / 0.5)", //"#ed008c",
-    borderTopLeftRadius: "15px",
-    borderTopRightRadius: "15px",
+    borderTopLeftRadius: "3px",
+    borderTopRightRadius: "3px",
     position: "absolute",
 
     zIndex: "-1",
