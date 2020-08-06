@@ -23,12 +23,26 @@ const HamburgerIcon = () => {
     transition: "0.4s",
   };
 
+  const changeTopBar = {
+    ...divStyle,
+    transform: "rotate(-45deg) translate(-8px, 0px)",
+  };
+
+  const changeMiddleBar = {
+    opacity: "0",
+  };
+
+  const changeBottomBar = {
+    ...divStyle,
+    transform: "rotate(45deg) translate(-8px, -0px)",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div onClick={() => handleClick()}>
-      <div style={divStyle}></div>
-      <div style={divStyle}></div>
-      <div style={divStyle}></div>
+      <div style={open ? changeTopBar : divStyle}></div>
+      <div style={open ? changeMiddleBar : divStyle}></div>
+      <div style={open ? changeBottomBar : divStyle}></div>
     </div>
   );
 };

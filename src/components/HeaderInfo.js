@@ -13,6 +13,8 @@ const HeaderInfo = () => {
 
     maxWidth: "1300px",
     margin: "auto auto 20px",
+
+    fontSize: "14px",
   };
 
   const leftStyle = {
