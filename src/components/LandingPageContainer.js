@@ -15,7 +15,7 @@ import image_5 from "../img/deNieuweKamer.jpg";
 
 const LandingPageContainer = () => {
   // ---------------- States ------------------- //
-  const [data, setData] = useState([]);
+  const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -45,8 +45,8 @@ const LandingPageContainer = () => {
         const response = await axios.get(
           `https://jsonplaceholder.typicode.com/users/`
         );
-        console.log("API response", response);
-        setData(response.data);
+        console.log("API response Landing Page", response);
+        setApiData(response.data);
       } catch (error) {
         setIsError(true);
         console.error(error);
@@ -79,14 +79,14 @@ const LandingPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <div>Error</div>}
 
-        {data.map((mappedData) => {
+        {apiData.map((mappedApiData) => {
           return (
             <LandingPageCard
-              link={mappedData.id}
-              key={mappedData.id}
-              image={imageArray[mappedData.id - 1]}
-              title={mappedData.name}
-              description={mappedData.company.catchPhrase}
+              link={mappedApiData.id}
+              key={mappedApiData.id}
+              image={imageArray[mappedApiData.id - 1]}
+              title={mappedApiData.name}
+              description={mappedApiData.company.catchPhrase}
             />
           );
         })}
