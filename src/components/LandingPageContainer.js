@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { motion, AnimateSharedLayout } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import HeaderImage from "./HeaderImage";
 import HeaderInfo from "./HeaderInfo";
-import RentalRooms from "./RentalRooms";
+import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
+
+import image_1 from "../img/deNieuweZaal.jpg";
+import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
+import image_3 from "../img/hetNieuweLokaal.jpeg";
+import image_4 from "../img/hetNieuwsCafe.jpeg";
+import image_5 from "../img/deNieuweKamer.jpg";
+
+const imageArray = [
+  image_1,
+  image_2,
+  image_3,
+  image_4,
+  image_5,
+  image_1,
+  image_2,
+  image_3,
+  image_4,
+  image_5,
+];
 
 const LandingPageContainer = () => {
   const divStyle = {
@@ -49,31 +67,27 @@ const LandingPageContainer = () => {
   }, []);
 
   return (
-    <AnimateSharedLayout>
+    <div>
       {!isMobile && <HeaderImage />}
       <HeaderInfo />
 
-      <motion.div initial={false} style={divStyle}>
+      <div style={divStyle}>
         {isLoading && <LoadingSpinner />}
         {isError && <div>Error</div>}
 
         {data.map((mappedData) => {
           return (
-            <RentalRooms
+            <LandingPageCard
               link={mappedData.id}
               key={mappedData.id}
+              image={imageArray[mappedData.id - 1]}
               title={mappedData.name}
               description={mappedData.company.catchPhrase}
-              width={
-                (mappedData.id * 2) % 3 === 2 || mappedData.id === 5
-                  ? "60%"
-                  : "30%"
-              }
             />
           );
         })}
-      </motion.div>
-    </AnimateSharedLayout>
+      </div>
+    </div>
   );
 };
 

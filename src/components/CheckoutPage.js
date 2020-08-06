@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 import DatePicker from "./assets/DatePicker";
 import LargeButton from "./assets/LargeButton";
+import LoadingSpinner from "./assets/LoadingSpinner";
 
 const CheckoutPage = () => {
   const divStyle = {
@@ -46,6 +47,9 @@ const CheckoutPage = () => {
 
   return (
     <div style={divStyle}>
+      {isLoading && <LoadingSpinner />}
+      {isError && <div>Error</div>}
+
       <h1>Zaal: {data.name}</h1>
       <DatePicker />
       <p>Opstellingen: 123 123 123 </p>

@@ -1,76 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import LargeButton from "./assets/LargeButton";
-import image_01 from "../img/dnbkamer.jpg";
-import image_02 from "../img/dnbkamer2.jpg";
-import image_03 from "../img/hetNieuweLokaal.jpeg";
 
-const LandingPageCard = (props) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const RentalRooms = (props) => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const divStyle = {
-    margin: "20px",
-    backgroundImage: `url("${image_03}")`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    borderRadius: "3px",
-    boxShadow: "#dedede 2px 2px 2px",
-
-    color: "#fff",
+    width: "30%",
+    minHeight: "300px",
+    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
-
-    maxWidth: "1000px",
-    marginTop: `${isSelected ? "-370px" : "0px"}`,
-    width: `${isSelected ? "50%" : `${props.width}`}`,
-    height: `${isSelected ? "80vh" : "400px"}`,
-    position: `${isSelected ? "fixed" : "relative"}`,
-    zIndex: `${isSelected ? "2" : "0"}`,
+    paddingBottom: "10px",
+    margin: "15px 15px",
+    borderRadius: "3px",
   };
 
-  const backgroundStyle = {
+  const divStyleTablet = {
+    ...divStyle,
+    width: "45%",
+    maxWidth: "400px",
+  };
+
+  const divStyleMobile = {
+    ...divStyle,
     width: "100%",
-    height: "20%",
-    backgroundColor: "rgb(0 0 0 / 0.5)", //"#ed008c",
+    maxWidth: "400px",
+  };
+
+  const imageStyle = {
+    width: "100%",
+    height: "250px",
+    objectFit: "cover",
     borderTopLeftRadius: "3px",
     borderTopRightRadius: "3px",
-    position: "absolute",
-
-    zIndex: "-1",
-  };
-
-  const handleIsSelected = () => {
-    console.log("handleIsSelected has been pressed");
-    if (isSelected === true) {
-      setIsSelected(false);
-      console.log("closed ", props.title);
-    } else {
-      setIsSelected(true);
-      console.log("opened ", props.title);
-    }
   };
 
   return (
-    <motion.div
-      layout
-      transition={{ stiffness: 10, damping: 2 }}
-      initial={false}
-      onClick={() => handleIsSelected()}
-      style={divStyle}
+    <div
+      style={
+        (isMobile && divStyleMobile) || (isTablet && divStyleTablet) || divStyle
+      }
     >
-      <div style={backgroundStyle}></div>
+      <img alt="roomimage" style={imageStyle} src={props.image} />
       <h2>{props.title}</h2>
-      {isSelected && <p>{props.description}</p>}
+      <p>{props.description}</p>
+
       <Link to={`/${props.link}`}>
-        {isSelected && <LargeButton text="Meer informatie" />}
+        <LargeButton text="Meer informatie" />
       </Link>
-    </motion.div>
+    </div>
   );
 };
 
-export default LandingPageCard;
+export default RentalRooms;

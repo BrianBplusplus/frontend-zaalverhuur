@@ -5,10 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 
-import image_01 from "../img/dnbkamer.jpg";
-import image_02 from "../img/dnbkamer2.jpg";
-import image_03 from "../img/hetNieuweLokaal.jpeg";
-
 const ReservationPageContainer = () => {
   const divStyle = {
     minHeight: "30vh",

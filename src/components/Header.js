@@ -21,10 +21,6 @@ const Header = () => {
     padding: "0",
   };
 
-  const imageStyle = {
-    // height: "100%",
-  };
-
   const listStyle = {
     fontSize: "1.00833rem",
     margin: "0 10px",
@@ -37,7 +33,7 @@ const Header = () => {
   return (
     <div style={divStyle}>
       <Link to="/">
-        <img style={imageStyle} alt="headerlogo" src={logo} />
+        <img alt="headerlogo" src={logo} />
       </Link>
       <ul style={navStyle}>
         <li style={listStyle}>
