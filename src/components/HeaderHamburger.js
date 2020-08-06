@@ -55,6 +55,11 @@ const HeaderHamburger = () => {
     width: "100%",
   };
 
+  const aStyle = {
+    textDecoration: "none",
+    color: "#ed008c",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
@@ -74,13 +79,28 @@ const HeaderHamburger = () => {
         variants={variants}
       >
         <li>
-          <a>Vergaderruimtes</a>
+          <a
+            style={aStyle}
+            href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html"
+          >
+            Lid worden
+          </a>
         </li>
         <li>
-          <a>Inloggen</a>
+          <a
+            style={aStyle}
+            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010"
+          >
+            Catalogus
+          </a>
         </li>
         <li>
-          <a>Terug naar Bibliotheek</a>
+          <a
+            style={aStyle}
+            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?prt=INTERNET&taal=nl_NL&var=portal&event=private&vestnr=8010"
+          >
+            Aanmelden Mijn menu
+          </a>
         </li>
       </motion.ul>
     </div>
