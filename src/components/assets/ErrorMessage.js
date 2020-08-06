@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import LargeButton from "./LargeButton";
 
 const ErrorMessage = () => {
-  // ---------------- Variables ---------------- //
-
+  // ---------------- Functions ---------------- //
   const reloadPage = () => {
     window.location.reload();
   };

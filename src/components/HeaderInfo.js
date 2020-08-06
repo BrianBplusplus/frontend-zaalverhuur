@@ -1,9 +1,14 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 const HeaderInfo = () => {
+  // ---------------- Variables ---------------- //
+  const isSmallScreen = useMediaQuery({ maxWidth: 880 });
+
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
+    flexWrap: "wrap",
     justifyContent: "space-between",
 
     maxWidth: "1300px",
@@ -13,13 +18,14 @@ const HeaderInfo = () => {
   const leftStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    width: "60%",
+    width: isSmallScreen ? "100%" : "60%",
+    marginBottom: isSmallScreen ? "20px" : "0",
   };
 
   const rightStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    width: "30%",
+    width: isSmallScreen ? "100%" : "30%",
   };
 
   const h2Style = {

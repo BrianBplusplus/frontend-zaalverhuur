@@ -87,7 +87,7 @@ const ReservationPageContainer = () => {
       {isError && <ErrorMessage />}
 
       <h2>{apiData.name}</h2>
-      <img style={imageStyle} src={imageArray[params.id - 1]} />
+      <img alt="RoomImage" style={imageStyle} src={imageArray[params.id - 1]} />
 
       <DayPicker
         selectedDays={pickedDate}
