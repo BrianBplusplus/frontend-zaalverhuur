@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HamburgerIcon = () => {
+const HamburgerIcon = (props) => {
   // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
 

@@ -39,8 +39,12 @@ const HeaderHamburger = () => {
   };
 
   const ulStyle = {
+    padding: "0",
+    textAlign: "center",
     listStyle: "none",
-    fontSize: "20px",
+    fontSize: "1.5em",
+    fontFamily: "Open Sans, sans-serif",
+    color: "#ed008c",
   };
 
   const linkStyle = {
@@ -69,9 +73,15 @@ const HeaderHamburger = () => {
         initial={false}
         variants={variants}
       >
-        <li>Vergaderruimtes</li>
-        <li>Inloggen</li>
-        <li>Terug naar Bibliotheek</li>
+        <li>
+          <a>Vergaderruimtes</a>
+        </li>
+        <li>
+          <a>Inloggen</a>
+        </li>
+        <li>
+          <a>Terug naar Bibliotheek</a>
+        </li>
       </motion.ul>
     </div>
   );
