@@ -5,9 +5,11 @@ import { useMediaQuery } from "react-responsive";
 import LargeButton from "./assets/LargeButton";
 
 const RentalRooms = (props) => {
+  // ---------------- Variables ---------------- //
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  // ---------------- Styling ------------------ //
   const divStyle = {
     width: "30%",
     minHeight: "300px",
@@ -38,6 +40,7 @@ const RentalRooms = (props) => {
     borderTopRightRadius: "3px",
   };
 
+  // ---------------- Render ------------------- //
   return (
     <div
       style={
@@ -49,7 +52,7 @@ const RentalRooms = (props) => {
       <p>{props.description}</p>
 
       <Link to={`/${props.link}`}>
-        <LargeButton text="Meer informatie" />
+        <LargeButton text="Bekijk Zaal" />
       </Link>
     </div>
   );

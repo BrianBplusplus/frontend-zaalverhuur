@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import logo from "../img/dnblogo.jpg";
 
 const Header = () => {
+  // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -30,6 +31,7 @@ const Header = () => {
     textDecoration: "none",
   };
 
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <Link to="/">

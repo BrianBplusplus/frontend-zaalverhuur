@@ -6,19 +6,15 @@ import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 
 const ReservationPageContainer = () => {
-  const divStyle = {
-    minHeight: "30vh",
-    textAlign: "center",
-    backgroundColor: "#fff",
-    padding: "15px",
-    margin: "auto",
-  };
-
-  const params = useParams();
+  // ---------------- States ------------------- //
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  // ---------------- Variables ---------------- //
+  const params = useParams();
+
+  // ---------------- Functions ---------------- //
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -40,6 +36,16 @@ const ReservationPageContainer = () => {
     fetchAPI();
   }, [params]);
 
+  // ---------------- Styling ------------------ //
+  const divStyle = {
+    minHeight: "30vh",
+    textAlign: "center",
+    backgroundColor: "#fff",
+    padding: "15px",
+    margin: "auto",
+  };
+
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       {isLoading && <LoadingSpinner />}

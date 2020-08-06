@@ -3,6 +3,7 @@ import React from "react";
 import image from "../img/hetNieuwsCafeCropped.jpg";
 
 const HeaderImage = () => {
+  // ---------------- Styling ------------------ //
   const imageStyle = {
     maxWidth: "1300px",
     width: "100%",
@@ -10,6 +11,8 @@ const HeaderImage = () => {
     marginBottom: "15px",
     objectFit: "cover",
   };
+
+  // ---------------- Render ------------------- //
   return <img alt="headerimage" style={imageStyle} src={image} />;
 };
 

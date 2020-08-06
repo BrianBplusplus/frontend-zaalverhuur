@@ -6,8 +6,17 @@ import HamburgerIcon from "./assets/HamburgerIcon";
 import logo from "../img/dnblogo.jpg";
 
 const HeaderHamburger = () => {
+  // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
 
+  // ---------------- Variables ---------------- //
+  const variants = {
+    open: { opacity: 1, x: "0" },
+    closed: { opacity: 0, x: "-100%" },
+  };
+  const divHeight = open ? "170px" : "35px";
+
+  // ---------------- Functions ---------------- //
   const handleOpen = () => {
     if (open === true) {
       setOpen(false);
@@ -16,13 +25,7 @@ const HeaderHamburger = () => {
     }
   };
 
-  const divHeight = open ? "170px" : "35px";
-
-  const variants = {
-    open: { opacity: 1, x: "0" },
-    closed: { opacity: 0, x: "-100%" },
-  };
-
+  // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
     height: divHeight,
@@ -48,6 +51,7 @@ const HeaderHamburger = () => {
     width: "100%",
   };
 
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={navStyle}>

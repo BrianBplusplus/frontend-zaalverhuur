@@ -13,38 +13,28 @@ import image_3 from "../img/hetNieuweLokaal.jpeg";
 import image_4 from "../img/hetNieuwsCafe.jpeg";
 import image_5 from "../img/deNieuweKamer.jpg";
 
-const imageArray = [
-  image_1,
-  image_2,
-  image_3,
-  image_4,
-  image_5,
-  image_1,
-  image_2,
-  image_3,
-  image_4,
-  image_5,
-];
-
 const LandingPageContainer = () => {
-  const divStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-
-    justifyContent: "center",
-    backgroundColor: "#fff",
-    maxWidth: "1300px",
-    minHeight: "70vh",
-    padding: "15px",
-    margin: "auto",
-  };
-
+  // ---------------- States ------------------- //
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const imageArray = [
+    image_1,
+    image_2,
+    image_3,
+    image_4,
+    image_5,
+    image_1,
+    image_2,
+    image_3,
+    image_4,
+    image_5,
+  ];
 
+  // ---------------- Functions ---------------- //
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -66,6 +56,20 @@ const LandingPageContainer = () => {
     fetchAPI();
   }, []);
 
+  // ---------------- Styling ------------------ //
+  const divStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    maxWidth: "1300px",
+    minHeight: "70vh",
+    padding: "15px",
+    margin: "auto",
+  };
+
+  // ---------------- Render ------------------- //
   return (
     <div>
       {!isMobile && <HeaderImage />}

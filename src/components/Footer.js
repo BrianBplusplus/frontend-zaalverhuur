@@ -1,6 +1,7 @@
 import React from "react";
 
 const Footer = () => {
+  // ---------------- Styling ---------------- //
   const divStyle = {
     fontFamily: "Open Sans, sans-serif",
     display: "flex",
@@ -17,6 +18,7 @@ const Footer = () => {
     fontWeight: "normal",
   };
 
+  // ---------------- Render ---------------- //
   return (
     <div style={divStyle}>
       <div>

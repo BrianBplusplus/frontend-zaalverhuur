@@ -1,6 +1,7 @@
 import React from "react";
 
 const HeaderInfo = () => {
+  // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
     justifyContent: "space-between",
@@ -26,6 +27,7 @@ const HeaderInfo = () => {
     color: "#ed008c",
   };
 
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>

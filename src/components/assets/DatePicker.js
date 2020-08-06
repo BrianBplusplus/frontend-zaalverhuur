@@ -3,8 +3,10 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
 const DatePicker = () => {
+  // ---------------- Variables ---------------- //
   const [pickedDate, setPickedDate] = useState(null);
 
+  // ---------------- Functions ---------------- //
   const handlePickDate = (day, modifiers = {}, { selected }) => {
     if (modifiers.disabled) {
       return;
@@ -13,6 +15,7 @@ const DatePicker = () => {
     console.log("pickedDate: ", pickedDate);
   };
 
+  // ---------------- Render ------------------- //
   return (
     <DayPicker
       selectedDays={pickedDate}

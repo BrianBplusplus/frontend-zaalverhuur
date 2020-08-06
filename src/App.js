@@ -6,8 +6,8 @@ import Header from "./components/Header";
 import HeaderHamburger from "./components/HeaderHamburger";
 import LandingPageContainer from "./components/LandingPageContainer";
 import ReservationPageContainer from "./components/ReservationPageContainer";
-import CheckoutPage from "./components/CheckoutPage";
 import Footer from "./components/Footer";
+
 function App() {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
 
@@ -23,7 +23,6 @@ function App() {
 
       <Route path="/" exact component={LandingPageContainer} />
       <Route path="/:id" exact component={ReservationPageContainer} />
-      <Route path="/:id/reserveren" exact component={CheckoutPage} />
 
       <Footer />
     </div>
