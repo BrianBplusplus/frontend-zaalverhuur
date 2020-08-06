@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import LargeButton from "./assets/LargeButton";
-import image1 from "../img/dnbkamer.jpg";
-import image2 from "../img/dnbkamer2.jpg";
-import image3 from "../img/hetNieuweLokaal.jpeg";
+import image_01 from "../img/dnbkamer.jpg";
+import image_02 from "../img/dnbkamer2.jpg";
+import image_03 from "../img/hetNieuweLokaal.jpeg";
 
 const LandingPageCard = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -16,7 +16,7 @@ const LandingPageCard = (props) => {
 
   const divStyle = {
     margin: "20px",
-    backgroundImage: `url("${image2}")`,
+    backgroundImage: `url("${image_03}")`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     borderRadius: "3px",

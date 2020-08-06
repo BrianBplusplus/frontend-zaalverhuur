@@ -6,7 +6,6 @@ import { useMediaQuery } from "react-responsive";
 import HeaderImage from "./HeaderImage";
 import HeaderInfo from "./HeaderInfo";
 import RentalRooms from "./RentalRooms";
-import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 
 const LandingPageContainer = () => {

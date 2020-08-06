@@ -5,7 +5,11 @@ import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 
-const RoomDetailpage = () => {
+import image_01 from "../img/dnbkamer.jpg";
+import image_02 from "../img/dnbkamer2.jpg";
+import image_03 from "../img/hetNieuweLokaal.jpeg";
+
+const ReservationPageContainer = () => {
   const divStyle = {
     minHeight: "30vh",
     textAlign: "center",
@@ -15,7 +19,7 @@ const RoomDetailpage = () => {
   };
 
   const params = useParams();
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -45,24 +49,20 @@ const RoomDetailpage = () => {
       {isLoading && <LoadingSpinner />}
       {isError && <div>Error</div>}
 
-      {data && <h2>{data.name}</h2>}
-      {data && <p>{data.company.catchPhrase}</p>}
+      <h2>{data.name}</h2>
 
-      {data && (
-        <Link to={`/${params.id}/reserveren`}>
-          <LargeButton text="Reserveren" />
-        </Link>
-      )}
+      <Link to={`/${params.id}/reserveren`}>
+        <LargeButton text="Reserveren" />
+      </Link>
 
       <br></br>
       <br></br>
-      {data && (
-        <Link to="/">
-          <LargeButton text="Terug naar zalen" />
-        </Link>
-      )}
+
+      <Link to="/">
+        <LargeButton text="Terug naar zalen" />
+      </Link>
     </div>
   );
 };
 
-export default RoomDetailpage;
+export default ReservationPageContainer;
