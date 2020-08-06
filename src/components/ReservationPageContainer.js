@@ -6,6 +6,7 @@ import "react-day-picker/lib/style.css";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
+import ErrorMessage from "./assets/ErrorMessage";
 
 import image_1 from "../img/deNieuweZaal.jpg";
 import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
@@ -83,7 +84,7 @@ const ReservationPageContainer = () => {
   return (
     <div style={divStyle}>
       {isLoading && <LoadingSpinner />}
-      {isError && <div>Error</div>}
+      {isError && <ErrorMessage />}
 
       <h2>{apiData.name}</h2>
       <img style={imageStyle} src={imageArray[params.id - 1]} />

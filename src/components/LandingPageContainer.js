@@ -6,6 +6,7 @@ import HeaderImage from "./HeaderImage";
 import HeaderInfo from "./HeaderInfo";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
+import ErrorMessage from "./assets/ErrorMessage";
 
 import image_1 from "../img/deNieuweZaal.jpg";
 import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
@@ -77,7 +78,7 @@ const LandingPageContainer = () => {
 
       <div style={divStyle}>
         {isLoading && <LoadingSpinner />}
-        {isError && <div>Error</div>}
+        {isError && <ErrorMessage />}
 
         {apiData.map((mappedApiData) => {
           return (
