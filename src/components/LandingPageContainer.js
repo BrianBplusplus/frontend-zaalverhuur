@@ -44,10 +44,10 @@ const LandingPageContainer = () => {
       setIsError(false);
       try {
         const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/users/`
+          `https://backend-zaalverhuur.herokuapp.com/api`
         );
-        console.log("API response Landing Page", response);
-        setApiData(response.data);
+        console.log("API response Landing Page", response.data.locations);
+        setApiData(response.data.locations);
       } catch (error) {
         setIsError(true);
         console.error(error);
@@ -80,15 +80,17 @@ const LandingPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        {apiData.map((mappedApiData) => {
+        {apiData.map((mappedApiData, index) => {
           return (
-            <LandingPageCard
-              link={mappedApiData.id}
-              key={mappedApiData.id}
-              image={imageArray[mappedApiData.id - 1]}
-              title={mappedApiData.name}
-              description={mappedApiData.company.catchPhrase}
-            />
+            mappedApiData.locationID <= 1371 && (
+              <LandingPageCard
+                link={mappedApiData.locationID}
+                key={mappedApiData.locationID}
+                image={imageArray[index]}
+                title={mappedApiData.name}
+                description={mappedApiData.description}
+              />
+            )
           );
         })}
       </div>

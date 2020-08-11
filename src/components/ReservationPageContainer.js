@@ -46,9 +46,9 @@ const ReservationPageContainer = () => {
       setIsError(false);
       try {
         const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/users/${params.id}`
+          `https://backend-zaalverhuur.herokuapp.com/api/${params.id}`
         );
-        console.log("API response Reservation page", response);
+        console.log("API response Reservation page", response.data);
         setApiData(response.data);
       } catch (error) {
         setIsError(true);
