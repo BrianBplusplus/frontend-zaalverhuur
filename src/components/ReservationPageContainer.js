@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useMediaQuery } from "react-responsive";
+import { Link, useParams } from "react-router-dom";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
-import HeaderImage from "./HeaderImage";
-import HeaderInfo from "./HeaderInfo";
-import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
+import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
 
 import image_1 from "../img/deNieuweZaal.jpg";
@@ -14,14 +14,16 @@ import image_3 from "../img/hetNieuweLokaal.jpeg";
 import image_4 from "../img/hetNieuwsCafe.jpeg";
 import image_5 from "../img/deNieuweKamer.jpg";
 
-const LandingPageContainer = () => {
+const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
   const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const [pickedDate, setPickedDate] = useState(null);
+
   // ---------------- Variables ---------------- //
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const params = useParams();
   const imageArray = [
     image_1,
     image_2,
@@ -44,10 +46,10 @@ const LandingPageContainer = () => {
       setIsError(false);
       try {
         const response = await axios.get(
-          `https://backend-zaalverhuur.herokuapp.com/api`
+          `https://backend-zaalverhuur.herokuapp.com/api/${params.id}`
         );
-        console.log("API response Landing Page", response.data.locations);
-        setApiData(response.data.locations);
+        console.log("API response Reservation page", response.data);
+        setApiData(response.data);
       } catch (error) {
         setIsError(true);
         console.error(error);
@@ -55,47 +57,51 @@ const LandingPageContainer = () => {
       setIsLoading(false);
     };
     fetchAPI();
-  }, []);
+  }, [params]);
+
+  const handlePickDate = (day, modifiers = {}, { selected }) => {
+    if (modifiers.disabled) {
+      return;
+    }
+    setPickedDate(selected ? undefined : day);
+    console.log("pickedDate: ", pickedDate);
+  };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-
-    justifyContent: "center",
+    minHeight: "30vh",
+    textAlign: "center",
     backgroundColor: "#fff",
-    maxWidth: "1300px",
-    minHeight: "70vh",
     padding: "15px",
     margin: "auto",
   };
 
+  const imageStyle = {
+    width: "200px",
+  };
+
   // ---------------- Render ------------------- //
   return (
-    <div>
-      {!isMobile && <HeaderImage />}
-      <HeaderInfo />
+    <div style={divStyle}>
+      {isLoading && <LoadingSpinner />}
+      {isError && <ErrorMessage />}
 
-      <div style={divStyle}>
-        {isLoading && <LoadingSpinner />}
-        {isError && <ErrorMessage />}
+      <h2>{apiData.name}</h2>
+      <img alt="RoomImage" style={imageStyle} src={imageArray[params.id - 1]} />
 
-        {apiData.map((mappedApiData, index) => {
-          return (
-            mappedApiData.locationID <= 1371 && (
-              <LandingPageCard
-                link={mappedApiData.locationID}
-                key={mappedApiData.locationID}
-                image={imageArray[index]}
-                title={mappedApiData.name}
-                description={mappedApiData.description}
-              />
-            )
-          );
-        })}
-      </div>
+      <DayPicker
+        selectedDays={pickedDate}
+        onDayClick={handlePickDate}
+        disabledDays={{ daysOfWeek: [0] }}
+      />
+
+      <Link to="/">
+        <LargeButton text="Terug naar zalen" />
+      </Link>
+
+      <LargeButton text="Reserveren" />
     </div>
   );
 };
 
-export default LandingPageContainer;
+export default ReservationPageContainer;

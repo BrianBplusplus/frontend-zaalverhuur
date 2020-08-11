@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 
-const divStyle = {
-  width: "35px",
-  height: "5px",
-  backgroundColor: "#333",
-  margin: "5px 0",
-  transition: "0.4s",
-};
-
-const HamburgerIcon = () => {
+const HamburgerIcon = (props) => {
+  // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
 
+  // ---------------- Functions ---------------- //
   const handleClick = () => {
     console.log("handleclick triggered");
     if (open === true) {
@@ -20,11 +14,35 @@ const HamburgerIcon = () => {
     }
   };
 
+  // ---------------- Styling ---------------- //
+  const divStyle = {
+    width: "35px",
+    height: "5px",
+    backgroundColor: "#333",
+    margin: "5px 0",
+    transition: "0.4s",
+  };
+
+  const changeTopBar = {
+    ...divStyle,
+    transform: "rotate(-45deg) translate(-8px, 0px)",
+  };
+
+  const changeMiddleBar = {
+    opacity: "0",
+  };
+
+  const changeBottomBar = {
+    ...divStyle,
+    transform: "rotate(45deg) translate(-8px, -0px)",
+  };
+
+  // ---------------- Render ------------------- //
   return (
     <div onClick={() => handleClick()}>
-      <div style={divStyle}></div>
-      <div style={divStyle}></div>
-      <div style={divStyle}></div>
+      <div style={open ? changeTopBar : divStyle}></div>
+      <div style={open ? changeMiddleBar : divStyle}></div>
+      <div style={open ? changeBottomBar : divStyle}></div>
     </div>
   );
 };

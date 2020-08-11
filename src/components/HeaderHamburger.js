@@ -6,8 +6,17 @@ import HamburgerIcon from "./assets/HamburgerIcon";
 import logo from "../img/dnblogo.jpg";
 
 const HeaderHamburger = () => {
+  // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
 
+  // ---------------- Variables ---------------- //
+  const variants = {
+    open: { opacity: 1, x: "0" },
+    closed: { opacity: 0, x: "-100%" },
+  };
+  const divHeight = open ? "170px" : "35px";
+
+  // ---------------- Functions ---------------- //
   const handleOpen = () => {
     if (open === true) {
       setOpen(false);
@@ -16,13 +25,7 @@ const HeaderHamburger = () => {
     }
   };
 
-  const divHeight = open ? "170px" : "35px";
-
-  const variants = {
-    open: { opacity: 1, x: "0" },
-    closed: { opacity: 0, x: "-100%" },
-  };
-
+  // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
     height: divHeight,
@@ -36,8 +39,12 @@ const HeaderHamburger = () => {
   };
 
   const ulStyle = {
+    padding: "0",
+    textAlign: "center",
     listStyle: "none",
-    fontSize: "20px",
+    fontSize: "1.5em",
+    fontFamily: "Open Sans, sans-serif",
+    color: "#ed008c",
   };
 
   const linkStyle = {
@@ -48,6 +55,12 @@ const HeaderHamburger = () => {
     width: "100%",
   };
 
+  const aStyle = {
+    textDecoration: "none",
+    color: "#ed008c",
+  };
+
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={navStyle}>
@@ -62,11 +75,33 @@ const HeaderHamburger = () => {
       <motion.ul
         style={ulStyle}
         animate={open ? "open" : "closed"}
+        initial={false}
         variants={variants}
       >
-        <li>Vergaderruimtes</li>
-        <li>Inloggen</li>
-        <li>Terug naar Bibliotheek</li>
+        <li>
+          <a
+            style={aStyle}
+            href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html"
+          >
+            Lid worden
+          </a>
+        </li>
+        <li>
+          <a
+            style={aStyle}
+            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010"
+          >
+            Catalogus
+          </a>
+        </li>
+        <li>
+          <a
+            style={aStyle}
+            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?prt=INTERNET&taal=nl_NL&var=portal&event=private&vestnr=8010"
+          >
+            Aanmelden Mijn menu
+          </a>
+        </li>
       </motion.ul>
     </div>
   );

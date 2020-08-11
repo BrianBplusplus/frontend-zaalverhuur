@@ -15,7 +15,7 @@ const RoomDetailpage = () => {
   };
 
   const params = useParams();
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -49,15 +49,16 @@ const RoomDetailpage = () => {
       {data && <p>{data.company.catchPhrase}</p>}
 
       {data && (
-        <Link to="/">
+        <Link to={`/${params.id}/reserveren`}>
           <LargeButton text="Reserveren" />
         </Link>
       )}
+
       <br></br>
       <br></br>
       {data && (
         <Link to="/">
-          <LargeButton text="Terug naar de homepage" />
+          <LargeButton text="Terug naar zalen" />
         </Link>
       )}
     </div>

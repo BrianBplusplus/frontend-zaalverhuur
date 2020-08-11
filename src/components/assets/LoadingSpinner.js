@@ -2,8 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const LoadingSpinner = () => {
+  // ---------------- Styling ---------------- //
   const divStyle = {
-    position: "relative",
+    position: "absolute",
     width: "3rem",
     height: "3rem",
     boxSizing: "border-box",
@@ -28,6 +29,8 @@ const LoadingSpinner = () => {
     ease: "linear",
     duration: 1,
   };
+
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <motion.span

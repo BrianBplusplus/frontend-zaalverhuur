@@ -4,30 +4,21 @@ import { useMediaQuery } from "react-responsive";
 
 import LargeButton from "./assets/LargeButton";
 
-const RentalRooms = (props) => {
+const LandingPageCard = (props) => {
+  // ---------------- Variables ---------------- //
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  // ---------------- Styling ------------------ //
   const divStyle = {
-    width: "30%",
+    width: isMobile ? "100%" : isTablet ? "45%" : "30%",
+    maxWidth: isMobile ? "400px" : isTablet ? "400px" : "none",
     minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     paddingBottom: "10px",
     margin: "15px 15px",
     borderRadius: "3px",
-  };
-
-  const divStyleTablet = {
-    ...divStyle,
-    width: "45%",
-    maxWidth: "400px",
-  };
-
-  const divStyleMobile = {
-    ...divStyle,
-    width: "100%",
-    maxWidth: "400px",
   };
 
   const imageStyle = {
@@ -38,21 +29,18 @@ const RentalRooms = (props) => {
     borderTopRightRadius: "3px",
   };
 
+  // ---------------- Render ------------------- //
   return (
-    <div
-      style={
-        (isMobile && divStyleMobile) || (isTablet && divStyleTablet) || divStyle
-      }
-    >
+    <div style={divStyle}>
       <img alt="roomimage" style={imageStyle} src={props.image} />
       <h2>{props.title}</h2>
       <p>{props.description}</p>
 
       <Link to={`/${props.link}`}>
-        <LargeButton text="Meer informatie" />
+        <LargeButton text="Bekijk Zaal" />
       </Link>
     </div>
   );
 };
 
-export default RentalRooms;
+export default LandingPageCard;
