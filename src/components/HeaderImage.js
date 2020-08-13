@@ -1,6 +1,6 @@
 import React from "react";
 
-import image from "../img/headerImage.png";
+import image from "../img/headerImage-min.png";
 
 const HeaderImage = () => {
   // ---------------- Styling ------------------ //
