@@ -7,12 +7,7 @@ import HeaderInfo from "./HeaderInfo";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import ErrorMessage from "./assets/ErrorMessage";
-
-import image_1 from "../img/deNieuweZaal.jpg";
-import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
-import image_3 from "../img/hetNieuweLokaal.jpeg";
-import image_4 from "../img/hetNieuwsCafe.jpeg";
-import image_5 from "../img/deNieuweKamer.jpg";
+import { imageArray } from "./assets/locationData";
 
 const LandingPageContainer = () => {
   // ---------------- States ------------------- //
@@ -22,18 +17,6 @@ const LandingPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const imageArray = [
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-  ];
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -61,7 +44,6 @@ const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
-
     justifyContent: "center",
     backgroundColor: "#fff",
     maxWidth: "1300px",
@@ -82,13 +64,14 @@ const LandingPageContainer = () => {
 
         {apiData.map((mappedApiData, index) => {
           return (
-            mappedApiData.locationID <= 1371 && (
+            // ---- Temporary rudementary filters. TODO: Move to back-end ---- //
+            mappedApiData.locationID <= 1371 &&
+            mappedApiData.locationID !== 1366 && (
               <LandingPageCard
                 link={mappedApiData.locationID}
                 key={mappedApiData.locationID}
                 image={imageArray[index]}
                 title={mappedApiData.name}
-                description={mappedApiData.description}
               />
             )
           );

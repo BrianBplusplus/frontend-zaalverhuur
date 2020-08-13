@@ -7,12 +7,7 @@ import "react-day-picker/lib/style.css";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
-
-import image_1 from "../img/deNieuweZaal.jpg";
-import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
-import image_3 from "../img/hetNieuweLokaal.jpeg";
-import image_4 from "../img/hetNieuwsCafe.jpeg";
-import image_5 from "../img/deNieuweKamer.jpg";
+import { imageArray, descriptionArray } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -24,18 +19,19 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const params = useParams();
-  const imageArray = [
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-  ];
+
+  const paramsArrayIndex =
+    params.id === "1364"
+      ? 0
+      : params.id === "1367"
+      ? 2
+      : params.id === "1368"
+      ? 3
+      : params.id === "1369"
+      ? 4
+      : params.id === "1370"
+      ? 5
+      : 6;
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -64,42 +60,67 @@ const ReservationPageContainer = () => {
       return;
     }
     setPickedDate(selected ? undefined : day);
-    console.log("pickedDate: ", pickedDate);
+  };
+
+  const dateChecker = () => {
+    console.log(pickedDate);
+    console.log(typeof pickedDate);
   };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
+    display: "flex",
+    justifyContent: "space-around",
+
     minHeight: "30vh",
-    textAlign: "center",
     backgroundColor: "#fff",
     padding: "15px",
-    margin: "auto",
+  };
+
+  const leftStyle = {};
+
+  const rightStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
   };
 
   const imageStyle = {
-    width: "200px",
+    width: "60%",
   };
 
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      {isLoading && <LoadingSpinner />}
-      {isError && <ErrorMessage />}
+      <div style={leftStyle}>
+        {isLoading && <LoadingSpinner />}
+        {isError && <ErrorMessage />}
 
-      <h2>{apiData.name}</h2>
-      <img alt="RoomImage" style={imageStyle} src={imageArray[params.id - 1]} />
+        <img
+          alt="RoomImage"
+          style={imageStyle}
+          src={imageArray[paramsArrayIndex]}
+        />
+        <h2>{apiData.name}</h2>
+        <p>{descriptionArray[paramsArrayIndex]}</p>
 
-      <DayPicker
-        selectedDays={pickedDate}
-        onDayClick={handlePickDate}
-        disabledDays={{ daysOfWeek: [0] }}
-      />
+        <h2>Opties : </h2>
+        <Link to="/">
+          <LargeButton text="Terug naar zalen" />
+        </Link>
+      </div>
+      <div style={rightStyle}>
+        <DayPicker
+          selectedDays={pickedDate}
+          onDayClick={handlePickDate}
+          disabledDays={{ daysOfWeek: [0] }}
+        />
 
-      <Link to="/">
-        <LargeButton text="Terug naar zalen" />
-      </Link>
-
-      <LargeButton text="Reserveren" />
+        <p>Geselecteerde opties: </p>
+        <button onClick={() => dateChecker()}>Check datum</button>
+        <LargeButton text="Reserveren" />
+      </div>
     </div>
   );
 };

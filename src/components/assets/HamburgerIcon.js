@@ -6,7 +6,6 @@ const HamburgerIcon = (props) => {
 
   // ---------------- Functions ---------------- //
   const handleClick = () => {
-    console.log("handleclick triggered");
     if (open === true) {
       setOpen(false);
     } else {
