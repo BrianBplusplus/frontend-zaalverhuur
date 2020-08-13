@@ -7,7 +7,7 @@ import HeaderInfo from "./HeaderInfo";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import ErrorMessage from "./assets/ErrorMessage";
-import { imageArray } from "./assets/locationData";
+import { imageData } from "./assets/locationData";
 
 const LandingPageContainer = () => {
   // ---------------- States ------------------- //
@@ -70,7 +70,7 @@ const LandingPageContainer = () => {
               <LandingPageCard
                 link={mappedApiData.locationID}
                 key={mappedApiData.locationID}
-                image={imageArray[index]}
+                image={imageData[index]}
                 title={mappedApiData.name}
               />
             )

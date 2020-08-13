@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 
-import LargeButton from "./assets/LargeButton";
-
 const LandingPageCard = (props) => {
   // ---------------- Variables ---------------- //
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
@@ -17,11 +15,9 @@ const LandingPageCard = (props) => {
     minHeight: "300px",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
-    //  paddingBottom: "10px",
     margin: "15px 15px",
     borderRadius: "3px",
     textDecoration: "none",
-    // backgroundColor: "#000",
   };
 
   const h2Style = {
@@ -36,8 +32,6 @@ const LandingPageCard = (props) => {
     width: "100%",
     height: "250px",
     objectFit: "cover",
-    // borderTopLeftRadius: "3px",
-    // borderTopRightRadius: "3px",
   };
 
   // ---------------- Render ------------------- //

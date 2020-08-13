@@ -1,6 +1,6 @@
 import React from "react";
 
-import image from "../img/hetNieuwsCafeCropped.jpg";
+import image from "../img/headerImage.png";
 
 const HeaderImage = () => {
   // ---------------- Styling ------------------ //

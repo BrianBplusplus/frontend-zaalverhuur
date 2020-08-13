@@ -7,7 +7,7 @@ import "react-day-picker/lib/style.css";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
-import { imageArray, descriptionArray } from "./assets/locationData";
+import { imageData, descriptionData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -19,10 +19,11 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const params = useParams();
-
   const paramsArrayIndex =
     params.id === "1364"
       ? 0
+      : params.id === "1366"
+      ? 1
       : params.id === "1367"
       ? 2
       : params.id === "1368"
@@ -83,11 +84,14 @@ const ReservationPageContainer = () => {
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",
+    justifyContent: "space-between",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
   };
 
   const imageStyle = {
-    width: "60%",
+    width: "99%",
+    height: "200px",
+    objectFit: "cover",
   };
 
   // ---------------- Render ------------------- //
@@ -100,10 +104,10 @@ const ReservationPageContainer = () => {
         <img
           alt="RoomImage"
           style={imageStyle}
-          src={imageArray[paramsArrayIndex]}
+          src={imageData[paramsArrayIndex]}
         />
         <h2>{apiData.name}</h2>
-        <p>{descriptionArray[paramsArrayIndex]}</p>
+        <p>{descriptionData[paramsArrayIndex]}</p>
 
         <h2>Opties : </h2>
         <Link to="/">
