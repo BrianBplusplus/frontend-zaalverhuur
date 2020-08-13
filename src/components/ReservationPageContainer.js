@@ -7,12 +7,7 @@ import "react-day-picker/lib/style.css";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
-
-import image_1 from "../img/deNieuweZaal.jpg";
-import image_2 from "../img/hetNieuweLokaalMetSubZaal.jpg";
-import image_3 from "../img/hetNieuweLokaal.jpeg";
-import image_4 from "../img/hetNieuwsCafe.jpeg";
-import image_5 from "../img/deNieuweKamer.jpg";
+import { imageData, descriptionData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -21,21 +16,26 @@ const ReservationPageContainer = () => {
   const [isError, setIsError] = useState(false);
 
   const [pickedDate, setPickedDate] = useState(null);
+  const [pickedDayPart, setPickedDayPart] = useState(null);
+  const [pickedMeal, setPickedMeal] = useState(null);
+  const [pickedSeatPlan, setPickedSeatplan] = useState(null);
 
   // ---------------- Variables ---------------- //
   const params = useParams();
-  const imageArray = [
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-    image_1,
-    image_2,
-    image_3,
-    image_4,
-    image_5,
-  ];
+  const paramsArrayIndex =
+    params.id === "1364"
+      ? 0
+      : params.id === "1366"
+      ? 1
+      : params.id === "1367"
+      ? 2
+      : params.id === "1368"
+      ? 3
+      : params.id === "1369"
+      ? 4
+      : params.id === "1370"
+      ? 5
+      : 6;
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -64,42 +64,113 @@ const ReservationPageContainer = () => {
       return;
     }
     setPickedDate(selected ? undefined : day);
-    console.log("pickedDate: ", pickedDate);
   };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
+    display: "flex",
+    justifyContent: "space-around",
+
     minHeight: "30vh",
-    textAlign: "center",
     backgroundColor: "#fff",
     padding: "15px",
-    margin: "auto",
+  };
+
+  const sidebarPStyle = {
+    textAlign: "center",
+    fontSize: "14px",
+    color: "#636363",
+  };
+
+  const inputFormStyle = {
+    padding: "0 10px 10px 10px",
+  };
+
+  const ulStyle = {
+    display: "flex",
+    justifyContent: "space-around",
+    listStyle: "none",
+    padding: "0",
+  };
+
+  const h4Style = {
+    margin: "5px 0 5px 0",
+  };
+
+  const leftStyle = {};
+
+  const rightStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
   };
 
   const imageStyle = {
-    width: "200px",
+    width: "99%",
+    height: "200px",
+    objectFit: "cover",
   };
 
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      {isLoading && <LoadingSpinner />}
-      {isError && <ErrorMessage />}
+      <div style={leftStyle}>
+        {isLoading && <LoadingSpinner />}
+        {isError && <ErrorMessage />}
 
-      <h2>{apiData.name}</h2>
-      <img alt="RoomImage" style={imageStyle} src={imageArray[params.id - 1]} />
+        <img alt="RoomImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+        <h2>{apiData.name}</h2>
+        <p>{descriptionData[paramsArrayIndex]}</p>
 
-      <DayPicker
-        selectedDays={pickedDate}
-        onDayClick={handlePickDate}
-        disabledDays={{ daysOfWeek: [0] }}
-      />
+        <h2>Opties</h2>
+        <h3>Maaltijden</h3>
+        <ul style={ulStyle}>
+          <li onClick={() => setPickedMeal("Kleine lunch")}>Kleine lunch</li>
+          <li onClick={() => setPickedMeal("Warme maaltijd")}>Warme maaltijd</li>
+          <li onClick={() => setPickedMeal("Restaurant")}>Restaurant</li>
+        </ul>
+        <h3>Opstellingen</h3>
+        <ul style={ulStyle}>
+          <li onClick={() => setPickedSeatplan("U-vorm")}>U-vorm</li>
+          <li onClick={() => setPickedSeatplan("Klaslokaal")}>Klaslokaal</li>
+          <li onClick={() => setPickedSeatplan("Theater")}>Theater</li>
+        </ul>
+        <Link to="/">
+          <LargeButton text="Terug naar zalen" />
+        </Link>
+      </div>
+      <div style={rightStyle}>
+        <DayPicker
+          selectedDays={pickedDate}
+          onDayClick={handlePickDate}
+          disabledDays={{ daysOfWeek: [0] }}
+        />
+        <ul style={ulStyle}>
+          <li onClick={() => setPickedDayPart("Ochtend")}>Ochtend</li>
+          <li onClick={() => setPickedDayPart("Middag")}>Middag</li>
+          <li onClick={() => setPickedDayPart("Avond")}>Avond</li>
+        </ul>
+        <div>
+          <p style={sidebarPStyle}>Geselecteerde opties</p>
+          <ul>
+            <li>Dagdeel: {pickedDayPart}</li>
+            <li>Maaltijd: {pickedMeal}</li>
+            <li>Opstelling: {pickedSeatPlan}</li>
+          </ul>
+          <p style={sidebarPStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+          <div style={inputFormStyle}>
+            <h4 style={h4Style}>Email:</h4>
+            <input type="email"></input>
+            <h4 style={h4Style}>Opmerkingen:</h4>
 
-      <Link to="/">
-        <LargeButton text="Terug naar zalen" />
-      </Link>
-
-      <LargeButton text="Reserveren" />
+            <input type="textarea" placeholder="Eventuele opmerkingen "></input>
+            <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
+          </div>
+        </div>
+        <LargeButton text="Reserveren" />
+      </div>
     </div>
   );
 };
