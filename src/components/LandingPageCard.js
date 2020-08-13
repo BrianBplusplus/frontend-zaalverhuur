@@ -37,7 +37,7 @@ const LandingPageCard = (props) => {
   // ---------------- Render ------------------- //
   return (
     <Link style={divStyle} to={`/${props.link}`}>
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      <motion.div whileHover={{ scale: 1.1 }}>
         <h2 style={h2Style}>{props.title}</h2>
 
         <img alt="roomimage" style={imageStyle} src={props.image} />
