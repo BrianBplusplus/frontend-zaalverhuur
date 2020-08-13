@@ -82,6 +82,21 @@ const ReservationPageContainer = () => {
     color: "#636363",
   };
 
+  const inputFormStyle = {
+    padding: "0 10px 10px 10px",
+  };
+
+  const ulStyle = {
+    display: "flex",
+    justifyContent: "space-around",
+    listStyle: "none",
+    padding: "0",
+  };
+
+  const h4Style = {
+    margin: "5px 0 5px 0",
+  };
+
   const leftStyle = {};
 
   const rightStyle = {
@@ -105,27 +120,19 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img
-          alt="RoomImage"
-          style={imageStyle}
-          src={imageData[paramsArrayIndex]}
-        />
+        <img alt="RoomImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{apiData.name}</h2>
         <p>{descriptionData[paramsArrayIndex]}</p>
 
         <h2>Opties</h2>
         <h3>Maaltijden</h3>
-        <ul>
-          <li onClick={() => setPickedMeal("Kleine lunch")}>
-            Kleine lunch €20,-
-          </li>
-          <li onClick={() => setPickedMeal("Warme maaltijd")}>
-            Warme maaltijd €50,-
-          </li>
-          <li onClick={() => setPickedMeal("Restaurant")}>Restaurant €100,-</li>
+        <ul style={ulStyle}>
+          <li onClick={() => setPickedMeal("Kleine lunch")}>Kleine lunch</li>
+          <li onClick={() => setPickedMeal("Warme maaltijd")}>Warme maaltijd</li>
+          <li onClick={() => setPickedMeal("Restaurant")}>Restaurant</li>
         </ul>
         <h3>Opstellingen</h3>
-        <ul>
+        <ul style={ulStyle}>
           <li onClick={() => setPickedSeatplan("U-vorm")}>U-vorm</li>
           <li onClick={() => setPickedSeatplan("Klaslokaal")}>Klaslokaal</li>
           <li onClick={() => setPickedSeatplan("Theater")}>Theater</li>
@@ -140,7 +147,7 @@ const ReservationPageContainer = () => {
           onDayClick={handlePickDate}
           disabledDays={{ daysOfWeek: [0] }}
         />
-        <ul>
+        <ul style={ulStyle}>
           <li onClick={() => setPickedDayPart("Ochtend")}>Ochtend</li>
           <li onClick={() => setPickedDayPart("Middag")}>Middag</li>
           <li onClick={() => setPickedDayPart("Avond")}>Avond</li>
@@ -152,8 +159,15 @@ const ReservationPageContainer = () => {
             <li>Maaltijd: {pickedMeal}</li>
             <li>Opstelling: {pickedSeatPlan}</li>
           </ul>
-          <input type="email"></input>
-          <p>Op basis van uw selectie wordt een offerte gemaakt</p>
+          <p style={sidebarPStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+          <div style={inputFormStyle}>
+            <h4 style={h4Style}>Email:</h4>
+            <input type="email"></input>
+            <h4 style={h4Style}>Opmerkingen:</h4>
+
+            <input type="textarea" placeholder="Eventuele opmerkingen "></input>
+            <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
+          </div>
         </div>
         <LargeButton text="Reserveren" />
       </div>
