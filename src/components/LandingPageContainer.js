@@ -47,9 +47,8 @@ const LandingPageContainer = () => {
     justifyContent: "center",
     backgroundColor: "#fff",
     maxWidth: "1300px",
-    minHeight: "70vh",
+    minHeight: "20vh",
     padding: "15px",
-    margin: "auto",
   };
 
   // ---------------- Render ------------------- //

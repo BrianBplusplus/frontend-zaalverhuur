@@ -13,7 +13,7 @@ const LandingPageCard = (props) => {
     width: isMobile ? "100%" : isTablet ? "45%" : "30%",
     maxWidth: isMobile ? "400px" : isTablet ? "400px" : "none",
     minHeight: "300px",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    // boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     textAlign: "center",
     margin: "15px 15px",
     borderRadius: "3px",
@@ -21,7 +21,7 @@ const LandingPageCard = (props) => {
   };
 
   const h2Style = {
-    fontSize: "21px",
+    fontSize: "20px",
     margin: "0",
     padding: "10px",
     color: "#fff",
