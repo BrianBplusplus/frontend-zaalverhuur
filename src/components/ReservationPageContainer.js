@@ -16,7 +16,8 @@ const ReservationPageContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [total, setTotal] = useState("500");
+  const [locationPrice, setLocationPrice] = useState(null);
+  const [mealPrice, setMealPrice] = useState(0);
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
@@ -42,6 +43,7 @@ const ReservationPageContainer = () => {
   // ---------------- Functions ---------------- //
   useEffect(() => {
     window.scrollTo(0, 0);
+    setLocationPrice(pricesData[paramsArrayIndex]);
 
     const fetchAPI = async () => {
       setIsLoading(true);
@@ -59,13 +61,20 @@ const ReservationPageContainer = () => {
       setIsLoading(false);
     };
     fetchAPI();
-  }, [params]);
+  }, [params, paramsArrayIndex]);
 
   const handlePickDate = (day, modifiers = {}, { selected }) => {
     if (modifiers.disabled) {
       return;
     }
     setPickedDate(selected ? undefined : day);
+  };
+
+  const handleCheckout = () => {
+    console.log("Name: " + apiData.name);
+    console.log("Daypart: " + pickedDayPart);
+    console.log("Meal: " + pickedMeal);
+    console.log("Seatplan: " + pickedSeatPlan);
   };
 
   // ---------------- Styling ------------------ //
@@ -163,16 +172,36 @@ const ReservationPageContainer = () => {
         </ul>
         <h3>Maaltijden</h3>
         <ul style={ulStyle}>
-          <li onClick={() => setPickedMeal("Geen")}>
+          <li
+            onClick={() => {
+              setPickedMeal("Geen");
+              setMealPrice(0);
+            }}
+          >
             <TransparantButton text="Geen" />
           </li>
-          <li onClick={() => setPickedMeal("Kleine lunch")}>
+          <li
+            onClick={() => {
+              setPickedMeal("Kleine lunch");
+              setMealPrice(50);
+            }}
+          >
             <TransparantButton text="Kleine Lunch" />
           </li>
-          <li onClick={() => setPickedMeal("Warme maaltijd")}>
+          <li
+            onClick={() => {
+              setPickedMeal("Warme maaltijd");
+              setMealPrice(100);
+            }}
+          >
             <TransparantButton text="Warme Maaltijd" />
           </li>
-          <li onClick={() => setPickedMeal("Restaurant")}>
+          <li
+            onClick={() => {
+              setPickedMeal("Restaurant");
+              setMealPrice(500);
+            }}
+          >
             <TransparantButton text="Restuarant" />
           </li>
         </ul>
@@ -219,12 +248,13 @@ const ReservationPageContainer = () => {
             <input type="textarea" placeholder="Eventuele opmerkingen "></input>
             <br></br>
             <br></br>
-            <h4 style={h4Style}>Bedrag Schatting: €{pricesData[paramsArrayIndex]}</h4>
+            <h4 style={h4Style}>Bedrag Schatting: €{locationPrice + mealPrice}</h4>
 
             <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
           </div>
         </div>
         <LargeButton text="Reserveren" />
+        <button onClick={() => handleCheckout()}>checkouttest</button>
       </div>
     </div>
   );
