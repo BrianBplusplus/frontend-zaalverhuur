@@ -6,15 +6,7 @@ import image_5 from "../../img/hetNieuweLokaal.jpeg";
 import image_6 from "../../img/hetNieuweLokaalMetSubZaal.jpg";
 import image_7 from "../..//img/hetNieuweLokaalMetTweeSubZaal.jpg";
 
-export const imageData = [
-  image_1,
-  image_2,
-  image_3,
-  image_4,
-  image_5,
-  image_6,
-  image_7,
-];
+export const imageData = [image_1, image_2, image_3, image_4, image_5, image_6, image_7];
 
 export const descriptionData = [
   "De nieuwe zaal is onze grootste zaal en is dé plek voor events! Er is plaats voor 112 mensen die stuk voor stuk goed zicht hebben op het podium. Achterin de zaal bevindt zich een regiekamer van waaruit licht en geluid worden aangestuurd. De zaal beschikt ook over een professioneel filmscherm waarop behalve films ook presentaties perfect tot hun recht komen.",
@@ -26,3 +18,5 @@ export const descriptionData = [
   "De ruimte biedt plaats aan 25-50 personen, afhankelijk van de opstelling. Meer ruimte nodig? Geen probleem! Door de schuifwand(en) te openen kunnen we collegezaal 1 en/of 2 toevoegen aan het nieuwe lokaal en ontstaat een zee aan ruimte. Het lokaal beschikt over verrijdbare tafels en is standaard voorzien van de volgende voorzieningen: smartboard (pc, beamer en scherm), flipover en een internetaansluiting. Deze voorzieningen zijn bij de zaalhuur inbegrepen.",
   "De ruimte biedt plaats aan 25-50 personen, afhankelijk van de opstelling. Meer ruimte nodig? Geen probleem! Door de schuifwand(en) te openen kunnen we collegezaal 1 en/of 2 toevoegen aan het nieuwe lokaal en ontstaat een zee aan ruimte. Het lokaal beschikt over verrijdbare tafels en is standaard voorzien van de volgende voorzieningen: smartboard (pc, beamer en scherm), flipover en een internetaansluiting. Deze voorzieningen zijn bij de zaalhuur inbegrepen.",
 ];
+
+export const pricesData = [100, 200, 300, 400, 500, 600, 700];

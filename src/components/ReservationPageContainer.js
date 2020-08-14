@@ -8,7 +8,7 @@ import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 import TransparantButton from "./assets/TransparantButton";
 import ErrorMessage from "./assets/ErrorMessage";
-import { imageData, descriptionData } from "./assets/locationData";
+import { imageData, descriptionData, pricesData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -16,12 +16,11 @@ const ReservationPageContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const [total, setTotal] = useState("500");
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
-
-  const [selectedMeal, setSelectedMeal] = useState(null);
 
   // ---------------- Variables ---------------- //
   const params = useParams();
@@ -91,6 +90,7 @@ const ReservationPageContainer = () => {
 
   const inputFormStyle = {
     padding: "0 10px 10px 10px",
+    textAlign: "center",
   };
 
   const ulStyle = {
@@ -216,8 +216,11 @@ const ReservationPageContainer = () => {
             <h4 style={h4Style}>Email:</h4>
             <input type="email"></input>
             <h4 style={h4Style}>Opmerkingen:</h4>
-
             <input type="textarea" placeholder="Eventuele opmerkingen "></input>
+            <br></br>
+            <br></br>
+            <h4 style={h4Style}>Bedrag Schatting: €{pricesData[paramsArrayIndex]}</h4>
+
             <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
           </div>
         </div>
