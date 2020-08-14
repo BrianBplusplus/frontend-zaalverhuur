@@ -6,6 +6,7 @@ import "react-day-picker/lib/style.css";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
+import TransparantButton from "./assets/TransparantButton";
 import ErrorMessage from "./assets/ErrorMessage";
 import { imageData, descriptionData } from "./assets/locationData";
 
@@ -19,6 +20,8 @@ const ReservationPageContainer = () => {
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
+
+  const [selectedMeal, setSelectedMeal] = useState(null);
 
   // ---------------- Variables ---------------- //
   const params = useParams();
@@ -76,6 +79,10 @@ const ReservationPageContainer = () => {
     padding: "15px",
   };
 
+  const divSelectedOptionsStyle = {
+    height: "210px",
+  };
+
   const sidebarPStyle = {
     textAlign: "center",
     fontSize: "14px",
@@ -88,9 +95,26 @@ const ReservationPageContainer = () => {
 
   const ulStyle = {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     listStyle: "none",
     padding: "0",
+  };
+
+  const liStyle = {
+    color: "#ed008c",
+    backgroundColor: "#fff",
+    border: "2px solid #ed008c",
+    borderRadius: "3px",
+    margin: "5px 0 5px 0",
+    padding: "5px",
+  };
+
+  const ulSelectedOptionsStyle = {
+    listStyle: "none",
+    padding: "5px",
+    width: "60%",
+    margin: "0 auto",
+    textAlign: "center",
   };
 
   const h4Style = {
@@ -125,18 +149,46 @@ const ReservationPageContainer = () => {
         <p>{descriptionData[paramsArrayIndex]}</p>
 
         <h2>Opties</h2>
+        <h3>Dagdeel</h3>
+        <ul style={ulStyle}>
+          <li onClick={() => setPickedDayPart("Ochtend")}>
+            <TransparantButton text="Ochtend" />
+          </li>
+          <li onClick={() => setPickedDayPart("Middag")}>
+            <TransparantButton text="Middag" />
+          </li>
+          <li onClick={() => setPickedDayPart("Avond")}>
+            <TransparantButton text="Avond" />
+          </li>
+        </ul>
         <h3>Maaltijden</h3>
         <ul style={ulStyle}>
-          <li onClick={() => setPickedMeal("Kleine lunch")}>Kleine lunch</li>
-          <li onClick={() => setPickedMeal("Warme maaltijd")}>Warme maaltijd</li>
-          <li onClick={() => setPickedMeal("Restaurant")}>Restaurant</li>
+          <li onClick={() => setPickedMeal("Geen")}>
+            <TransparantButton text="Geen" />
+          </li>
+          <li onClick={() => setPickedMeal("Kleine lunch")}>
+            <TransparantButton text="Kleine Lunch" />
+          </li>
+          <li onClick={() => setPickedMeal("Warme maaltijd")}>
+            <TransparantButton text="Warme Maaltijd" />
+          </li>
+          <li onClick={() => setPickedMeal("Restaurant")}>
+            <TransparantButton text="Restuarant" />
+          </li>
         </ul>
         <h3>Opstellingen</h3>
         <ul style={ulStyle}>
-          <li onClick={() => setPickedSeatplan("U-vorm")}>U-vorm</li>
-          <li onClick={() => setPickedSeatplan("Klaslokaal")}>Klaslokaal</li>
-          <li onClick={() => setPickedSeatplan("Theater")}>Theater</li>
+          <li onClick={() => setPickedSeatplan("U-vorm")}>
+            <TransparantButton text="U-vorm" />
+          </li>
+          <li onClick={() => setPickedSeatplan("Klaslokaal")}>
+            <TransparantButton text="Klaslokaal" />
+          </li>
+          <li onClick={() => setPickedSeatplan("Theater")}>
+            <TransparantButton text="Theater" />
+          </li>
         </ul>
+
         <Link to="/">
           <LargeButton text="Terug naar zalen" />
         </Link>
@@ -147,18 +199,18 @@ const ReservationPageContainer = () => {
           onDayClick={handlePickDate}
           disabledDays={{ daysOfWeek: [0] }}
         />
-        <ul style={ulStyle}>
-          <li onClick={() => setPickedDayPart("Ochtend")}>Ochtend</li>
-          <li onClick={() => setPickedDayPart("Middag")}>Middag</li>
-          <li onClick={() => setPickedDayPart("Avond")}>Avond</li>
-        </ul>
         <div>
-          <p style={sidebarPStyle}>Geselecteerde opties</p>
-          <ul>
-            <li>Dagdeel: {pickedDayPart}</li>
-            <li>Maaltijd: {pickedMeal}</li>
-            <li>Opstelling: {pickedSeatPlan}</li>
-          </ul>
+          <div style={divSelectedOptionsStyle}>
+            <p style={sidebarPStyle}>Geselecteerde opties</p>
+            <ul style={ulSelectedOptionsStyle}>
+              {pickedDayPart && <li>Dagdeel</li>}
+              {pickedDayPart && <li style={liStyle}>{pickedDayPart}</li>}
+              {pickedMeal && <li>Maaltijd</li>}
+              {pickedMeal && <li style={liStyle}>{pickedMeal}</li>}
+              {pickedSeatPlan && <li>Opstelling</li>}
+              {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
+            </ul>
+          </div>
           <p style={sidebarPStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
           <div style={inputFormStyle}>
             <h4 style={h4Style}>Email:</h4>
