@@ -30,8 +30,8 @@ const LandingPageContainer = () => {
         const response = await axios.get(
           `https://backend-zaalverhuur.herokuapp.com/api`
         );
-        console.log("API response Landing Page", response.data.locations);
-        setApiData(response.data.locations);
+        console.log("API response Landing Page", response.data);
+        setApiData(response.data);
       } catch (error) {
         setIsError(true);
         console.error(error);
