@@ -46,10 +46,8 @@ const LandingPageContainer = () => {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: isMobile ? "center" : isTablet ? "space-evenly" : "space-between",
-   // backgroundColor: "#fff",
     maxWidth: "1300px",
     minHeight: "20vh",
-   // padding: "20px",
   };
 
   // ---------------- Render ------------------- //

@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 
 const LandingPageCard = (props) => {
+  // ---------------- States ------------------- //
+  const [isHover, setIshover] = useState(false)
   // ---------------- Variables ---------------- //
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -23,11 +25,8 @@ const LandingPageCard = (props) => {
     fontSize: "20px",
     margin: "0",
     padding: "10px",
-    color: "#ed008c",
-    backgroundColor: "#fff",
- //   borderTop: "1px solid #ed008c",
- //   borderLeft: "1px solid #ed008c",
- //   borderRight: "1px solid #ed008c",
+    color: isHover? "#fff" : "#ed008c",
+    backgroundColor: isHover? "#ed008c" : "#fff",
   };
 
   const imageStyle = {
@@ -39,7 +38,7 @@ const LandingPageCard = (props) => {
   // ---------------- Render ------------------- //
   return (
     <Link style={divStyle} to={`/${props.link}`}>
-      <motion.div whileHover={{ scale: 1.1 }}>
+      <motion.div whileHover={{ scale: 1.1 }} onHoverStart={event => {setIshover(true)}} onHoverEnd={event => {setIshover(false)}}>
         <h2 style={h2Style}>{props.title}</h2>
 
         <img alt="roomimage" style={imageStyle} src={props.image} />
