@@ -14,7 +14,7 @@ const LandingPageCard = (props) => {
     maxWidth: isMobile ? "400px" : isTablet ? "400px" : "none",
     minHeight: "300px",
     textAlign: "center",
-    margin: "0 15px 15px 0",
+    margin: "0 0px 15px 0",
     borderRadius: "3px",
     textDecoration: "none",
   };
@@ -25,9 +25,9 @@ const LandingPageCard = (props) => {
     padding: "10px",
     color: "#ed008c",
     backgroundColor: "#fff",
-    borderTop: "1px solid #ed008c",
-    borderLeft: "1px solid #ed008c",
-    borderRight: "1px solid #ed008c",
+ //   borderTop: "1px solid #ed008c",
+ //   borderLeft: "1px solid #ed008c",
+ //   borderRight: "1px solid #ed008c",
   };
 
   const imageStyle = {

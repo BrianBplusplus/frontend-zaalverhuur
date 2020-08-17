@@ -21,14 +21,14 @@ const HeaderInfo = () => {
   const leftStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    width: isSmallScreen ? "100%" : isMediumScreen ? "60%" : "738px",
+    width: isSmallScreen ? "100%" : isMediumScreen ? "60%" : "751px",
     marginBottom: isSmallScreen ? "20px" : "0",
   };
 
   const rightStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    width: isSmallScreen ? "100%" : isMediumScreen ? "30%" : "367px",
+    width: isSmallScreen ? "100%" : isMediumScreen ? "30%" : "344px",
   };
 
   const h2Style = {
