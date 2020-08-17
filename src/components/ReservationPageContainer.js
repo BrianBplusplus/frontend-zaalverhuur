@@ -142,7 +142,7 @@ const ReservationPageContainer = () => {
 
   const imageStyle = {
     width: "99%",
-    height: "200px",
+    height: "250px",
     objectFit: "cover",
   };
 

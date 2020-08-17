@@ -1,10 +1,10 @@
-import image_1 from "../../img/deNieuweZaal.jpg";
-import image_2 from "../../img/hetNieuweLokaalMetSubZaal.jpg";
-import image_3 from "../../img/deNieuweKamer.jpg";
-import image_4 from "../../img/hetNieuwsCafe.jpeg";
-import image_5 from "../../img/hetNieuweLokaal.jpeg";
-import image_6 from "../../img/hetNieuweLokaalMetSubZaal.jpg";
-import image_7 from "../..//img/hetNieuweLokaalMetTweeSubZaal.jpg";
+import image_1 from "../../img/deNieuweZaal.webp";
+import image_2 from "../../img/hetNieuweLokaalMetSubZaal.webp";
+import image_3 from "../../img/deNieuweKamer.webp";
+import image_4 from "../../img/hetNieuwsCafe.webp";
+import image_5 from "../../img/hetNieuweLokaal.webp";
+import image_6 from "../../img/hetNieuweLokaalMetSubZaal.webp";
+import image_7 from "../..//img/hetNieuweLokaalMetTweeSubZalen.webp";
 
 export const imageData = [image_1, image_2, image_3, image_4, image_5, image_6, image_7];
 
