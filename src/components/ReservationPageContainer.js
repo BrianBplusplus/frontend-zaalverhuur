@@ -169,6 +169,9 @@ const ReservationPageContainer = () => {
           <li onClick={() => setPickedDayPart("Avond")}>
             <TransparantButton text="Avond" />
           </li>
+          <li onClick={() => setPickedDayPart("Hele dag")}>
+            <TransparantButton text="Hele dag" />
+          </li>
         </ul>
         <h3>Catering</h3>
         <ul style={ulStyle}>
@@ -242,7 +245,12 @@ const ReservationPageContainer = () => {
             <input type="textarea" placeholder="Eventuele opmerkingen "></input>
             <br></br>
             <br></br>
-            <h4 style={h4Style}>Bedrag Schatting: €{locationPrice + mealPrice}</h4>
+            <h4 style={h4Style}>Bedrag Schatting</h4>
+              <u>
+                <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
+                <li>Catering: €{mealPrice}</li>
+                <li>Totaal: €{(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) + mealPrice}</li>
+              </u>
 
             <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
           </div>
