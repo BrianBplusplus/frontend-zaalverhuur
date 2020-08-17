@@ -12,7 +12,7 @@ const LandingPageCard = (props) => {
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    width: isMobile ? "100%" : isTablet ? "45%" : "32%",
+    width: isMobile ? "90%" : isTablet ? "45%" : "32%",
     maxWidth: isMobile ? "400px" : isTablet ? "400px" : "none",
     minHeight: "300px",
     textAlign: "center",
@@ -38,7 +38,7 @@ const LandingPageCard = (props) => {
   // ---------------- Render ------------------- //
   return (
     <Link style={divStyle} to={`/${props.link}`}>
-      <motion.div whileHover={{ scale: 1.1 }} onHoverStart={event => {setIshover(true)}} onHoverEnd={event => {setIshover(false)}}>
+      <motion.div whileHover={{ scale: 1.05 }} onHoverStart={event => {setIshover(true)}} onHoverEnd={event => {setIshover(false)}}>
         <h2 style={h2Style}>{props.title}</h2>
 
         <img alt="roomimage" style={imageStyle} src={props.image} />

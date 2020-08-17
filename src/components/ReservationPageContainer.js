@@ -170,7 +170,7 @@ const ReservationPageContainer = () => {
             <TransparantButton text="Avond" />
           </li>
         </ul>
-        <h3>Maaltijden</h3>
+        <h3>Catering</h3>
         <ul style={ulStyle}>
           <li
             onClick={() => {
@@ -202,7 +202,7 @@ const ReservationPageContainer = () => {
               setMealPrice(500);
             }}
           >
-            <TransparantButton text="Restuarant" />
+            <TransparantButton text="Restaurant" />
           </li>
         </ul>
         <h3>Opstellingen</h3>
@@ -219,7 +219,7 @@ const ReservationPageContainer = () => {
         </ul>
 
         <Link to="/">
-          <LargeButton text="Terug naar zalen" />
+          <button>Terug naar zalen</button>
         </Link>
       </div>
       <div style={rightStyle}>
@@ -254,7 +254,6 @@ const ReservationPageContainer = () => {
           </div>
         </div>
         <LargeButton text="Reserveren" />
-        <button onClick={() => handleCheckout()}>checkouttest</button>
       </div>
     </div>
   );

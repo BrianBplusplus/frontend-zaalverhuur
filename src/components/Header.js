@@ -44,8 +44,7 @@ const Header = () => {
           </motion.a>
         </li>
         <li style={listStyle}>
-          <a
-            style={aStyle}
+          <a         
             href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010"
           >
             Catalogus
