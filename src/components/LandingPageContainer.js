@@ -16,6 +16,7 @@ const LandingPageContainer = () => {
   const [isError, setIsError] = useState(false);
 
   // ---------------- Variables ---------------- //
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1223 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   // ---------------- Functions ---------------- //
@@ -44,11 +45,11 @@ const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: isMobile ? "center" : isTablet ? "center" : "center",
     backgroundColor: "#fff",
     maxWidth: "1300px",
     minHeight: "20vh",
-    padding: "15px",
+    padding: "20px",
   };
 
   // ---------------- Render ------------------- //

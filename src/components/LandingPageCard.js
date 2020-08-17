@@ -10,11 +10,11 @@ const LandingPageCard = (props) => {
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    width: isMobile ? "100%" : isTablet ? "45%" : "30%",
+    width: isMobile ? "100%" : isTablet ? "45%" : "32%",
     maxWidth: isMobile ? "400px" : isTablet ? "400px" : "none",
     minHeight: "300px",
     textAlign: "center",
-    margin: "15px 15px",
+    margin: "0 15px 15px 0",
     borderRadius: "3px",
     textDecoration: "none",
   };
