@@ -207,20 +207,14 @@ const ReservationPageContainer = () => {
         </ul>
         <h3>Opstellingen</h3>
         <ul style={ulStyle}>
-          <li onClick={() => setPickedSeatplan("U-vorm")}>
-            <TransparantButton text="U-vorm" />
-          </li>
-          <li onClick={() => setPickedSeatplan("Klaslokaal")}>
-            <TransparantButton text="Klaslokaal" />
-          </li>
-          <li onClick={() => setPickedSeatplan("Theater")}>
-            <TransparantButton text="Theater" />
-          </li>
+          {apiData.seatplans && apiData.seatplans.map((seatplan, index) => {
+            return <li key={index} onClick={() => setPickedSeatplan(seatplan.name)}><TransparantButton text={seatplan.name}/></li>})}
         </ul>
 
         <Link to="/">
           <button>Terug naar zalen</button>
         </Link>
+        <button onClick={() => handleCheckout()}>reserveren test</button>
       </div>
       <div style={rightStyle}>
         <DayPicker
