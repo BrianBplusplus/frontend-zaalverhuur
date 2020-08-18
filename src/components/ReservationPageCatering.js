@@ -29,7 +29,7 @@ const ReservationPageCatering = (props) => {
     flexWrap: "wrap",
 
     margin: "0",
-    height: "120px",
+    height: "150px",
     border: "1px solid #ed008c",
     borderRadius: "3px",
     padding: "10px",
@@ -74,6 +74,15 @@ const ReservationPageCatering = (props) => {
             <li onClick={() => handleClickPickedMeal("Restaurant")}>
               <TransparentButton text="Restaurant" />
             </li>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+              <TransparentButton text="OpvulOptie" />
+            </li>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+              <TransparentButton text="OpvulOptie" />
+            </li>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+              <TransparentButton text="OpvulOptie" />
+            </li>
           </ul>
         </div>
         <div style={rightStyle}>
@@ -90,6 +99,12 @@ const ReservationPageCatering = (props) => {
             </li>
             <li onClick={() => handleClickPickedExtraCatering("Vegetarisch garnituur")}>
               <TransparentButton text="Vegetarisch garnituur" />
+            </li>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+              <TransparentButton text="OpvulOptie" />
+            </li>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+              <TransparentButton text="OpvulOptie" />
             </li>
           </ul>
         </div>
