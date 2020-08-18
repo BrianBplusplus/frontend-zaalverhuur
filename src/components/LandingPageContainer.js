@@ -52,7 +52,7 @@ const LandingPageContainer = () => {
     maxWidth: "1300px",
     width: "100%",
     maxHeight: "200px",
-    marginBottom: "15px",
+    marginBottom: "20px",
     objectFit: "cover",
     display: isMobile ? "none" : "block",
   };

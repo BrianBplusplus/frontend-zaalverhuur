@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
 
 import ReservationPageCatering from "./ReservationPageCatering";
 import ReservationPageDayPart from "./ReservationPageDayPart";
+import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
-import TransparentButton from "./assets/TransparentButton";
 import ErrorMessage from "./assets/ErrorMessage";
+import DatePicker from "./assets/DatePicker";
 import { imageData, descriptionData, pricesData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
@@ -68,13 +67,6 @@ const ReservationPageContainer = () => {
     fetchAPI();
   }, [params, paramsArrayIndex]);
 
-  const handlePickDate = (day, modifiers = {}, { selected }) => {
-    if (modifiers.disabled) {
-      return;
-    }
-    setPickedDate(selected ? undefined : day);
-  };
-
   const handleCheckout = () => {
     console.log("Name: " + apiData.name);
     console.log("Daypart: " + pickedDayPart);
@@ -95,10 +87,10 @@ const ReservationPageContainer = () => {
   };
 
   const divSelectedOptionsStyle = {
-    height: "260px",
+    height: "270px",
   };
 
-  const sidebarPStyle = {
+  const pStyle = {
     textAlign: "center",
     fontSize: "14px",
     color: "#636363",
@@ -110,10 +102,11 @@ const ReservationPageContainer = () => {
   };
 
   const ulStyle = {
-    display: "flex",
-    justifyContent: "center",
     listStyle: "none",
-    padding: "0",
+    padding: "5px",
+    width: "60%",
+    margin: "0 auto",
+    textAlign: "center",
   };
 
   const liStyle = {
@@ -123,14 +116,6 @@ const ReservationPageContainer = () => {
     borderRadius: "3px",
     margin: "5px 0 5px 0",
     padding: "5px",
-  };
-
-  const ulSelectedOptionsStyle = {
-    listStyle: "none",
-    padding: "5px",
-    width: "60%",
-    margin: "0 auto",
-    textAlign: "center",
   };
 
   const h4Style = {
@@ -143,7 +128,7 @@ const ReservationPageContainer = () => {
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",
-    justifyContent: "space-between",
+    //  height: "100%",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
   };
 
@@ -165,8 +150,13 @@ const ReservationPageContainer = () => {
         <p>{descriptionData[paramsArrayIndex]}</p>
 
         <h2>Opties</h2>
+
         <h3>Dagdeel</h3>
         <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
+
+        <h3>Opstellingen</h3>
+        <ReservationPageSeatPlans apiData={apiData} setPickedSeatplan={setPickedSeatplan} />
+
         <h3>Catering</h3>
         <ReservationPageCatering
           setPickedMeal={setPickedMeal}
@@ -175,49 +165,31 @@ const ReservationPageContainer = () => {
           extraMealInformation={extraMealInformation}
         />
 
-        <h3>Opstellingen</h3>
-        <ul style={ulStyle}>
-          {apiData.seatplans &&
-            apiData.seatplans.map((seatplan, index) => {
-              return (
-                <li key={index} onClick={() => setPickedSeatplan(seatplan.name)}>
-                  <TransparentButton text={seatplan.name} />
-                </li>
-              );
-            })}
-        </ul>
-
         <Link to="/">
           <button>Terug naar zalen</button>
         </Link>
         <button onClick={() => handleCheckout()}>reserveren test</button>
       </div>
       <div style={rightStyle}>
-        <DayPicker
-          selectedDays={pickedDate}
-          onDayClick={handlePickDate}
-          disabledDays={{ daysOfWeek: [0] }}
-        />
+        <DatePicker pickedDate={pickedDate} setPickedDate={setPickedDate} />
         <div>
           <div style={divSelectedOptionsStyle}>
-            <p style={sidebarPStyle}>Geselecteerde opties</p>
-            <ul style={ulSelectedOptionsStyle}>
+            <p style={pStyle}>Geselecteerde opties</p>
+            <ul style={ulStyle}>
               {pickedDayPart && <li>Dagdeel</li>}
               {pickedDayPart && <li style={liStyle}>{pickedDayPart}</li>}
+              {pickedSeatPlan && <li>Opstelling</li>}
+              {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
               {pickedMeal && <li>Lunch</li>}
               {pickedMeal && <li style={liStyle}>{pickedMeal}</li>}
               {pickedExtraCatering && <li>Extra's</li>}
               {pickedExtraCatering && <li style={liStyle}>{pickedExtraCatering}</li>}
-              {pickedSeatPlan && <li>Opstelling</li>}
-              {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
             </ul>
           </div>
-          <p style={sidebarPStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+          <p style={pStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
           <div style={inputFormStyle}>
             <h4 style={h4Style}>Email:</h4>
             <input type="email"></input>
-            <h4 style={h4Style}>Opmerkingen:</h4>
-            <input type="textarea" placeholder="Eventuele opmerkingen "></input>
             <br></br>
             <br></br>
             <h4 style={h4Style}>Bedrag Schatting</h4>
@@ -230,7 +202,7 @@ const ReservationPageContainer = () => {
               </li>
             </u>
 
-            <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
+            <p style={pStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
           </div>
         </div>
         <LargeButton text="Reserveren" />

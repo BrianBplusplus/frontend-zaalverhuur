@@ -70,7 +70,7 @@ const ReservationPageCatering = (props) => {
           onChange={(event) => handleExtraMealInformation(event.target.value)}
           rows="4"
           name="description"
-          placeholder="beschrijf hier uw extra wensen i.v.m. bijvoorbeeld allergieën of dieetwensen"
+          placeholder="beschrijf hier uw extra wensen bijvoorbeeld allergieën of dieetwensen"
         ></textarea>
       </div>
     </div>
