@@ -90,10 +90,16 @@ const ReservationPageContainer = () => {
     height: "270px",
   };
 
-  const pStyle = {
-    textAlign: "center",
-    fontSize: "14px",
-    color: "#636363",
+  const leftStyle = {
+    marginRight: "10px",
+  };
+
+  const rightStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
   };
 
   const inputFormStyle = {
@@ -122,18 +128,14 @@ const ReservationPageContainer = () => {
     margin: "5px 0 5px 0",
   };
 
-  const leftStyle = {};
-
-  const rightStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column",
-    //  height: "100%",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+  const pStyle = {
+    textAlign: "center",
+    fontSize: "14px",
+    color: "#636363",
   };
 
   const imageStyle = {
-    width: "99%",
+    width: "100%",
     height: "250px",
     objectFit: "cover",
   };
@@ -149,26 +151,18 @@ const ReservationPageContainer = () => {
         <h2>{apiData.name}</h2>
         <p>{descriptionData[paramsArrayIndex]}</p>
 
-        <h2>Opties</h2>
-
         <h3>Dagdeel</h3>
         <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
 
         <h3>Opstellingen</h3>
         <ReservationPageSeatPlans apiData={apiData} setPickedSeatplan={setPickedSeatplan} />
 
-        <h3>Catering</h3>
         <ReservationPageCatering
           setPickedMeal={setPickedMeal}
           setPickedExtraCatering={setPickedExtraCatering}
           setExtraMealInformation={setExtraMealInformation}
           extraMealInformation={extraMealInformation}
         />
-
-        <Link to="/">
-          <button>Terug naar zalen</button>
-        </Link>
-        <button onClick={() => handleCheckout()}>reserveren test</button>
       </div>
       <div style={rightStyle}>
         <DatePicker pickedDate={pickedDate} setPickedDate={setPickedDate} />
