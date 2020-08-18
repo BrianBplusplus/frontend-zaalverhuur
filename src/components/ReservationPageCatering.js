@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
 
 const ReservationPageCatering = (props) => {
-  // ---------------- States ------------------- //
-  const [inputInformation, setInputInformation] = useState("");
   // ---------------- Functions ---------------- //
   const handleClickPickedMeal = (mealChoice) => {
     props.setPickedMeal(mealChoice);

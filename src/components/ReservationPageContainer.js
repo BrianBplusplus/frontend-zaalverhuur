@@ -5,6 +5,8 @@ import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
 import ReservationPageCatering from "./ReservationPageCatering";
+import ReservationPageDayPart from "./ReservationPageDayPart";
+
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
 import TransparentButton from "./assets/TransparentButton";
@@ -164,20 +166,7 @@ const ReservationPageContainer = () => {
 
         <h2>Opties</h2>
         <h3>Dagdeel</h3>
-        <ul style={ulStyle}>
-          <li onClick={() => setPickedDayPart("Ochtend")}>
-            <TransparentButton text="Ochtend" />
-          </li>
-          <li onClick={() => setPickedDayPart("Middag")}>
-            <TransparentButton text="Middag" />
-          </li>
-          <li onClick={() => setPickedDayPart("Avond")}>
-            <TransparentButton text="Avond" />
-          </li>
-          <li onClick={() => setPickedDayPart("Hele dag")}>
-            <TransparentButton text="Hele dag" />
-          </li>
-        </ul>
+        <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
         <h3>Catering</h3>
         <ReservationPageCatering
           setPickedMeal={setPickedMeal}
