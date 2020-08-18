@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import HamburgerIcon from "./assets/HamburgerIcon";
 import logo from "../img/dnblogo.jpg";
 
-const HeaderHamburger = () => {
+const HeaderForSmallScreen = () => {
   // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
 
@@ -79,18 +79,12 @@ const HeaderHamburger = () => {
         variants={variants}
       >
         <li>
-          <a
-            style={aStyle}
-            href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html"
-          >
+          <a style={aStyle} href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html">
             Lid worden
           </a>
         </li>
         <li>
-          <a
-            style={aStyle}
-            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010"
-          >
+          <a style={aStyle} href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010">
             Catalogus
           </a>
         </li>
@@ -107,4 +101,4 @@ const HeaderHamburger = () => {
   );
 };
 
-export default HeaderHamburger;
+export default HeaderForSmallScreen;

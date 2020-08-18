@@ -6,7 +6,7 @@ import "react-day-picker/lib/style.css";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
-import TransparantButton from "./assets/TransparantButton";
+import TransparantButton from "./assets/TransparentButton";
 import ErrorMessage from "./assets/ErrorMessage";
 import { imageData, descriptionData, pricesData } from "./assets/locationData";
 
@@ -210,8 +210,14 @@ const ReservationPageContainer = () => {
         </ul>
         <h3>Opstellingen</h3>
         <ul style={ulStyle}>
-          {apiData.seatplans && apiData.seatplans.map((seatplan, index) => {
-            return <li key={index} onClick={() => setPickedSeatplan(seatplan.name)}><TransparantButton text={seatplan.name}/></li>})}
+          {apiData.seatplans &&
+            apiData.seatplans.map((seatplan, index) => {
+              return (
+                <li key={index} onClick={() => setPickedSeatplan(seatplan.name)}>
+                  <TransparantButton text={seatplan.name} />
+                </li>
+              );
+            })}
         </ul>
 
         <Link to="/">
@@ -246,11 +252,14 @@ const ReservationPageContainer = () => {
             <br></br>
             <br></br>
             <h4 style={h4Style}>Bedrag Schatting</h4>
-              <u>
-                <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
-                <li>Catering: €{mealPrice}</li>
-                <li>Totaal: €{(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) + mealPrice}</li>
-              </u>
+            <u>
+              <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
+              <li>Catering: €{mealPrice}</li>
+              <li>
+                Totaal: €
+                {(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) + mealPrice}
+              </li>
+            </u>
 
             <p style={sidebarPStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
           </div>

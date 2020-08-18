@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const TransparantButton = (props) => {
+const TransparentButton = (props) => {
   // ---------------- States ------------------- //
 
   // ---------------- Styling ---------------- //
@@ -28,4 +28,4 @@ const TransparantButton = (props) => {
   );
 };
 
-export default TransparantButton;
+export default TransparentButton;
