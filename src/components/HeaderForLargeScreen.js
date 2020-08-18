@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import logo from "../img/dnblogo.jpg";
 
-const Header = () => {
+const HeaderForLargeScreen = () => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
@@ -44,11 +44,7 @@ const Header = () => {
           </motion.a>
         </li>
         <li style={listStyle}>
-          <a         
-            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010"
-          >
-            Catalogus
-          </a>
+          <a href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010">Catalogus</a>
         </li>
         <li style={listStyle}>
           <a href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?prt=INTERNET&taal=nl_NL&var=portal&event=private&vestnr=8010">
@@ -60,4 +56,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderForLargeScreen;

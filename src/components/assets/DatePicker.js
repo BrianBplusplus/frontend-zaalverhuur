@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
-const DatePicker = () => {
-  // ---------------- Variables ---------------- //
-  const [pickedDate, setPickedDate] = useState(null);
-
+const DatePicker = (props) => {
   // ---------------- Functions ---------------- //
   const handlePickDate = (day, modifiers = {}, { selected }) => {
     if (modifiers.disabled) {
       return;
     }
-    setPickedDate(selected ? undefined : day);
-    console.log("pickedDate: ", pickedDate);
+    props.setPickedDate(selected ? undefined : day);
   };
 
   // ---------------- Render ------------------- //
   return (
     <DayPicker
-      selectedDays={pickedDate}
+      selectedDays={props.pickedDate}
       onDayClick={handlePickDate}
       disabledDays={{ daysOfWeek: [0] }}
     />

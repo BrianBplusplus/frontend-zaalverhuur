@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 
-import HeaderImage from "./HeaderImage";
-import HeaderInfo from "./HeaderInfo";
+import LandingPageInfo from "./LandingPageInfo";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import ErrorMessage from "./assets/ErrorMessage";
 import { imageData } from "./assets/locationData";
+import headerImage from "../img/HeaderImage.webp";
 
 const LandingPageContainer = () => {
   // ---------------- States ------------------- //
@@ -27,11 +27,9 @@ const LandingPageContainer = () => {
       setIsLoading(true);
       setIsError(false);
       try {
-        const response = await axios.get(
-          `https://backend-zaalverhuur.herokuapp.com/api`
-        );
-        console.log("API response Landing Page", response.data.locations);
-        setApiData(response.data.locations);
+        const response = await axios.get(`https://backend-zaalverhuur.herokuapp.com/api`);
+        console.log("API response Landing Page", response.data);
+        setApiData(response.data);
       } catch (error) {
         setIsError(true);
         console.error(error);
@@ -50,11 +48,20 @@ const LandingPageContainer = () => {
     minHeight: "20vh",
   };
 
+  const imageStyle = {
+    maxWidth: "1300px",
+    width: "100%",
+    maxHeight: "200px",
+    marginBottom: "20px",
+    objectFit: "cover",
+    display: isMobile ? "none" : "block",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div>
-      {!isMobile && <HeaderImage />}
-      <HeaderInfo />
+      <img alt="headerimage" style={imageStyle} src={headerImage} />
+      <LandingPageInfo />
 
       <div style={divStyle}>
         {isLoading && <LoadingSpinner />}
@@ -63,7 +70,6 @@ const LandingPageContainer = () => {
         {apiData.map((mappedApiData, index) => {
           return (
             // ---- Temporary rudementary filters. TODO: Move to back-end ---- //
-            mappedApiData.locationID <= 1371 &&
             mappedApiData.locationID !== 1366 && (
               <LandingPageCard
                 link={mappedApiData.locationID}
