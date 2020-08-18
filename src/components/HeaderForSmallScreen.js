@@ -16,15 +16,6 @@ const HeaderForSmallScreen = () => {
   };
   const divHeight = open ? "170px" : "35px";
 
-  // ---------------- Functions ---------------- //
-  const handleOpen = () => {
-    if (open === true) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
-  };
-
   // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
@@ -67,7 +58,7 @@ const HeaderForSmallScreen = () => {
         <Link style={linkStyle} to="/">
           <img style={imageStyle} alt="headerlogo" src={logo} />
         </Link>
-        <div onClick={() => handleOpen()}>
+        <div onClick={() => setOpen(!open)}>
           <HamburgerIcon />
         </div>
       </div>

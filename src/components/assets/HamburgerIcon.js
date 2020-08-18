@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 
-const HamburgerIcon = (props) => {
+const HamburgerIcon = () => {
   // ---------------- States ------------------- //
   const [open, setOpen] = useState(false);
-
-  // ---------------- Functions ---------------- //
-  const handleClick = () => {
-    if (open === true) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
-  };
 
   // ---------------- Styling ---------------- //
   const divStyle = {
@@ -33,12 +24,12 @@ const HamburgerIcon = (props) => {
 
   const changeBottomBar = {
     ...divStyle,
-    transform: "rotate(45deg) translate(-8px, -0px)",
+    transform: "rotate(45deg) translate(-7px, -0px)",
   };
 
   // ---------------- Render ------------------- //
   return (
-    <div onClick={() => handleClick()}>
+    <div onClick={() => setOpen(!open)}>
       <div style={open ? changeTopBar : divStyle}></div>
       <div style={open ? changeMiddleBar : divStyle}></div>
       <div style={open ? changeBottomBar : divStyle}></div>

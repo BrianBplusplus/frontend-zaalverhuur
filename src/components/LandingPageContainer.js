@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 
-import HeaderInfo from "./LandingPageInfo";
+import LandingPageInfo from "./LandingPageInfo";
 import LandingPageCard from "./LandingPageCard";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import ErrorMessage from "./assets/ErrorMessage";
@@ -61,7 +61,7 @@ const LandingPageContainer = () => {
   return (
     <div>
       <img alt="headerimage" style={imageStyle} src={headerImage} />
-      <HeaderInfo />
+      <LandingPageInfo />
 
       <div style={divStyle}>
         {isLoading && <LoadingSpinner />}

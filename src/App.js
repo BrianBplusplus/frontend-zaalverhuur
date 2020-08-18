@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 import HeaderForLargeScreen from "./components/HeaderForLargeScreen";
-import HeaderHamburger from "./components/HeaderForSmallScreen";
+import HeaderForSmallScreen from "./components/HeaderForSmallScreen";
 import LandingPageContainer from "./components/LandingPageContainer";
 import ReservationPageContainer from "./components/ReservationPageContainer";
 import Footer from "./components/Footer";
@@ -18,8 +18,7 @@ function App() {
 
   return (
     <div style={divStyle} className="react-content">
-      {isDesktop && <HeaderForLargeScreen />}
-      {!isDesktop && <HeaderHamburger />}
+      {isDesktop ? <HeaderForLargeScreen /> : <HeaderForSmallScreen />}
 
       <Route path="/" exact component={LandingPageContainer} />
       <Route path="/:id" exact component={ReservationPageContainer} />
