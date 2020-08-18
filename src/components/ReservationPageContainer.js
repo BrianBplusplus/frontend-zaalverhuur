@@ -58,7 +58,13 @@ const ReservationPageContainer = () => {
           `https://backend-zaalverhuur.herokuapp.com/api/${params.id}`
         );
         console.log("API response Reservation page", response.data);
+
         setApiData(response.data);
+
+        // Automatically sets the seatplan if only one is available
+        if (response.data.seatplans.length === 1) {
+          setPickedSeatplan(response.data.seatplans[0].name);
+        }
       } catch (error) {
         setIsError(true);
         console.error(error);

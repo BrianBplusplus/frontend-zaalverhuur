@@ -91,8 +91,8 @@ const ReservationPageCatering = (props) => {
             <li onClick={() => handleClickPickedExtraCatering("Geen")}>
               <TransparentButton text="Geen" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Alcoholische ronde")}>
-              <TransparentButton text="Alcoholische ronde" />
+            <li onClick={() => handleClickPickedExtraCatering("Alcoholische dranken")}>
+              <TransparentButton text="Alcoholische dranken" />
             </li>
             <li onClick={() => handleClickPickedExtraCatering("Bittergarnituur")}>
               <TransparentButton text="Bittergarnituur" />
@@ -100,11 +100,14 @@ const ReservationPageCatering = (props) => {
             <li onClick={() => handleClickPickedExtraCatering("Vegetarisch garnituur")}>
               <TransparentButton text="Vegetarisch garnituur" />
             </li>
-            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
-              <TransparentButton text="OpvulOptie" />
+            <li onClick={() => handleClickPickedExtraCatering("Koffie")}>
+              <TransparentButton text="Koffie" />
             </li>
-            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
-              <TransparentButton text="OpvulOptie" />
+            <li onClick={() => handleClickPickedExtraCatering("Thee")}>
+              <TransparentButton text="Thee" />
+            </li>
+            <li onClick={() => handleClickPickedExtraCatering("Frisdrank")}>
+              <TransparentButton text="Frisdrank" />
             </li>
           </ul>
         </div>
