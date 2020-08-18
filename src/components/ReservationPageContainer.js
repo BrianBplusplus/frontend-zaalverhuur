@@ -4,9 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 
+import ReservationPageCatering from "./ReservationPageCatering";
 import LoadingSpinner from "./assets/LoadingSpinner";
 import LargeButton from "./assets/LargeButton";
-import TransparantButton from "./assets/TransparentButton";
+import TransparentButton from "./assets/TransparentButton";
 import ErrorMessage from "./assets/ErrorMessage";
 import { imageData, descriptionData, pricesData } from "./assets/locationData";
 
@@ -21,6 +22,8 @@ const ReservationPageContainer = () => {
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
+  const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
+  const [extraMealInformation, setExtraMealInformation] = useState("");
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
 
   // ---------------- Variables ---------------- //
@@ -74,6 +77,8 @@ const ReservationPageContainer = () => {
     console.log("Name: " + apiData.name);
     console.log("Daypart: " + pickedDayPart);
     console.log("Meal: " + pickedMeal);
+    console.log("Extra: " + pickedExtraCatering);
+    console.log("Input extra: " + extraMealInformation);
     console.log("Seatplan: " + pickedSeatPlan);
   };
 
@@ -88,7 +93,7 @@ const ReservationPageContainer = () => {
   };
 
   const divSelectedOptionsStyle = {
-    height: "210px",
+    height: "260px",
   };
 
   const sidebarPStyle = {
@@ -153,7 +158,7 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img alt="RoomImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{apiData.name}</h2>
         <p>{descriptionData[paramsArrayIndex]}</p>
 
@@ -161,60 +166,33 @@ const ReservationPageContainer = () => {
         <h3>Dagdeel</h3>
         <ul style={ulStyle}>
           <li onClick={() => setPickedDayPart("Ochtend")}>
-            <TransparantButton text="Ochtend" />
+            <TransparentButton text="Ochtend" />
           </li>
           <li onClick={() => setPickedDayPart("Middag")}>
-            <TransparantButton text="Middag" />
+            <TransparentButton text="Middag" />
           </li>
           <li onClick={() => setPickedDayPart("Avond")}>
-            <TransparantButton text="Avond" />
+            <TransparentButton text="Avond" />
           </li>
           <li onClick={() => setPickedDayPart("Hele dag")}>
-            <TransparantButton text="Hele dag" />
+            <TransparentButton text="Hele dag" />
           </li>
         </ul>
         <h3>Catering</h3>
-        <ul style={ulStyle}>
-          <li
-            onClick={() => {
-              setPickedMeal("Geen");
-              setMealPrice(0);
-            }}
-          >
-            <TransparantButton text="Geen" />
-          </li>
-          <li
-            onClick={() => {
-              setPickedMeal("Kleine lunch");
-              setMealPrice(50);
-            }}
-          >
-            <TransparantButton text="Kleine Lunch" />
-          </li>
-          <li
-            onClick={() => {
-              setPickedMeal("Warme maaltijd");
-              setMealPrice(100);
-            }}
-          >
-            <TransparantButton text="Warme Maaltijd" />
-          </li>
-          <li
-            onClick={() => {
-              setPickedMeal("Restaurant");
-              setMealPrice(500);
-            }}
-          >
-            <TransparantButton text="Restaurant" />
-          </li>
-        </ul>
+        <ReservationPageCatering
+          setPickedMeal={setPickedMeal}
+          setPickedExtraCatering={setPickedExtraCatering}
+          setExtraMealInformation={setExtraMealInformation}
+          extraMealInformation={extraMealInformation}
+        />
+
         <h3>Opstellingen</h3>
         <ul style={ulStyle}>
           {apiData.seatplans &&
             apiData.seatplans.map((seatplan, index) => {
               return (
                 <li key={index} onClick={() => setPickedSeatplan(seatplan.name)}>
-                  <TransparantButton text={seatplan.name} />
+                  <TransparentButton text={seatplan.name} />
                 </li>
               );
             })}
@@ -237,8 +215,10 @@ const ReservationPageContainer = () => {
             <ul style={ulSelectedOptionsStyle}>
               {pickedDayPart && <li>Dagdeel</li>}
               {pickedDayPart && <li style={liStyle}>{pickedDayPart}</li>}
-              {pickedMeal && <li>Maaltijd</li>}
+              {pickedMeal && <li>Lunch</li>}
               {pickedMeal && <li style={liStyle}>{pickedMeal}</li>}
+              {pickedExtraCatering && <li>Extra's</li>}
+              {pickedExtraCatering && <li style={liStyle}>{pickedExtraCatering}</li>}
               {pickedSeatPlan && <li>Opstelling</li>}
               {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
             </ul>
