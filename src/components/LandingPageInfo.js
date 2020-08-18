@@ -1,9 +1,9 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 
-const HeaderInfo = () => {
+const LandingPageInfo = () => {
   // ---------------- Variables ---------------- //
-  const isMediumScreen = useMediaQuery({ minWidth: 881, maxWidth: 1223})
+  const isMediumScreen = useMediaQuery({ minWidth: 881, maxWidth: 1223 });
   const isSmallScreen = useMediaQuery({ maxWidth: 880 });
 
   // ---------------- Styling ------------------ //
@@ -42,21 +42,19 @@ const HeaderInfo = () => {
       <div style={leftStyle}>
         <h2 style={h2Style}>Zaal huren?</h2>
         <p>
-          Ben je op zoek naar een modern uitgeruste locatie waar je een
-          presentatie kunt geven of een cursus kunt verzorgen? Ook dan ben je
-          bij de nieuwe bibliotheek aan het juiste adres. Naast de centrale
-          ligging van de bibliotheek beschikken wij ook over diverse zalen.
+          Ben je op zoek naar een modern uitgeruste locatie waar je een presentatie kunt geven of
+          een cursus kunt verzorgen? Ook dan ben je bij de nieuwe bibliotheek aan het juiste adres.
+          Naast de centrale ligging van de bibliotheek beschikken wij ook over diverse zalen
         </p>
       </div>
       <div style={rightStyle}>
-        <h2 style={h2Style}>Locatie</h2>
+        <h2 style={h2Style}>Goed Bereikbaar</h2>
         <p>
-          op vijf minuten lopen van Station Almere centrum en met parkeergarages
-          om de hoek
+          Nog geen 5 minuten lopen vanaf Station Almere Centrum en er zijn parkeergarages om de hoek
         </p>
       </div>
     </div>
   );
 };
 
-export default HeaderInfo;
+export default LandingPageInfo;

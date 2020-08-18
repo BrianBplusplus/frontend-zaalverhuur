@@ -2,8 +2,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
-import Header from "./components/Header";
-import HeaderHamburger from "./components/HeaderHamburger";
+import HeaderForLargeScreen from "./components/HeaderForLargeScreen";
+import HeaderHamburger from "./components/HeaderForSmallScreen";
 import LandingPageContainer from "./components/LandingPageContainer";
 import ReservationPageContainer from "./components/ReservationPageContainer";
 import Footer from "./components/Footer";
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div style={divStyle} className="react-content">
-      {isDesktop && <Header />}
+      {isDesktop && <HeaderForLargeScreen />}
       {!isDesktop && <HeaderHamburger />}
 
       <Route path="/" exact component={LandingPageContainer} />
