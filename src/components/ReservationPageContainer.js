@@ -19,14 +19,18 @@ const ReservationPageContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [locationPrice, setLocationPrice] = useState(null);
-  const [mealPrice, setMealPrice] = useState(0);
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
+  const [pickedDrink, setPickedDrinks] = useState(null);
   const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
   const [extraMealInformation, setExtraMealInformation] = useState("");
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
+
+  const [locationPrice, setLocationPrice] = useState(null);
+  const [mealPrice, setMealPrice] = useState(0);
+  const [drinkPrice, setDrinkPrice] = useState(0);
+  const [extraCateringPrice, setExtraCateringPrice] = useState(0);
 
   // ---------------- Variables ---------------- //
   const params = useParams();
@@ -93,6 +97,10 @@ const ReservationPageContainer = () => {
     padding: "15px",
   };
 
+  const pStyle = {
+    textAlign: "justify",
+  };
+
   const leftStyle = {
     marginRight: "10px",
   };
@@ -120,7 +128,7 @@ const ReservationPageContainer = () => {
 
         <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{apiData.name}</h2>
-        <p>{descriptionData[paramsArrayIndex]}</p>
+        <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
         <h3>Dagdeel</h3>
         <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
@@ -131,8 +139,13 @@ const ReservationPageContainer = () => {
         <ReservationPageCatering
           setPickedMeal={setPickedMeal}
           setPickedExtraCatering={setPickedExtraCatering}
+          setPickedDrinks={setPickedDrinks}
           setExtraMealInformation={setExtraMealInformation}
           extraMealInformation={extraMealInformation}
+          //mealPrice={mealPrice}
+          setMealPrice={setMealPrice}
+          setDrinkPrice={setDrinkPrice}
+          setExtraCateringPrice={setExtraCateringPrice}
         />
       </div>
       <div style={rightStyle}>
@@ -142,8 +155,11 @@ const ReservationPageContainer = () => {
           pickedDayPart={pickedDayPart}
           pickedSeatPlan={pickedSeatPlan}
           pickedMeal={pickedMeal}
+          pickedDrink={pickedDrink}
           pickedExtraCatering={pickedExtraCatering}
           mealPrice={mealPrice}
+          drinkPrice={drinkPrice}
+          extraCateringPrice={extraCateringPrice}
           locationPrice={locationPrice}
         />
 

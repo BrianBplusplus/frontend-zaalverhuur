@@ -27,10 +27,6 @@ const HeaderForLargeScreen = () => {
     margin: "0 10px",
   };
 
-  const aStyle = {
-    textDecoration: "none",
-  };
-
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
