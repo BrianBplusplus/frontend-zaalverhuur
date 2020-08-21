@@ -22,7 +22,7 @@ const ReservationPageContainer = () => {
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
-  const [pickedDrink, setPickedDrinks] = useState(null);
+  const [pickedDrink, setPickedDrink] = useState(null);
   const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
   const [extraInformation, setExtraInformation] = useState("");
@@ -48,6 +48,23 @@ const ReservationPageContainer = () => {
       : params.id === "1370"
       ? 5
       : 6;
+
+  const props = {
+    apiData,
+
+    pickedDate, setPickedDate,
+    pickedDayPart, setPickedDayPart,
+    pickedMeal, setPickedMeal,
+    pickedDrink, setPickedDrink,
+    pickedExtraCatering, setPickedExtraCatering,
+    pickedSeatPlan, setPickedSeatplan,
+    extraInformation, setExtraInformation,
+    
+    locationPrice, setLocationPrice,
+    mealPrice, setMealPrice,
+    drinkPrice, setDrinkPrice,
+    extraCateringPrice, setExtraCateringPrice,
+  }
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -133,34 +150,17 @@ const ReservationPageContainer = () => {
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
         <h3>Dagdeel</h3>
-        <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
+        <ReservationPageDayPart {...props}/>
 
         <h3>Opstellingen</h3>
-        <ReservationPageSeatPlans apiData={apiData} setPickedSeatplan={setPickedSeatplan} />
+        <ReservationPageSeatPlans {...props}/>
 
-        <ReservationPageCatering
-          setPickedMeal={setPickedMeal}
-          setPickedExtraCatering={setPickedExtraCatering}
-          setPickedDrinks={setPickedDrinks}
-          setMealPrice={setMealPrice}
-          setDrinkPrice={setDrinkPrice}
-          setExtraCateringPrice={setExtraCateringPrice}
-          setExtraInformation={setExtraInformation}
-        />
+        <ReservationPageCatering {...props} />
       </div>
       <div style={rightStyle}>
-        <DatePicker pickedDate={pickedDate} setPickedDate={setPickedDate} />
+        <DatePicker {...props}/>
 
-        <ReservationPageSummary
-          pickedDayPart={pickedDayPart}
-          pickedSeatPlan={pickedSeatPlan}
-          pickedMeal={pickedMeal}
-          pickedDrink={pickedDrink}
-          pickedExtraCatering={pickedExtraCatering}
-          mealPrice={mealPrice}
-          drinkPrice={drinkPrice}
-          extraCateringPrice={extraCateringPrice}
-          locationPrice={locationPrice}
+        <ReservationPageSummary {...props}
         />
 
         <LargeButton text="Reserveren" />

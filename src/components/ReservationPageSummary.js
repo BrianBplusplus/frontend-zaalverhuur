@@ -2,14 +2,7 @@ import React from "react";
 
 const ReservationPageSummary = (props) => {
   // ---------------- Variables ---------------- //
-  const pickedDayPart = props.pickedDayPart;
-  const pickedSeatPlan = props.pickedSeatPlan;
-  const pickedMeal = props.pickedMeal;
-  const pickedExtraCatering = props.pickedExtraCatering;
-  const mealPrice = props.mealPrice;
-  const drinkPrice = props.drinkPrice;
-  const extraCateringPrice = props.extraCateringPrice;
-  const locationPrice = props.locationPrice;
+  const { pickedDayPart, pickedSeatPlan, pickedMeal , pickedExtraCatering, mealPrice, drinkPrice, extraCateringPrice, locationPrice } = props
 
   // ---------------- Styling ------------------ //
   const divStyle = {

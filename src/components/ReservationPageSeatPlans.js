@@ -4,7 +4,7 @@ import TransparentButton from "./assets/TransparentButton";
 
 const ReservationPageSeatPlans = (props) => {
   // ---------------- Variables ---------------- //
-  const apiData = props.apiData;
+  const { apiData } = props
   // ---------------- Functions ---------------- //
   const handleClickPickedSeatPlan = (seatPlanChoice) => {
     props.setPickedSeatplan(seatPlanChoice);
