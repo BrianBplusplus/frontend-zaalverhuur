@@ -10,7 +10,7 @@ const Footer = () => {
     color: "#fff",
     backgroundColor: "#000",
     padding: "20px 20px 40px 20px",
-    margin: " 20px auto 0",
+    margin: " 0 auto 0",
   };
 
   const titleStyle = {

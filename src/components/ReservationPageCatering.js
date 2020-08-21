@@ -1,21 +1,26 @@
-//TODO: Mealchoice doesnt change the total price of the ReserVationPageContainer. check out [mealPrice, setMealPrice] = useState(0);
-
 import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
 
 const ReservationPageCatering = (props) => {
   // ---------------- Functions ---------------- //
-  const handleClickPickedMeal = (mealChoice) => {
+  const handleClickPickedMeal = (mealChoice, mealChoicePrice) => {
     props.setPickedMeal(mealChoice);
+    props.setMealPrice(mealChoicePrice);
   };
 
-  const handleClickPickedExtraCatering = (cateringChoice) => {
+  const handleClickPickedDrinks = (drinkChoice, drinkChoicePrice) => {
+    props.setPickedDrinks(drinkChoice);
+    props.setDrinkPrice(drinkChoicePrice);
+  };
+
+  const handleClickPickedExtraCatering = (cateringChoice, cateringChoicePrice) => {
     props.setPickedExtraCatering(cateringChoice);
+    props.setExtraCateringPrice(cateringChoicePrice);
   };
 
-  const handleExtraMealInformation = (userInput) => {
-    props.setExtraMealInformation(userInput);
+  const handleExtraInformation = (userInput) => {
+    props.setExtraInformation(userInput);
   };
 
   // ---------------- Styling ------------------ //
@@ -62,25 +67,25 @@ const ReservationPageCatering = (props) => {
         <div style={leftStyle}>
           <h4 style={h4Style}>Lunch</h4>
           <ul style={ulStyle}>
-            <li onClick={() => handleClickPickedMeal("Geen")}>
+            <li onClick={() => handleClickPickedMeal("Geen", 0)}>
               <TransparentButton text="Geen" />
             </li>
-            <li onClick={() => handleClickPickedMeal("Kleine Lunch")}>
+            <li onClick={() => handleClickPickedMeal("Kleine Lunch", 50)}>
               <TransparentButton text="Kleine Lunch" />
             </li>
-            <li onClick={() => handleClickPickedMeal("Grote Maaltijd")}>
+            <li onClick={() => handleClickPickedMeal("Grote Maaltijd", 100)}>
               <TransparentButton text="Grote Maaltijd" />
             </li>
-            <li onClick={() => handleClickPickedMeal("Restaurant")}>
+            <li onClick={() => handleClickPickedMeal("Restaurant", 150)}>
               <TransparentButton text="Restaurant" />
             </li>
-            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie", 25)}>
               <TransparentButton text="OpvulOptie" />
             </li>
-            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie", 15)}>
               <TransparentButton text="OpvulOptie" />
             </li>
-            <li onClick={() => handleClickPickedMeal("OpvulOptie")}>
+            <li onClick={() => handleClickPickedMeal("OpvulOptie", 35)}>
               <TransparentButton text="OpvulOptie" />
             </li>
           </ul>
@@ -88,25 +93,25 @@ const ReservationPageCatering = (props) => {
         <div style={rightStyle}>
           <h4 style={h4Style}>Overige Catering</h4>
           <ul style={ulStyle}>
-            <li onClick={() => handleClickPickedExtraCatering("Geen")}>
+            <li onClick={() => handleClickPickedExtraCatering("Geen", 0)}>
               <TransparentButton text="Geen" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Alcoholische dranken")}>
+            <li onClick={() => handleClickPickedExtraCatering("Alcoholische dranken", 51)}>
               <TransparentButton text="Alcoholische dranken" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Bittergarnituur")}>
+            <li onClick={() => handleClickPickedExtraCatering("Bittergarnituur", 52)}>
               <TransparentButton text="Bittergarnituur" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Vegetarisch garnituur")}>
+            <li onClick={() => handleClickPickedExtraCatering("Vegetarisch garnituur", 53)}>
               <TransparentButton text="Vegetarisch garnituur" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Koffie")}>
+            <li onClick={() => handleClickPickedExtraCatering("Koffie", 54)}>
               <TransparentButton text="Koffie" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Thee")}>
+            <li onClick={() => handleClickPickedExtraCatering("Thee", 55)}>
               <TransparentButton text="Thee" />
             </li>
-            <li onClick={() => handleClickPickedExtraCatering("Frisdrank")}>
+            <li onClick={() => handleClickPickedExtraCatering("Frisdrank", 56)}>
               <TransparentButton text="Frisdrank" />
             </li>
           </ul>
@@ -118,7 +123,7 @@ const ReservationPageCatering = (props) => {
         <textarea
           style={textAreaStyle}
           value={props.extraMealInformation}
-          onChange={(event) => handleExtraMealInformation(event.target.value)}
+          onChange={(event) => handleExtraInformation(event.target.value)}
           rows="4"
           name="description"
           placeholder="beschrijf hier uw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"

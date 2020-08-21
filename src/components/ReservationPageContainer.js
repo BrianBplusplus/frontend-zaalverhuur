@@ -19,14 +19,18 @@ const ReservationPageContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [locationPrice, setLocationPrice] = useState(null);
-  const [mealPrice, setMealPrice] = useState(0);
   const [pickedDate, setPickedDate] = useState(null);
   const [pickedDayPart, setPickedDayPart] = useState(null);
   const [pickedMeal, setPickedMeal] = useState(null);
+  const [pickedDrink, setPickedDrink] = useState(null);
   const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
-  const [extraMealInformation, setExtraMealInformation] = useState("");
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
+  const [extraInformation, setExtraInformation] = useState("");
+
+  const [locationPrice, setLocationPrice] = useState(0);
+  const [mealPrice, setMealPrice] = useState(0);
+  const [drinkPrice, setDrinkPrice] = useState(0);
+  const [extraCateringPrice, setExtraCateringPrice] = useState(0);
 
   // ---------------- Variables ---------------- //
   const params = useParams();
@@ -44,6 +48,23 @@ const ReservationPageContainer = () => {
       : params.id === "1370"
       ? 5
       : 6;
+
+  const props = {
+    apiData,
+
+    pickedDate, setPickedDate,
+    pickedDayPart, setPickedDayPart,
+    pickedMeal, setPickedMeal,
+    pickedDrink, setPickedDrink,
+    pickedExtraCatering, setPickedExtraCatering,
+    pickedSeatPlan, setPickedSeatplan,
+    extraInformation, setExtraInformation,
+    
+    locationPrice, setLocationPrice,
+    mealPrice, setMealPrice,
+    drinkPrice, setDrinkPrice,
+    extraCateringPrice, setExtraCateringPrice,
+  }
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -79,8 +100,8 @@ const ReservationPageContainer = () => {
     console.log("Daypart: " + pickedDayPart);
     console.log("Meal: " + pickedMeal);
     console.log("Extra: " + pickedExtraCatering);
-    console.log("Input extra: " + extraMealInformation);
     console.log("Seatplan: " + pickedSeatPlan);
+    console.log("Extra information: " + extraInformation);
   };
 
   // ---------------- Styling ------------------ //
@@ -93,6 +114,10 @@ const ReservationPageContainer = () => {
     padding: "15px",
   };
 
+  const pStyle = {
+    textAlign: "justify",
+  };
+
   const leftStyle = {
     marginRight: "10px",
   };
@@ -103,6 +128,8 @@ const ReservationPageContainer = () => {
     flexDirection: "column",
     justifyContent: "space-between",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    borderBottomLeftRadius: "5px",
+    borderBottomRightRadius: "5px",
   };
 
   const imageStyle = {
@@ -120,31 +147,20 @@ const ReservationPageContainer = () => {
 
         <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{apiData.name}</h2>
-        <p>{descriptionData[paramsArrayIndex]}</p>
+        <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
         <h3>Dagdeel</h3>
-        <ReservationPageDayPart setPickedDayPart={setPickedDayPart} />
+        <ReservationPageDayPart {...props}/>
 
         <h3>Opstellingen</h3>
-        <ReservationPageSeatPlans apiData={apiData} setPickedSeatplan={setPickedSeatplan} />
+        <ReservationPageSeatPlans {...props}/>
 
-        <ReservationPageCatering
-          setPickedMeal={setPickedMeal}
-          setPickedExtraCatering={setPickedExtraCatering}
-          setExtraMealInformation={setExtraMealInformation}
-          extraMealInformation={extraMealInformation}
-        />
+        <ReservationPageCatering {...props} />
       </div>
       <div style={rightStyle}>
-        <DatePicker pickedDate={pickedDate} setPickedDate={setPickedDate} />
+        <DatePicker {...props}/>
 
-        <ReservationPageSummary
-          pickedDayPart={pickedDayPart}
-          pickedSeatPlan={pickedSeatPlan}
-          pickedMeal={pickedMeal}
-          pickedExtraCatering={pickedExtraCatering}
-          mealPrice={mealPrice}
-          locationPrice={locationPrice}
+        <ReservationPageSummary {...props}
         />
 
         <LargeButton text="Reserveren" />

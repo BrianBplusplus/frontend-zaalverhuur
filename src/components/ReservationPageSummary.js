@@ -2,22 +2,17 @@ import React from "react";
 
 const ReservationPageSummary = (props) => {
   // ---------------- Variables ---------------- //
-  const pickedDayPart = props.pickedDayPart;
-  const pickedSeatPlan = props.pickedSeatPlan;
-  const pickedMeal = props.pickedMeal;
-  const pickedExtraCatering = props.pickedExtraCatering;
-  const mealPrice = props.mealprice;
-  const locationPrice = props.locationPrice;
+  const { pickedDayPart, pickedSeatPlan, pickedMeal , pickedExtraCatering, mealPrice, drinkPrice, extraCateringPrice, locationPrice } = props
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    height: "270px",
+    height: "300px",
   };
 
   const ulStyle = {
     listStyle: "none",
     padding: "5px",
-    width: "60%",
+    width: "70%",
     margin: "0 auto",
     textAlign: "center",
   };
@@ -71,10 +66,13 @@ const ReservationPageSummary = (props) => {
         <h4 style={h4Style}>Bedrag Schatting</h4>
         <u>
           <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
-          <li>Catering: €{mealPrice}</li>
+          <li>Catering: €{mealPrice + drinkPrice + extraCateringPrice}</li>
           <li>
             Totaal: €
-            {(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) + mealPrice}
+            {(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) +
+              mealPrice +
+              drinkPrice +
+              extraCateringPrice}
           </li>
         </u>
         <p style={pStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>
