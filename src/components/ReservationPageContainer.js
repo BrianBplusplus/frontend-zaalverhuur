@@ -52,19 +52,30 @@ const ReservationPageContainer = () => {
   const props = {
     apiData,
 
-    pickedDate, setPickedDate,
-    pickedDayPart, setPickedDayPart,
-    pickedMeal, setPickedMeal,
-    pickedDrink, setPickedDrink,
-    pickedExtraCatering, setPickedExtraCatering,
-    pickedSeatPlan, setPickedSeatplan,
-    extraInformation, setExtraInformation,
-    
-    locationPrice, setLocationPrice,
-    mealPrice, setMealPrice,
-    drinkPrice, setDrinkPrice,
-    extraCateringPrice, setExtraCateringPrice,
-  }
+    pickedDate,
+    setPickedDate,
+    pickedDayPart,
+    setPickedDayPart,
+    pickedMeal,
+    setPickedMeal,
+    pickedDrink,
+    setPickedDrink,
+    pickedExtraCatering,
+    setPickedExtraCatering,
+    pickedSeatPlan,
+    setPickedSeatplan,
+    extraInformation,
+    setExtraInformation,
+
+    locationPrice,
+    setLocationPrice,
+    mealPrice,
+    setMealPrice,
+    drinkPrice,
+    setDrinkPrice,
+    extraCateringPrice,
+    setExtraCateringPrice,
+  };
 
   // ---------------- Functions ---------------- //
   useEffect(() => {
@@ -114,6 +125,10 @@ const ReservationPageContainer = () => {
     padding: "15px",
   };
 
+  const divDayPartAndSeatPlanStyle = {
+    display: "flex",
+  };
+
   const pStyle = {
     textAlign: "justify",
   };
@@ -145,23 +160,25 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+        <img
+          alt="LocationImage"
+          style={imageStyle}
+          src={imageData[paramsArrayIndex]}
+        />
         <h2>{apiData.name}</h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
-        <h3>Dagdeel</h3>
-        <ReservationPageDayPart {...props}/>
+        <div style={divDayPartAndSeatPlanStyle}>
+          <ReservationPageDayPart {...props} />
 
-        <h3>Opstellingen</h3>
-        <ReservationPageSeatPlans {...props}/>
-
+          <ReservationPageSeatPlans {...props} />
+        </div>
         <ReservationPageCatering {...props} />
       </div>
       <div style={rightStyle}>
-        <DatePicker {...props}/>
+        <DatePicker {...props} />
 
-        <ReservationPageSummary {...props}
-        />
+        <ReservationPageSummary {...props} />
 
         <LargeButton text="Reserveren" />
       </div>

@@ -9,29 +9,46 @@ const ReservationPageDayPart = (props) => {
   };
 
   // ---------------- Styling ------------------ //
+  const divStyle = {
+    width: "50%",
+    margin: "0 5px 0 5px",
+  };
+
   const ulStyle = {
     display: "flex",
-    justifyContent: "center",
+    flexWrap: "wrap",
+    height: "100px",
+    margin: "0",
+    border: "1px solid #ed008c",
+    borderRadius: "3px",
+    padding: "10px",
     listStyle: "none",
-    padding: "0",
+  };
+
+  const h4Style = {
+    textAlign: "center",
+    margin: "0",
   };
 
   // ---------------- Render ------------------- //
   return (
-    <ul style={ulStyle}>
-      <li onClick={() => handleClickPickedDayPart("Ochtend")}>
-        <TransparentButton text="Ochtend" />
-      </li>
-      <li onClick={() => handleClickPickedDayPart("Middag")}>
-        <TransparentButton text="Middag" />
-      </li>
-      <li onClick={() => handleClickPickedDayPart("Avond")}>
-        <TransparentButton text="Avond" />
-      </li>
-      <li onClick={() => handleClickPickedDayPart("Hele dag")}>
-        <TransparentButton text="Hele dag" />
-      </li>
-    </ul>
+    <div style={divStyle}>
+      <h4 style={h4Style}>Dagdeel</h4>
+      <ul style={ulStyle}>
+        <li onClick={() => handleClickPickedDayPart("Ochtend")}>
+          <TransparentButton text="Ochtend" />
+        </li>
+        <li onClick={() => handleClickPickedDayPart("Middag")}>
+          <TransparentButton text="Middag" />
+        </li>
+        <li onClick={() => handleClickPickedDayPart("Avond")}>
+          <TransparentButton text="Avond" />
+        </li>
+        <li onClick={() => handleClickPickedDayPart("Hele dag")}>
+          <TransparentButton text="Hele dag" />
+        </li>
+      </ul>
+    </div>
   );
 };
 
