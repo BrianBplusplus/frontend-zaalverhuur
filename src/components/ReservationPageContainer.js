@@ -24,10 +24,10 @@ const ReservationPageContainer = () => {
   const [pickedMeal, setPickedMeal] = useState(null);
   const [pickedDrink, setPickedDrinks] = useState(null);
   const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
-  const [extraMealInformation, setExtraMealInformation] = useState("");
   const [pickedSeatPlan, setPickedSeatplan] = useState(null);
+  const [extraInformation, setExtraInformation] = useState("");
 
-  const [locationPrice, setLocationPrice] = useState(null);
+  const [locationPrice, setLocationPrice] = useState(0);
   const [mealPrice, setMealPrice] = useState(0);
   const [drinkPrice, setDrinkPrice] = useState(0);
   const [extraCateringPrice, setExtraCateringPrice] = useState(0);
@@ -83,8 +83,8 @@ const ReservationPageContainer = () => {
     console.log("Daypart: " + pickedDayPart);
     console.log("Meal: " + pickedMeal);
     console.log("Extra: " + pickedExtraCatering);
-    console.log("Input extra: " + extraMealInformation);
     console.log("Seatplan: " + pickedSeatPlan);
+    console.log("Extra information: " + extraInformation);
   };
 
   // ---------------- Styling ------------------ //
@@ -111,6 +111,8 @@ const ReservationPageContainer = () => {
     flexDirection: "column",
     justifyContent: "space-between",
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
+    borderBottomLeftRadius: "5px",
+    borderBottomRightRadius: "5px",
   };
 
   const imageStyle = {
@@ -140,12 +142,10 @@ const ReservationPageContainer = () => {
           setPickedMeal={setPickedMeal}
           setPickedExtraCatering={setPickedExtraCatering}
           setPickedDrinks={setPickedDrinks}
-          setExtraMealInformation={setExtraMealInformation}
-          extraMealInformation={extraMealInformation}
-          //mealPrice={mealPrice}
           setMealPrice={setMealPrice}
           setDrinkPrice={setDrinkPrice}
           setExtraCateringPrice={setExtraCateringPrice}
+          setExtraInformation={setExtraInformation}
         />
       </div>
       <div style={rightStyle}>

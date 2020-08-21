@@ -1,5 +1,3 @@
-//TODO: Mealchoice doesnt change the total price of the ReserVationPageContainer. check out [mealPrice, setMealPrice] = useState(0);
-
 import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
@@ -21,8 +19,8 @@ const ReservationPageCatering = (props) => {
     props.setExtraCateringPrice(cateringChoicePrice);
   };
 
-  const handleExtraMealInformation = (userInput) => {
-    props.setExtraMealInformation(userInput);
+  const handleExtraInformation = (userInput) => {
+    props.setExtraInformation(userInput);
   };
 
   // ---------------- Styling ------------------ //
@@ -125,7 +123,7 @@ const ReservationPageCatering = (props) => {
         <textarea
           style={textAreaStyle}
           value={props.extraMealInformation}
-          onChange={(event) => handleExtraMealInformation(event.target.value)}
+          onChange={(event) => handleExtraInformation(event.target.value)}
           rows="4"
           name="description"
           placeholder="beschrijf hier uw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"

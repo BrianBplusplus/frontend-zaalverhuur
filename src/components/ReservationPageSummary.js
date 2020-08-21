@@ -13,13 +13,13 @@ const ReservationPageSummary = (props) => {
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    height: "270px",
+    height: "300px",
   };
 
   const ulStyle = {
     listStyle: "none",
     padding: "5px",
-    width: "60%",
+    width: "70%",
     margin: "0 auto",
     textAlign: "center",
   };
