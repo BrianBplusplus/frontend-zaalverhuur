@@ -86,9 +86,7 @@ const ReservationPageContainer = () => {
       setIsLoading(true);
       setIsError(false);
       try {
-        const response = await axios.get(
-          `https://backend-zaalverhuur.herokuapp.com/api/${params.id}`
-        );
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
         console.log("API response Reservation page", response.data);
 
         setApiData(response.data);
@@ -160,11 +158,7 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img
-          alt="LocationImage"
-          style={imageStyle}
-          src={imageData[paramsArrayIndex]}
-        />
+        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{apiData.name}</h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
