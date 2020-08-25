@@ -27,7 +27,7 @@ const LandingPageContainer = () => {
       setIsLoading(true);
       setIsError(false);
       try {
-        const response = await axios.get(`https://backend-zaalverhuur.herokuapp.com/api`);
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/api`);
         console.log("API response Landing Page", response.data);
         setApiData(response.data);
       } catch (error) {
