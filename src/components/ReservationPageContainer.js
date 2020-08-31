@@ -53,28 +53,29 @@ const ReservationPageContainer = () => {
       : 6;
 
   // ---------------- Functions ---------------- //
-  const fetchAPI = async () => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-      console.log("API response Reservation page", response.data);
-      setParentState({
-        ...parentState,
-        apiData: response.data,
-        locationPrice: pricesData[paramsArrayIndex],
-      });
-    } catch (error) {
-      setIsError(true);
-      console.error(error);
-    }
-    setIsLoading(false);
-  };
 
   useEffect(() => {
+    const fetchAPI = async () => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+        console.log("API response Reservation page", response.data);
+        setParentState({
+          ...parentState,
+          apiData: response.data,
+          locationPrice: pricesData[paramsArrayIndex],
+        });
+      } catch (error) {
+        setIsError(true);
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
+
     window.scrollTo(0, 0);
     fetchAPI();
-  }, []);
+  }, [params.id, paramsArrayIndex]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {
