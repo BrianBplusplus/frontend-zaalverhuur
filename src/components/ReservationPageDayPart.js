@@ -5,7 +5,7 @@ import TransparentButton from "./assets/TransparentButton";
 const ReservationPageDayPart = (props) => {
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
-    props.setPickedDayPart(dayPartChoice);
+    props.setStateProps({ ...props.stateProps, pickedDayPart: dayPartChoice });
   };
 
   // ---------------- Styling ------------------ //

@@ -2,17 +2,7 @@ import React from "react";
 
 const ReservationPageSummary = (props) => {
   // ---------------- Variables ---------------- //
-  const {
-    pickedDayPart,
-    pickedSeatPlan,
-    pickedMeal,
-    pickedDrink,
-    pickedExtraCatering,
-    mealPrice,
-    drinkPrice,
-    extraCateringPrice,
-    locationPrice,
-  } = props;
+  const { stateProps } = props;
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -57,15 +47,18 @@ const ReservationPageSummary = (props) => {
       <div style={divStyle}>
         <p style={pStyle}>Geselecteerde opties</p>
         <ul style={ulStyle}>
-          {pickedDayPart && <li>Dagdeel</li>}
-          {pickedDayPart && <li style={liStyle}>{pickedDayPart}</li>}
-          {pickedSeatPlan && <li>Opstelling</li>}
-          {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
-          {pickedMeal && <li>Lunch</li>}
-          {pickedMeal && <li style={liStyle}>{pickedMeal}</li>}
-          {(pickedExtraCatering && <li>Extra's</li>) || (pickedDrink && <li>Extra's</li>)}
-          {pickedDrink && <li style={liStyle}>{pickedDrink}</li>}
-          {pickedExtraCatering && <li style={liStyle}>{pickedExtraCatering}</li>}
+          {stateProps.pickedDayPart && <li>Dagdeel</li>}
+          {stateProps.pickedDayPart && <li style={liStyle}>{stateProps.pickedDayPart}</li>}
+          {stateProps.pickedSeatPlan && <li>Opstelling</li>}
+          {stateProps.pickedSeatPlan && <li style={liStyle}>{stateProps.pickedSeatPlan}</li>}
+          {stateProps.pickedMeal && <li>Lunch</li>}
+          {stateProps.pickedMeal && <li style={liStyle}>{stateProps.pickedMeal}</li>}
+          {(stateProps.pickedExtraCatering && <li>Extra's</li>) ||
+            (stateProps.pickedDrink && <li>Extra's</li>)}
+          {stateProps.pickedDrink && <li style={liStyle}>{stateProps.pickedDrink}</li>}
+          {stateProps.pickedExtraCatering && (
+            <li style={liStyle}>{stateProps.pickedExtraCatering}</li>
+          )}
         </ul>
       </div>
       <p style={pStyle}>- - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
@@ -76,14 +69,24 @@ const ReservationPageSummary = (props) => {
         <br></br>
         <h4 style={h4Style}>Bedrag Schatting</h4>
         <u>
-          <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
-          <li>Catering: €{mealPrice + drinkPrice + extraCateringPrice}</li>
+          <li>
+            Zaal: €
+            {stateProps.pickedDayPart === "Hele dag"
+              ? stateProps.locationPrice * 2
+              : stateProps.locationPrice}
+          </li>
+          <li>
+            Catering: €
+            {stateProps.mealPrice + stateProps.drinkPrice + stateProps.extraCateringPrice}
+          </li>
           <li>
             Totaal: €
-            {(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) +
-              mealPrice +
-              drinkPrice +
-              extraCateringPrice}
+            {(stateProps.pickedDayPart === "Hele dag"
+              ? stateProps.locationPrice * 2
+              : stateProps.locationPrice) +
+              stateProps.mealPrice +
+              stateProps.drinkPrice +
+              stateProps.extraCateringPrice}
           </li>
         </u>
         <p style={pStyle}>Op basis van uw selectie wordt een offerte gemaakt</p>

@@ -4,10 +4,10 @@ import TransparentButton from "./assets/TransparentButton";
 
 const ReservationPageSeatPlans = (props) => {
   // ---------------- Variables ---------------- //
-  const { apiData } = props;
+  const { stateProps } = props;
   // ---------------- Functions ---------------- //
   const handleClickPickedSeatPlan = (seatPlanChoice) => {
-    props.setPickedSeatplan(seatPlanChoice);
+    props.setStateProps({ ...props.stateProps, pickedSeatPlan: seatPlanChoice });
   };
 
   // ---------------- Styling ------------------ //
@@ -37,13 +37,10 @@ const ReservationPageSeatPlans = (props) => {
     <div style={divStyle}>
       <h4 style={h4Style}>Opstelling</h4>
       <ul style={ulStyle}>
-        {apiData.seatplans &&
-          apiData.seatplans.map((seatplan, index) => {
+        {stateProps.apiData.seatplans &&
+          stateProps.apiData.seatplans.map((seatplan, index) => {
             return (
-              <li
-                key={index}
-                onClick={() => handleClickPickedSeatPlan(seatplan.name)}
-              >
+              <li key={index} onClick={() => handleClickPickedSeatPlan(seatplan.name)}>
                 <TransparentButton text={seatplan.name} />
               </li>
             );

@@ -5,22 +5,34 @@ import TransparentButton from "./assets/TransparentButton";
 const ReservationPageCatering = (props) => {
   // ---------------- Functions ---------------- //
   const handleClickPickedMeal = (mealChoice, mealChoicePrice) => {
-    props.setPickedMeal(mealChoice);
-    props.setMealPrice(mealChoicePrice);
+    props.setStateProps({
+      ...props.stateProps,
+      pickedMeal: mealChoice,
+      mealPrice: mealChoicePrice,
+    });
   };
 
   const handleClickPickedDrink = (drinkChoice, drinkChoicePrice) => {
-    props.setPickedDrink(drinkChoice);
-    props.setDrinkPrice(drinkChoicePrice);
+    props.setStateProps({
+      ...props.stateProps,
+      pickedDrink: drinkChoice,
+      drinkPrice: drinkChoicePrice,
+    });
   };
 
   const handleClickPickedExtraCatering = (cateringChoice, cateringChoicePrice) => {
-    props.setPickedExtraCatering(cateringChoice);
-    props.setExtraCateringPrice(cateringChoicePrice);
+    props.setStateProps({
+      ...props.stateProps,
+      pickedExtraCatering: cateringChoice,
+      extraCateringPrice: cateringChoicePrice,
+    });
   };
 
   const handleExtraInformation = (userInput) => {
-    props.setExtraInformation(userInput);
+    props.setStateProps({
+      ...props.stateProps,
+      extraInformation: userInput,
+    });
   };
 
   // ---------------- Styling ------------------ //

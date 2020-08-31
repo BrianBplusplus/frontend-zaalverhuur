@@ -4,11 +4,12 @@ import "./DatePickerStyle.css";
 
 const DatePicker = (props) => {
   // ---------------- Functions ---------------- //
-  const handlePickDate = (day, modifiers = {}, { selected }) => {
-    if (modifiers.disabled) {
-      return;
-    }
-    props.setPickedDate(selected ? undefined : day);
+  const handlePickDate = (day, { selected }) => {
+    //props.setPickedDate(selected ? undefined : day);
+    props.setStateProps({
+      ...props.stateProps,
+      pickedDate: selected ? undefined : day,
+    });
   };
 
   // ---------------- Render ------------------- //
