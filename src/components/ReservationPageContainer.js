@@ -113,16 +113,15 @@ const ReservationPageContainer = () => {
     height: "250px",
     objectFit: "cover",
   };
-
-  console.log("State", parentState);
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
+        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
         <h2>{parentState.apiData.name}</h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 

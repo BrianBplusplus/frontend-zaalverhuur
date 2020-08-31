@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 const LoadingSpinner = () => {
   // ---------------- Styling ---------------- //
   const divStyle = {
-    position: "absolute",
     width: "3rem",
     height: "3rem",
     boxSizing: "border-box",
@@ -18,7 +17,6 @@ const LoadingSpinner = () => {
     border: "0.5rem solid #e9e9e9",
     borderTop: "0.5rem solid #ed008c",
     borderRadius: "50%",
-    position: "absolute",
     boxSizing: "border-box",
     top: 0,
     left: 0,
@@ -33,11 +31,7 @@ const LoadingSpinner = () => {
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      <motion.span
-        style={circleStyle}
-        animate={{ rotate: 360 }}
-        transition={spinTransition}
-      />
+      <motion.span style={circleStyle} animate={{ rotate: 360 }} transition={spinTransition} />
     </div>
   );
 };
