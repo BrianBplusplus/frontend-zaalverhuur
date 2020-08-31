@@ -15,7 +15,7 @@ const HeaderForLargeScreen = () => {
     margin: "auto",
   };
 
-  const navStyle = {
+  const ulStyle = {
     display: "flex",
     listStyle: "none",
     margin: "0 10px",
@@ -33,7 +33,7 @@ const HeaderForLargeScreen = () => {
       <Link to="/">
         <img alt="headerlogo" src={logo} />
       </Link>
-      <ul style={navStyle}>
+      <ul style={ulStyle}>
         <li style={listStyle}>
           <motion.a href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html">
             Lid worden

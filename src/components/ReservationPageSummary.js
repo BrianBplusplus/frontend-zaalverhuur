@@ -1,8 +1,18 @@
 import React from "react";
 
-const ReservationPageSummary = (props) => {
+const ReservationPageSummary = ({ state }) => {
   // ---------------- Variables ---------------- //
-  const { pickedDayPart, pickedSeatPlan, pickedMeal , pickedExtraCatering, mealPrice, drinkPrice, extraCateringPrice, locationPrice } = props
+  const {
+    pickedDayPart,
+    pickedSeatPlan,
+    pickedMeal,
+    pickedExtraCatering,
+    pickedDrink,
+    locationPrice,
+    mealPrice,
+    drinkPrice,
+    extraCateringPrice,
+  } = state;
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -53,7 +63,8 @@ const ReservationPageSummary = (props) => {
           {pickedSeatPlan && <li style={liStyle}>{pickedSeatPlan}</li>}
           {pickedMeal && <li>Lunch</li>}
           {pickedMeal && <li style={liStyle}>{pickedMeal}</li>}
-          {pickedExtraCatering && <li>Extra's</li>}
+          {(pickedExtraCatering && <li>Extra's</li>) || (pickedDrink && <li>Extra's</li>)}
+          {pickedDrink && <li style={liStyle}>{pickedDrink}</li>}
           {pickedExtraCatering && <li style={liStyle}>{pickedExtraCatering}</li>}
         </ul>
       </div>

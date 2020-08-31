@@ -20,22 +20,22 @@ const LandingPageContainer = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   // ---------------- Functions ---------------- //
+  const fetchAPI = async () => {
+    setIsLoading(true);
+    setIsError(false);
+    try {
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/api`);
+      console.log("API response Landing Page", response.data);
+      setApiData(response.data);
+    } catch (error) {
+      setIsError(true);
+      console.error(error);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    const fetchAPI = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + `/api`);
-        console.log("API response Landing Page", response.data);
-        setApiData(response.data);
-      } catch (error) {
-        setIsError(true);
-        console.error(error);
-      }
-      setIsLoading(false);
-    };
     fetchAPI();
   }, []);
 

@@ -14,12 +14,11 @@ const HeaderForSmallScreen = () => {
     open: { opacity: 1, x: "0" },
     closed: { opacity: 0, x: "-100%" },
   };
-  const divHeight = open ? "170px" : "35px";
 
   // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
-    height: divHeight,
+    height: open ? "170px" : "35px",
     transition: "ease 0.5s",
   };
 

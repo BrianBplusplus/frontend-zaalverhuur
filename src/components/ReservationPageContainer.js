@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import ReservationPageCatering from "./ReservationPageCatering";
 import ReservationPageDayPart from "./ReservationPageDayPart";
@@ -15,22 +15,25 @@ import { imageData, descriptionData, pricesData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
-  const [apiData, setApiData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [pickedDate, setPickedDate] = useState(null);
-  const [pickedDayPart, setPickedDayPart] = useState(null);
-  const [pickedMeal, setPickedMeal] = useState(null);
-  const [pickedDrink, setPickedDrink] = useState(null);
-  const [pickedExtraCatering, setPickedExtraCatering] = useState(null);
-  const [pickedSeatPlan, setPickedSeatplan] = useState(null);
-  const [extraInformation, setExtraInformation] = useState("");
+  const [parentState, setParentState] = useState({
+    apiData: [],
 
-  const [locationPrice, setLocationPrice] = useState(0);
-  const [mealPrice, setMealPrice] = useState(0);
-  const [drinkPrice, setDrinkPrice] = useState(0);
-  const [extraCateringPrice, setExtraCateringPrice] = useState(0);
+    pickedDate: null,
+    pickedDayPart: null,
+    pickedMeal: null,
+    pickedDrink: null,
+    pickedExtraCatering: null,
+    pickedSeatPlan: null,
+    extraInformation: "",
+
+    locationPrice: 0,
+    mealPrice: 0,
+    drinkPrice: 0,
+    extraCateringPrice: 0,
+  });
 
   // ---------------- Variables ---------------- //
   const params = useParams();
@@ -49,69 +52,29 @@ const ReservationPageContainer = () => {
       ? 5
       : 6;
 
-  const props = {
-    apiData,
-
-    pickedDate,
-    setPickedDate,
-    pickedDayPart,
-    setPickedDayPart,
-    pickedMeal,
-    setPickedMeal,
-    pickedDrink,
-    setPickedDrink,
-    pickedExtraCatering,
-    setPickedExtraCatering,
-    pickedSeatPlan,
-    setPickedSeatplan,
-    extraInformation,
-    setExtraInformation,
-
-    locationPrice,
-    setLocationPrice,
-    mealPrice,
-    setMealPrice,
-    drinkPrice,
-    setDrinkPrice,
-    extraCateringPrice,
-    setExtraCateringPrice,
+  // ---------------- Functions ---------------- //
+  const fetchAPI = async () => {
+    setIsLoading(true);
+    setIsError(false);
+    try {
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      console.log("API response Reservation page", response.data);
+      setParentState({
+        ...parentState,
+        apiData: response.data,
+        locationPrice: pricesData[paramsArrayIndex],
+      });
+    } catch (error) {
+      setIsError(true);
+      console.error(error);
+    }
+    setIsLoading(false);
   };
 
-  // ---------------- Functions ---------------- //
   useEffect(() => {
     window.scrollTo(0, 0);
-    setLocationPrice(pricesData[paramsArrayIndex]);
-
-    const fetchAPI = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-        console.log("API response Reservation page", response.data);
-
-        setApiData(response.data);
-
-        // Automatically sets the seatplan if only one is available
-        if (response.data.seatplans.length === 1) {
-          setPickedSeatplan(response.data.seatplans[0].name);
-        }
-      } catch (error) {
-        setIsError(true);
-        console.error(error);
-      }
-      setIsLoading(false);
-    };
     fetchAPI();
-  }, [params, paramsArrayIndex]);
-
-  const handleCheckout = () => {
-    console.log("Name: " + apiData.name);
-    console.log("Daypart: " + pickedDayPart);
-    console.log("Meal: " + pickedMeal);
-    console.log("Extra: " + pickedExtraCatering);
-    console.log("Seatplan: " + pickedSeatPlan);
-    console.log("Extra information: " + extraInformation);
-  };
+  }, []);
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -150,29 +113,29 @@ const ReservationPageContainer = () => {
     height: "250px",
     objectFit: "cover",
   };
-
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
+        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
-        <h2>{apiData.name}</h2>
+        <h2>{parentState.apiData.name}</h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
         <div style={divDayPartAndSeatPlanStyle}>
-          <ReservationPageDayPart {...props} />
+          <ReservationPageDayPart state={parentState} setState={setParentState} />
 
-          <ReservationPageSeatPlans {...props} />
+          <ReservationPageSeatPlans state={parentState} setState={setParentState} />
         </div>
-        <ReservationPageCatering {...props} />
+        <ReservationPageCatering state={parentState} setState={setParentState} />
       </div>
       <div style={rightStyle}>
-        <DatePicker {...props} />
+        <DatePicker state={parentState} setState={setParentState} />
 
-        <ReservationPageSummary {...props} />
+        <ReservationPageSummary state={parentState} />
 
         <LargeButton text="Reserveren" />
       </div>
