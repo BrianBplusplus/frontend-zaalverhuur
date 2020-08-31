@@ -2,12 +2,12 @@ import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
 
-const ReservationPageSeatPlans = (props) => {
+const ReservationPageSeatPlans = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
-  const { stateProps } = props;
+  const { apiData } = state;
   // ---------------- Functions ---------------- //
   const handleClickPickedSeatPlan = (seatPlanChoice) => {
-    props.setStateProps({ ...props.stateProps, pickedSeatPlan: seatPlanChoice });
+    setState({ ...state, pickedSeatPlan: seatPlanChoice });
   };
 
   // ---------------- Styling ------------------ //
@@ -37,8 +37,8 @@ const ReservationPageSeatPlans = (props) => {
     <div style={divStyle}>
       <h4 style={h4Style}>Opstelling</h4>
       <ul style={ulStyle}>
-        {stateProps.apiData.seatplans &&
-          stateProps.apiData.seatplans.map((seatplan, index) => {
+        {apiData.seatplans &&
+          apiData.seatplans.map((seatplan, index) => {
             return (
               <li key={index} onClick={() => handleClickPickedSeatPlan(seatplan.name)}>
                 <TransparentButton text={seatplan.name} />

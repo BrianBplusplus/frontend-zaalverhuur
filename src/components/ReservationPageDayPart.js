@@ -2,10 +2,10 @@ import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
 
-const ReservationPageDayPart = (props) => {
+const ReservationPageDayPart = ({ state, setState }) => {
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
-    props.setStateProps({ ...props.stateProps, pickedDayPart: dayPartChoice });
+    setState({ ...state, pickedDayPart: dayPartChoice });
   };
 
   // ---------------- Styling ------------------ //

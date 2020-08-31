@@ -2,35 +2,35 @@ import React from "react";
 
 import TransparentButton from "./assets/TransparentButton";
 
-const ReservationPageCatering = (props) => {
+const ReservationPageCatering = ({ state, setState }) => {
   // ---------------- Functions ---------------- //
   const handleClickPickedMeal = (mealChoice, mealChoicePrice) => {
-    props.setStateProps({
-      ...props.stateProps,
+    setState({
+      ...state,
       pickedMeal: mealChoice,
       mealPrice: mealChoicePrice,
     });
   };
 
   const handleClickPickedDrink = (drinkChoice, drinkChoicePrice) => {
-    props.setStateProps({
-      ...props.stateProps,
+    setState({
+      ...state,
       pickedDrink: drinkChoice,
       drinkPrice: drinkChoicePrice,
     });
   };
 
   const handleClickPickedExtraCatering = (cateringChoice, cateringChoicePrice) => {
-    props.setStateProps({
-      ...props.stateProps,
+    setState({
+      ...state,
       pickedExtraCatering: cateringChoice,
       extraCateringPrice: cateringChoicePrice,
     });
   };
 
   const handleExtraInformation = (userInput) => {
-    props.setStateProps({
-      ...props.stateProps,
+    setState({
+      ...state,
       extraInformation: userInput,
     });
   };
@@ -131,7 +131,7 @@ const ReservationPageCatering = (props) => {
         <h4 style={h4Style}>Extra wensen</h4>
         <textarea
           style={textAreaStyle}
-          value={props.extraMealInformation}
+          value={state.extraMealInformation}
           onChange={(event) => handleExtraInformation(event.target.value)}
           rows="4"
           name="description"

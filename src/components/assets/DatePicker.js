@@ -2,12 +2,11 @@ import React from "react";
 import DayPicker from "react-day-picker";
 import "./DatePickerStyle.css";
 
-const DatePicker = (props) => {
+const DatePicker = ({ state, setState }) => {
   // ---------------- Functions ---------------- //
   const handlePickDate = (day, { selected }) => {
-    //props.setPickedDate(selected ? undefined : day);
-    props.setStateProps({
-      ...props.stateProps,
+    setState({
+      ...state,
       pickedDate: selected ? undefined : day,
     });
   };
@@ -15,7 +14,7 @@ const DatePicker = (props) => {
   // ---------------- Render ------------------- //
   return (
     <DayPicker
-      selectedDays={props.pickedDate}
+      selectedDays={state.pickedDate}
       onDayClick={handlePickDate}
       disabledDays={{ daysOfWeek: [0] }}
     />

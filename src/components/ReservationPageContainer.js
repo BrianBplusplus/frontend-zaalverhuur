@@ -18,7 +18,7 @@ const ReservationPageContainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [stateProps, setStateProps] = useState({
+  const [parentState, setParentState] = useState({
     apiData: [],
 
     pickedDate: null,
@@ -52,11 +52,6 @@ const ReservationPageContainer = () => {
       ? 5
       : 6;
 
-  const props = {
-    stateProps,
-    setStateProps,
-  };
-
   // ---------------- Functions ---------------- //
   const fetchAPI = async () => {
     setIsLoading(true);
@@ -64,8 +59,8 @@ const ReservationPageContainer = () => {
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
       console.log("API response Reservation page", response.data);
-      setStateProps({
-        ...stateProps,
+      setParentState({
+        ...parentState,
         apiData: response.data,
         locationPrice: pricesData[paramsArrayIndex],
       });
@@ -78,7 +73,6 @@ const ReservationPageContainer = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     fetchAPI();
   }, []);
 
@@ -120,6 +114,7 @@ const ReservationPageContainer = () => {
     objectFit: "cover",
   };
 
+  console.log("State", parentState);
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
@@ -128,20 +123,20 @@ const ReservationPageContainer = () => {
         {isError && <ErrorMessage />}
 
         <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
-        <h2>{stateProps.apiData.name}</h2>
+        <h2>{parentState.apiData.name}</h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
 
         <div style={divDayPartAndSeatPlanStyle}>
-          <ReservationPageDayPart {...props} />
+          <ReservationPageDayPart state={parentState} setState={setParentState} />
 
-          <ReservationPageSeatPlans {...props} />
+          <ReservationPageSeatPlans state={parentState} setState={setParentState} />
         </div>
-        <ReservationPageCatering {...props} />
+        <ReservationPageCatering state={parentState} setState={setParentState} />
       </div>
       <div style={rightStyle}>
-        <DatePicker {...props} />
+        <DatePicker state={parentState} setState={setParentState} />
 
-        <ReservationPageSummary {...props} />
+        <ReservationPageSummary state={parentState} />
 
         <LargeButton text="Reserveren" />
       </div>
