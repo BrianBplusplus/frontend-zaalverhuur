@@ -26,7 +26,7 @@ const SelectionCircle = ({ isSelected, onClick }) => {
     left: "-10px",
     right: "-10px",
     bottom: "-10px",
-    border: "5px solid #fff",
+    border: "3px solid #fff",
     borderRadius: "50%",
   };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 import { AnimateSharedLayout } from "framer-motion";
 
@@ -38,6 +39,7 @@ const ReservationPageContainer = () => {
   });
 
   // ---------------- Variables ---------------- //
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const { activeSelection, apiData } = parentState;
   const selectionBullets = [0, 1, 2];
   const params = useParams();
@@ -85,7 +87,8 @@ const ReservationPageContainer = () => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
-    justifyContent: "space-around",
+    flexWrap: isMobile ? "wrap" : "nowrap",
+    justifyContent: "center",
 
     minHeight: "30vh",
     backgroundColor: "#fff",
@@ -108,6 +111,7 @@ const ReservationPageContainer = () => {
     boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
     borderBottomLeftRadius: "5px",
     borderBottomRightRadius: "5px",
+    marginTop: isMobile ? "20px" : "0",
   };
 
   const selectionBulletStyle = {

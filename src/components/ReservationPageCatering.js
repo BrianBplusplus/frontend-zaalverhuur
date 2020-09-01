@@ -47,7 +47,6 @@ const ReservationPageCatering = ({ state, setState }) => {
     flexWrap: "wrap",
 
     margin: "0",
-    height: "150px",
     border: "1px solid #ed008c",
     borderRadius: "3px",
     padding: "10px",
