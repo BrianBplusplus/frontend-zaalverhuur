@@ -3,14 +3,15 @@ import React from "react";
 import TransparentButton from "./assets/TransparentButton";
 
 const ReservationPageDayPart = ({ state, setState }) => {
+  // ---------------- Variables ---------------- //
+  const { activeSelection } = state;
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
-    setState({ ...state, pickedDayPart: dayPartChoice });
+    setState({ ...state, pickedDayPart: dayPartChoice, activeSelection: activeSelection + 1 });
   };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    width: "50%",
     margin: "0 5px 0 5px",
   };
 

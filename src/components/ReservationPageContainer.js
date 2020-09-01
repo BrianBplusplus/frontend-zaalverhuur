@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AnimateSharedLayout } from "framer-motion";
 
 import ReservationPageCatering from "./ReservationPageCatering";
 import ReservationPageDayPart from "./ReservationPageDayPart";
@@ -8,6 +9,7 @@ import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
 import ReservationPageSummary from "./ReservationPageSummary";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
+import SelectionCircle from "./assets/SelectionCircle";
 import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
 import DatePicker from "./assets/DatePicker";
@@ -17,9 +19,9 @@ const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
   const [parentState, setParentState] = useState({
     apiData: [],
+    activeSelection: [],
 
     pickedDate: null,
     pickedDayPart: null,
@@ -36,6 +38,8 @@ const ReservationPageContainer = () => {
   });
 
   // ---------------- Variables ---------------- //
+  const { activeSelection, apiData } = parentState;
+  const selectionBullets = [0, 1, 2];
   const params = useParams();
   const paramsArrayIndex =
     params.id === "1364"
@@ -65,6 +69,7 @@ const ReservationPageContainer = () => {
           ...parentState,
           apiData: response.data,
           locationPrice: pricesData[paramsArrayIndex],
+          activeSelection: 0,
         });
       } catch (error) {
         setIsError(true);
@@ -87,10 +92,6 @@ const ReservationPageContainer = () => {
     padding: "15px",
   };
 
-  const divDayPartAndSeatPlanStyle = {
-    display: "flex",
-  };
-
   const pStyle = {
     textAlign: "justify",
   };
@@ -109,6 +110,12 @@ const ReservationPageContainer = () => {
     borderBottomRightRadius: "5px",
   };
 
+  const selectionBulletStyle = {
+    display: "flex",
+    justifyContent: "center",
+    padding: "0",
+  };
+
   const imageStyle = {
     width: "100%",
     height: "250px",
@@ -123,15 +130,34 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <h2>{parentState.apiData.name}</h2>
-        <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
+        {!isLoading && <h2>{apiData.name}</h2>}
+        {!isLoading && <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>}
 
-        <div style={divDayPartAndSeatPlanStyle}>
+        {!isLoading && (
+          <AnimateSharedLayout>
+            <ul style={selectionBulletStyle}>
+              {selectionBullets.map((selectionBullet) => (
+                <SelectionCircle
+                  key={selectionBullet}
+                  isSelected={activeSelection === selectionBullet}
+                  onClick={() =>
+                    setParentState({ ...parentState, activeSelection: selectionBullet })
+                  }
+                />
+              ))}
+            </ul>
+          </AnimateSharedLayout>
+        )}
+
+        {activeSelection === 0 && (
           <ReservationPageDayPart state={parentState} setState={setParentState} />
-
+        )}
+        {activeSelection === 1 && (
           <ReservationPageSeatPlans state={parentState} setState={setParentState} />
-        </div>
-        <ReservationPageCatering state={parentState} setState={setParentState} />
+        )}
+        {activeSelection === 2 && (
+          <ReservationPageCatering state={parentState} setState={setParentState} />
+        )}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />

@@ -8,7 +8,7 @@ const NavButton = (props) => {
     backgroundColor: "#fff",
     border: "1px solid #dedede",
     borderRadius: "3px",
-    margin: "5px 0px 5px 10px",
+    marginLeft: "10px",
     padding: "15px",
     paddingTop: "10px",
     paddingBottom: "10px",

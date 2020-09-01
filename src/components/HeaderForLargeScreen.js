@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 import NavButton from "./assets/NavButton";
 import logo from "../img/dnblogo.jpg";
@@ -35,7 +34,7 @@ const HeaderForLargeScreen = () => {
       <ul style={ulStyle}>
         <li>
           <Link to="/">
-            <NavButton text="terug naar overzicht" />
+            <NavButton text="Terug naar overzicht" />
           </Link>
         </li>
         <li>
