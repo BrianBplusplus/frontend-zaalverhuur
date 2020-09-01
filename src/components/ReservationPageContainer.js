@@ -89,13 +89,11 @@ const ReservationPageContainer = () => {
     display: "flex",
     flexWrap: isMobile ? "wrap" : "nowrap",
     justifyContent: "center",
-
     minHeight: "30vh",
-    backgroundColor: "#fff",
-    padding: "15px",
   };
 
   const pStyle = {
+    fontSize: "14px",
     textAlign: "justify",
   };
 
@@ -108,23 +106,53 @@ const ReservationPageContainer = () => {
     flexWrap: "wrap",
     flexDirection: "column",
     justifyContent: "space-between",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
-    borderBottomLeftRadius: "5px",
-    borderBottomRightRadius: "5px",
+    backgroundColor: "#fff",
     marginTop: isMobile ? "20px" : "0",
+    marginBottom: "20px",
   };
 
   const selectionBulletStyle = {
     display: "flex",
     justifyContent: "center",
     padding: "0",
+    margin: "0",
   };
 
   const imageStyle = {
+    marginBottom: "20px",
     width: "100%",
-    height: "250px",
+    height: "200px",
     objectFit: "cover",
   };
+
+  const flexboxStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+  };
+
+  const testStyle1 = {
+    backgroundColor: "#fff",
+    padding: "20px",
+    width: "65%",
+  };
+
+  const testStyle2 = {
+    ...testStyle1,
+    padding: "0",
+    width: "29%",
+  };
+
+  const h2Style = {
+    margin: "0",
+    color: "#ed008c",
+  };
+
+  const backgroundColorStyle = {
+    backgroundColor: "#fff",
+    padding: "20px",
+    margin: "20px 0 20px",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
@@ -134,40 +162,47 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        {!isLoading && <h2>{apiData.name}</h2>}
-        {!isLoading && <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>}
+        {!isLoading && (
+          <div style={flexboxStyle}>
+            <div style={testStyle1}>
+              <h2 style={h2Style}>{apiData.name}</h2>
+              <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
+            </div>
+            <div style={testStyle2}>opsomming data</div>
+          </div>
+        )}
 
         {!isLoading && (
-          <AnimateSharedLayout>
-            <ul style={selectionBulletStyle}>
-              {selectionBullets.map((selectionBullet) => (
-                <SelectionCircle
-                  key={selectionBullet}
-                  isSelected={activeSelection === selectionBullet}
-                  onClick={() =>
-                    setParentState({ ...parentState, activeSelection: selectionBullet })
-                  }
-                />
-              ))}
-            </ul>
-          </AnimateSharedLayout>
-        )}
+          <div style={backgroundColorStyle}>
+            <AnimateSharedLayout>
+              <ul style={selectionBulletStyle}>
+                {selectionBullets.map((selectionBullet) => (
+                  <SelectionCircle
+                    key={selectionBullet}
+                    isSelected={activeSelection === selectionBullet}
+                    onClick={() =>
+                      setParentState({ ...parentState, activeSelection: selectionBullet })
+                    }
+                  />
+                ))}
+              </ul>
+            </AnimateSharedLayout>
 
-        {activeSelection === 0 && (
-          <ReservationPageDayPart state={parentState} setState={setParentState} />
-        )}
-        {activeSelection === 1 && (
-          <ReservationPageSeatPlans state={parentState} setState={setParentState} />
-        )}
-        {activeSelection === 2 && (
-          <ReservationPageCatering state={parentState} setState={setParentState} />
+            {activeSelection === 0 && (
+              <ReservationPageDayPart state={parentState} setState={setParentState} />
+            )}
+            {activeSelection === 1 && (
+              <ReservationPageSeatPlans state={parentState} setState={setParentState} />
+            )}
+            {activeSelection === 2 && (
+              <ReservationPageCatering state={parentState} setState={setParentState} />
+            )}
+          </div>
         )}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />
-
         <ReservationPageSummary state={parentState} />
-
         <LargeButton text="Reserveren" />
       </div>
     </div>

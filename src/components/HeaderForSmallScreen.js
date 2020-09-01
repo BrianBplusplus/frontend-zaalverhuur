@@ -18,7 +18,7 @@ const HeaderForSmallScreen = () => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
-    height: open ? "170px" : "35px",
+    height: open ? "150px" : "35px",
     transition: "ease 0.5s",
   };
 
