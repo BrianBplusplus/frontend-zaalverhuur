@@ -40,7 +40,8 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { activeSelection, apiData } = parentState;
+  const { activeSelection, apiData, pickedDate } = parentState;
+
   const selectionBullets = [0, 1, 2];
   const params = useParams();
   const paramsArrayIndex =
@@ -59,27 +60,37 @@ const ReservationPageContainer = () => {
       : 6;
 
   // ---------------- Functions ---------------- //
+  const fetchAPI = async () => {
+    setIsLoading(true);
+    setIsError(false);
+    try {
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      console.log("API response Reservation page", response.data);
+      setParentState({
+        ...parentState,
+        apiData: response.data,
+        locationPrice: pricesData[paramsArrayIndex],
+        activeSelection: 0,
+      });
+    } catch (error) {
+      setIsError(true);
+      console.error(error);
+    }
+    setIsLoading(false);
+  };
+
+  const sendMail = () => {
+    if (pickedDate) {
+      axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
+        ...parentState,
+      });
+      console.log("All data has been entered");
+    } else {
+      console.log("missing info");
+    }
+  };
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-        console.log("API response Reservation page", response.data);
-        setParentState({
-          ...parentState,
-          apiData: response.data,
-          locationPrice: pricesData[paramsArrayIndex],
-          activeSelection: 0,
-        });
-      } catch (error) {
-        setIsError(true);
-        console.error(error);
-      }
-      setIsLoading(false);
-    };
-
     window.scrollTo(0, 0);
     fetchAPI();
   }, [params.id, paramsArrayIndex]);
@@ -203,6 +214,7 @@ const ReservationPageContainer = () => {
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />
         <ReservationPageSummary state={parentState} />
+        <button onClick={() => sendMail()}>sendmail</button>
         <LargeButton text="Reserveren" />
       </div>
     </div>
