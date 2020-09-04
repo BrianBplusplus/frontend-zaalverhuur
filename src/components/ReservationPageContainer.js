@@ -2,20 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
-import { AnimateSharedLayout } from "framer-motion";
 
-import ReservationPageCatering from "./ReservationPageCatering";
-import ReservationPageDayPart from "./ReservationPageDayPart";
-import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
 import ReservationPageSummary from "./ReservationPageSummary";
 import ReservationPageInfo from "./ReservationPageInfo";
+import ReservationPageCards from "./ReservationPageCards";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
-import SelectionCircle from "./assets/SelectionCircle";
 import LargeButton from "./assets/LargeButton";
 import ErrorMessage from "./assets/ErrorMessage";
 import DatePicker from "./assets/DatePicker";
-import { imageData, descriptionData, pricesData } from "./assets/locationData";
+import { imageData, pricesData } from "./assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -41,9 +37,8 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { activeSelection, apiData, pickedDate } = parentState;
+  const { pickedDate } = parentState;
 
-  const selectionBullets = [0, 1, 2];
   const params = useParams();
   const paramsArrayIndex =
     params.id === "1364"
@@ -118,24 +113,11 @@ const ReservationPageContainer = () => {
     marginBottom: "20px",
   };
 
-  const selectionBulletStyle = {
-    display: "flex",
-    justifyContent: "center",
-    padding: "0",
-    margin: "0",
-  };
-
   const imageStyle = {
     marginBottom: "20px",
     width: "100%",
     height: "200px",
     objectFit: "cover",
-  };
-
-  const backgroundColorStyle = {
-    backgroundColor: "#fff",
-    padding: "20px",
-    margin: "20px 0 20px",
   };
 
   // ---------------- Render ------------------- //
@@ -149,33 +131,7 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <ReservationPageInfo state={parentState} />}
 
-        {!isLoading && (
-          <div style={backgroundColorStyle}>
-            <AnimateSharedLayout>
-              <ul style={selectionBulletStyle}>
-                {selectionBullets.map((selectionBullet) => (
-                  <SelectionCircle
-                    key={selectionBullet}
-                    isSelected={activeSelection === selectionBullet}
-                    onClick={() =>
-                      setParentState({ ...parentState, activeSelection: selectionBullet })
-                    }
-                  />
-                ))}
-              </ul>
-            </AnimateSharedLayout>
-
-            {activeSelection === 0 && (
-              <ReservationPageDayPart state={parentState} setState={setParentState} />
-            )}
-            {activeSelection === 1 && (
-              <ReservationPageSeatPlans state={parentState} setState={setParentState} />
-            )}
-            {activeSelection === 2 && (
-              <ReservationPageCatering state={parentState} setState={setParentState} />
-            )}
-          </div>
-        )}
+        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />

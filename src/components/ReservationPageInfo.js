@@ -50,6 +50,7 @@ const ReservationPageInfo = ({ state }) => {
     textAlign: "justify",
   };
 
+  // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
