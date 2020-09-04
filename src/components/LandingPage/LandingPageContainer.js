@@ -61,6 +61,7 @@ const LandingPageContainer = () => {
   return (
     <div>
       <img alt="headerimage" style={imageStyle} src={headerImage} />
+
       <LandingPageInfo />
 
       <div style={divStyle}>

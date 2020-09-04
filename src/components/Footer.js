@@ -16,13 +16,14 @@ const Footer = () => {
   const h2Style = {
     fontSize: "1.3rem",
     fontWeight: "normal",
+    textTransform: "uppercase",
   };
 
   // ---------------- Render ---------------- //
   return (
     <div style={divStyle}>
       <div>
-        <h2 style={h2Style}>KUNNEN WIJ JE HELPEN?</h2>
+        <h2 style={h2Style}>Kunnen wij je helpen?</h2>
         <ul>
           <li>Verlengen</li>
           <li>Reserveren</li>
@@ -32,7 +33,7 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-        <h2 style={h2Style}>BLIJF OP DE HOOGTE!</h2>
+        <h2 style={h2Style}>Blijf op de hoogte!</h2>
         <ul>
           <li>Facebook</li>
           <li>Instagram</li>
@@ -42,7 +43,7 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-        <h2 style={h2Style}>INFORMATIEPUNTEN</h2>
+        <h2 style={h2Style}>Informatiepunten</h2>
         <ul>
           <li>ZEPservice</li>
           <li>Seats2meet</li>
@@ -52,7 +53,7 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-        <h2 style={h2Style}>DENIEUWEBIBLIOTHEEK</h2>
+        <h2 style={h2Style}>Denieuwebibliotheek</h2>
         <ul>
           <li>Over denieuwebibliotheek</li>
           <li>Werken bij de bibliotheek</li>

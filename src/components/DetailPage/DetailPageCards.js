@@ -10,7 +10,8 @@ import SelectionCircle from "../assets/SelectionCircle";
 const ReservationPageCards = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const { activeSelection } = state;
-  const selectionBullets = [0, 1, 2];
+  const selectionBullets = [0, 1, 2, 3, 4, 5, 6];
+
   // ---------------- Styling ------------------ //
   const divStyle = {
     backgroundColor: "#fff",
@@ -43,6 +44,7 @@ const ReservationPageCards = ({ state, setState }) => {
       {activeSelection === 0 && <ReservationPageDayPart state={state} setState={setState} />}
       {activeSelection === 1 && <ReservationPageSeatPlans state={state} setState={setState} />}
       {activeSelection === 2 && <ReservationPageCatering state={state} setState={setState} />}
+      {activeSelection === 3 && <div>Hola</div>}
     </div>
   );
 };

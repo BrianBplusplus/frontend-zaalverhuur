@@ -85,9 +85,6 @@ const ReservationPageCatering = ({ state, setState }) => {
             <li onClick={() => handleClickPickedMeal("Kleine Lunch", 50)}>
               <TransparentButton text="Kleine Lunch" />
             </li>
-            <li onClick={() => handleClickPickedMeal("Grote Maaltijd", 100)}>
-              <TransparentButton text="Grote Maaltijd" />
-            </li>
             <li onClick={() => handleClickPickedMeal("Restaurant", 150)}>
               <TransparentButton text="Restaurant" />
             </li>
