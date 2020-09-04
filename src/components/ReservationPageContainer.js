@@ -8,6 +8,7 @@ import ReservationPageCatering from "./ReservationPageCatering";
 import ReservationPageDayPart from "./ReservationPageDayPart";
 import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
 import ReservationPageSummary from "./ReservationPageSummary";
+import ReservationPageInfo from "./ReservationPageInfo";
 
 import LoadingSpinner from "./assets/LoadingSpinner";
 import SelectionCircle from "./assets/SelectionCircle";
@@ -103,11 +104,6 @@ const ReservationPageContainer = () => {
     minHeight: "30vh",
   };
 
-  const pStyle = {
-    fontSize: "14px",
-    textAlign: "justify",
-  };
-
   const leftStyle = {
     marginRight: "10px",
   };
@@ -136,28 +132,6 @@ const ReservationPageContainer = () => {
     objectFit: "cover",
   };
 
-  const flexboxStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-  };
-
-  const testStyle1 = {
-    backgroundColor: "#fff",
-    padding: "20px",
-    width: "65%",
-  };
-
-  const testStyle2 = {
-    ...testStyle1,
-    padding: "0",
-    width: "29%",
-  };
-
-  const h2Style = {
-    margin: "0",
-    color: "#ed008c",
-  };
-
   const backgroundColorStyle = {
     backgroundColor: "#fff",
     padding: "20px",
@@ -173,15 +147,7 @@ const ReservationPageContainer = () => {
         {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        {!isLoading && (
-          <div style={flexboxStyle}>
-            <div style={testStyle1}>
-              <h2 style={h2Style}>{apiData.name}</h2>
-              <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
-            </div>
-            <div style={testStyle2}>opsomming data</div>
-          </div>
-        )}
+        {!isLoading && <ReservationPageInfo state={parentState} />}
 
         {!isLoading && (
           <div style={backgroundColorStyle}>
