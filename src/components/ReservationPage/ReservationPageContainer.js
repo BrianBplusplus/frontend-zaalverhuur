@@ -7,11 +7,11 @@ import ReservationPageSummary from "./ReservationPageSummary";
 import ReservationPageInfo from "./ReservationPageInfo";
 import ReservationPageCards from "./ReservationPageCards";
 
-import LoadingSpinner from "./assets/LoadingSpinner";
-import LargeButton from "./assets/LargeButton";
-import ErrorMessage from "./assets/ErrorMessage";
-import DatePicker from "./assets/DatePicker";
-import { imageData, pricesData } from "./assets/locationData";
+import LoadingSpinner from "../assets/LoadingSpinner";
+import LargeButton from "../assets/LargeButton";
+import ErrorMessage from "../assets/ErrorMessage";
+import DatePicker from "../assets/DatePicker";
+import { imageData, pricesData } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -126,8 +126,9 @@ const ReservationPageContainer = () => {
       <div style={leftStyle}>
         <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
 
-        {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
+
+        {isLoading && <LoadingSpinner />}
 
         {!isLoading && <ReservationPageInfo state={parentState} />}
 

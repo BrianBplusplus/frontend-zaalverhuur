@@ -4,8 +4,8 @@ import { useMediaQuery } from "react-responsive";
 
 import HeaderForLargeScreen from "./components/HeaderForLargeScreen";
 import HeaderForSmallScreen from "./components/HeaderForSmallScreen";
-import LandingPageContainer from "./components/LandingPageContainer";
-import ReservationPageContainer from "./components/ReservationPageContainer";
+import LandingPageContainer from "./components/LandingPage/LandingPageContainer";
+import ReservationPageContainer from "./components/ReservationPage/ReservationPageContainer";
 import Footer from "./components/Footer";
 
 function App() {

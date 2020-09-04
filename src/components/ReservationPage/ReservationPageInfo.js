@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { descriptionData } from "./assets/locationData";
+import { descriptionData } from "../assets/locationData";
 
 const ReservationPageInfo = ({ state }) => {
   // ---------------- Variables ---------------- //

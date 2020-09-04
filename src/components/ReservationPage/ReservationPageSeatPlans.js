@@ -1,6 +1,6 @@
 import React from "react";
 
-import TransparentButton from "./assets/TransparentButton";
+import TransparentButton from "../assets/TransparentButton";
 
 const ReservationPageSeatPlans = ({ state, setState }) => {
   // ---------------- Variables ---------------- //

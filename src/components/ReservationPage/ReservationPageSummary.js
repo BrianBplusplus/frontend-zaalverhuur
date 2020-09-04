@@ -15,9 +15,7 @@ const ReservationPageSummary = ({ state }) => {
   } = state;
 
   // ---------------- Styling ------------------ //
-  const divStyle = {
-    //  height: "300px",
-  };
+  const divStyle = {};
 
   const ulStyle = {
     listStyle: "none",

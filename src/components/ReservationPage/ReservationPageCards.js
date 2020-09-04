@@ -5,7 +5,7 @@ import ReservationPageCatering from "./ReservationPageCatering";
 import ReservationPageDayPart from "./ReservationPageDayPart";
 import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
 
-import SelectionCircle from "./assets/SelectionCircle";
+import SelectionCircle from "../assets/SelectionCircle";
 
 const ReservationPageCards = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
