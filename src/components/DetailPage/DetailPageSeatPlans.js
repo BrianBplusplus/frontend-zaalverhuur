@@ -1,18 +1,17 @@
 import React from "react";
 
-import TransparentButton from "./assets/TransparentButton";
+import TransparentButton from "../assets/TransparentButton";
 
 const ReservationPageSeatPlans = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
-  const { apiData } = state;
+  const { apiData, activeSelection } = state;
   // ---------------- Functions ---------------- //
   const handleClickPickedSeatPlan = (seatPlanChoice) => {
-    setState({ ...state, pickedSeatPlan: seatPlanChoice });
+    setState({ ...state, pickedSeatPlan: seatPlanChoice, activeSelection: activeSelection + 1 });
   };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
-    width: "50%",
     margin: "0 5px 0 5px",
   };
 

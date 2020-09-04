@@ -4,8 +4,8 @@ import { useMediaQuery } from "react-responsive";
 
 import HeaderForLargeScreen from "./components/HeaderForLargeScreen";
 import HeaderForSmallScreen from "./components/HeaderForSmallScreen";
-import LandingPageContainer from "./components/LandingPageContainer";
-import ReservationPageContainer from "./components/ReservationPageContainer";
+import LandingPageContainer from "./components/LandingPage/LandingPageContainer";
+import DetailPageContainer from "./components/DetailPage/DetailPageContainer";
 import Footer from "./components/Footer";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       {isDesktop ? <HeaderForLargeScreen /> : <HeaderForSmallScreen />}
 
       <Route path="/" exact component={LandingPageContainer} />
-      <Route path="/:id" exact component={ReservationPageContainer} />
+      <Route path="/:id" exact component={DetailPageContainer} />
 
       <Footer />
     </div>

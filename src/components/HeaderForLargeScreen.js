@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
+import NavButton from "./assets/NavButton";
 import logo from "../img/dnblogo.jpg";
 
 const HeaderForLargeScreen = () => {
@@ -12,6 +12,7 @@ const HeaderForLargeScreen = () => {
     justifyContent: "space-between",
 
     padding: "20px",
+    paddingRight: "0",
     margin: "auto",
   };
 
@@ -19,12 +20,9 @@ const HeaderForLargeScreen = () => {
     display: "flex",
     listStyle: "none",
     margin: "0 10px",
+    marginRight: "0",
     padding: "0",
-  };
-
-  const listStyle = {
-    fontSize: "1.00833rem",
-    margin: "0 10px",
+    color: "#000",
   };
 
   // ---------------- Render ------------------- //
@@ -34,17 +32,14 @@ const HeaderForLargeScreen = () => {
         <img alt="headerlogo" src={logo} />
       </Link>
       <ul style={ulStyle}>
-        <li style={listStyle}>
-          <motion.a href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html">
-            Lid worden
-          </motion.a>
+        <li>
+          <Link to="/">
+            <NavButton text="Terug naar overzicht" />
+          </Link>
         </li>
-        <li style={listStyle}>
-          <a href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010">Catalogus</a>
-        </li>
-        <li style={listStyle}>
-          <a href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?prt=INTERNET&taal=nl_NL&var=portal&event=private&vestnr=8010">
-            Aanmelden Mijn menu
+        <li>
+          <a href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010">
+            <NavButton text="Catalogus" />
           </a>
         </li>
       </ul>

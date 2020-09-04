@@ -7,7 +7,7 @@ const LoadingSpinner = () => {
     width: "3rem",
     height: "3rem",
     boxSizing: "border-box",
-    margin: "0 auto",
+    margin: "40px auto",
   };
 
   const circleStyle = {

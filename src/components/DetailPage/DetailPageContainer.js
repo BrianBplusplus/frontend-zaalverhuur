@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
-import ReservationPageCatering from "./ReservationPageCatering";
-import ReservationPageDayPart from "./ReservationPageDayPart";
-import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
-import ReservationPageSummary from "./ReservationPageSummary";
+import ReservationPageSummary from "./DetailPageSummary";
+import ReservationPageInfo from "./DetailPageInfo";
+import ReservationPageCards from "./DetailPageCards";
 
-import LoadingSpinner from "./assets/LoadingSpinner";
-import LargeButton from "./assets/LargeButton";
-import ErrorMessage from "./assets/ErrorMessage";
-import DatePicker from "./assets/DatePicker";
-import { imageData, descriptionData, pricesData } from "./assets/locationData";
+import LoadingSpinner from "../assets/LoadingSpinner";
+import LargeButton from "../assets/LargeButton";
+import ErrorMessage from "../assets/ErrorMessage";
+import DatePicker from "../assets/DatePicker";
+import { imageData, pricesData } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
   const [parentState, setParentState] = useState({
     apiData: [],
+    activeSelection: [],
 
     pickedDate: null,
     pickedDayPart: null,
@@ -36,6 +36,9 @@ const ReservationPageContainer = () => {
   });
 
   // ---------------- Variables ---------------- //
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const { pickedDate } = parentState;
+
   const params = useParams();
   const paramsArrayIndex =
     params.id === "1364"
@@ -63,6 +66,7 @@ const ReservationPageContainer = () => {
         ...parentState,
         apiData: response.data,
         locationPrice: pricesData[paramsArrayIndex],
+        activeSelection: 0,
       });
     } catch (error) {
       setIsError(true);
@@ -71,27 +75,28 @@ const ReservationPageContainer = () => {
     setIsLoading(false);
   };
 
+  const sendMail = () => {
+    if (pickedDate) {
+      axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
+        ...parentState,
+      });
+      console.log("All data has been entered");
+    } else {
+      console.log("missing info");
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchAPI();
-  }, []);
+  }, [params.id, paramsArrayIndex]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
-    justifyContent: "space-around",
-
+    flexWrap: isMobile ? "wrap" : "nowrap",
+    justifyContent: "center",
     minHeight: "30vh",
-    backgroundColor: "#fff",
-    padding: "15px",
-  };
-
-  const divDayPartAndSeatPlanStyle = {
-    display: "flex",
-  };
-
-  const pStyle = {
-    textAlign: "justify",
   };
 
   const leftStyle = {
@@ -103,40 +108,36 @@ const ReservationPageContainer = () => {
     flexWrap: "wrap",
     flexDirection: "column",
     justifyContent: "space-between",
-    boxShadow: "0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2)",
-    borderBottomLeftRadius: "5px",
-    borderBottomRightRadius: "5px",
+    backgroundColor: "#fff",
+    marginTop: isMobile ? "20px" : "0",
+    marginBottom: "20px",
   };
 
   const imageStyle = {
+    marginBottom: "20px",
     width: "100%",
-    height: "250px",
+    height: "200px",
     objectFit: "cover",
   };
+
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
         <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
 
-        {isLoading && <LoadingSpinner />}
         {isError && <ErrorMessage />}
 
-        <h2>{parentState.apiData.name}</h2>
-        <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
+        {isLoading && <LoadingSpinner />}
 
-        <div style={divDayPartAndSeatPlanStyle}>
-          <ReservationPageDayPart state={parentState} setState={setParentState} />
+        {!isLoading && <ReservationPageInfo state={parentState} />}
 
-          <ReservationPageSeatPlans state={parentState} setState={setParentState} />
-        </div>
-        <ReservationPageCatering state={parentState} setState={setParentState} />
+        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />
-
         <ReservationPageSummary state={parentState} />
-
+        <button onClick={() => sendMail()}>sendmail</button>
         <LargeButton text="Reserveren" />
       </div>
     </div>

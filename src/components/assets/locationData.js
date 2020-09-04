@@ -19,4 +19,4 @@ export const descriptionData = [
   "De ruimte biedt plaats aan 25-50 personen, afhankelijk van de opstelling. Meer ruimte nodig? Geen probleem! Door de schuifwand(en) te openen kunnen we collegezaal 1 en/of 2 toevoegen aan het nieuwe lokaal en ontstaat een zee aan ruimte. Het lokaal beschikt over verrijdbare tafels en is standaard voorzien van de volgende voorzieningen: smartboard (pc, beamer en scherm), flipover en een internetaansluiting. Deze voorzieningen zijn bij de zaalhuur inbegrepen.",
 ];
 
-export const pricesData = [605, 100, 600, 181, 50, 200, 200];
+export const pricesData = [605, 100, 100, 600, 181, 50, 200, 200];

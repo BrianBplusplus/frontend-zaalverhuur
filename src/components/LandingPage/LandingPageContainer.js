@@ -4,10 +4,10 @@ import { useMediaQuery } from "react-responsive";
 
 import LandingPageInfo from "./LandingPageInfo";
 import LandingPageCard from "./LandingPageCard";
-import LoadingSpinner from "./assets/LoadingSpinner";
-import ErrorMessage from "./assets/ErrorMessage";
-import { imageData } from "./assets/locationData";
-import headerImage from "../img/HeaderImage.webp";
+import LoadingSpinner from "../assets/LoadingSpinner";
+import ErrorMessage from "../assets/ErrorMessage";
+import { imageData } from "../assets/locationData";
+import headerImage from "../../img/HeaderImage.webp";
 
 const LandingPageContainer = () => {
   // ---------------- States ------------------- //
@@ -61,6 +61,7 @@ const LandingPageContainer = () => {
   return (
     <div>
       <img alt="headerimage" style={imageStyle} src={headerImage} />
+
       <LandingPageInfo />
 
       <div style={divStyle}>

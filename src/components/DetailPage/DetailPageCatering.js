@@ -1,6 +1,6 @@
 import React from "react";
 
-import TransparentButton from "./assets/TransparentButton";
+import TransparentButton from "../assets/TransparentButton";
 
 const ReservationPageCatering = ({ state, setState }) => {
   // ---------------- Functions ---------------- //
@@ -47,7 +47,6 @@ const ReservationPageCatering = ({ state, setState }) => {
     flexWrap: "wrap",
 
     margin: "0",
-    height: "150px",
     border: "1px solid #ed008c",
     borderRadius: "3px",
     padding: "10px",
@@ -85,9 +84,6 @@ const ReservationPageCatering = ({ state, setState }) => {
             </li>
             <li onClick={() => handleClickPickedMeal("Kleine Lunch", 50)}>
               <TransparentButton text="Kleine Lunch" />
-            </li>
-            <li onClick={() => handleClickPickedMeal("Grote Maaltijd", 100)}>
-              <TransparentButton text="Grote Maaltijd" />
             </li>
             <li onClick={() => handleClickPickedMeal("Restaurant", 150)}>
               <TransparentButton text="Restaurant" />

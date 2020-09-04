@@ -18,7 +18,7 @@ const HeaderForSmallScreen = () => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     padding: "20px",
-    height: open ? "170px" : "35px",
+    height: open ? "150px" : "35px",
     transition: "ease 0.5s",
   };
 
@@ -35,6 +35,10 @@ const HeaderForSmallScreen = () => {
     fontSize: "1.5em",
     fontFamily: "Open Sans, sans-serif",
     color: "#ed008c",
+  };
+
+  const liStyle = {
+    marginBottom: "20px",
   };
 
   const linkStyle = {
@@ -68,22 +72,14 @@ const HeaderForSmallScreen = () => {
         initial={false}
         variants={variants}
       >
-        <li>
-          <a style={aStyle} href="https://www.denieuwebibliotheek.nl/praktisch/lid-worden.html">
-            Lid worden
-          </a>
+        <li style={liStyle}>
+          <Link style={aStyle} to="/">
+            Terug naar overzicht
+          </Link>
         </li>
         <li>
           <a style={aStyle} href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?vestnr=8010">
             Catalogus
-          </a>
-        </li>
-        <li>
-          <a
-            style={aStyle}
-            href="https://webcat.fbn-net.nl/cgi-bin/bx.pl?prt=INTERNET&taal=nl_NL&var=portal&event=private&vestnr=8010"
-          >
-            Aanmelden Mijn menu
           </a>
         </li>
       </motion.ul>
