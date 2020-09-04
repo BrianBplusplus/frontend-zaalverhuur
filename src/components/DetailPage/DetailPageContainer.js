@@ -3,9 +3,9 @@ import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
-import ReservationPageSummary from "./ReservationPageSummary";
-import ReservationPageInfo from "./ReservationPageInfo";
-import ReservationPageCards from "./ReservationPageCards";
+import ReservationPageSummary from "./DetailPageSummary";
+import ReservationPageInfo from "./DetailPageInfo";
+import ReservationPageCards from "./DetailPageCards";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import LargeButton from "../assets/LargeButton";

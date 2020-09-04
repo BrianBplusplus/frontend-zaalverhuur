@@ -1,9 +1,9 @@
 import React from "react";
 import { AnimateSharedLayout } from "framer-motion";
 
-import ReservationPageCatering from "./ReservationPageCatering";
-import ReservationPageDayPart from "./ReservationPageDayPart";
-import ReservationPageSeatPlans from "./ReservationPageSeatPlans";
+import ReservationPageCatering from "./DetailPageCatering";
+import ReservationPageDayPart from "./DetailPageDayPart";
+import ReservationPageSeatPlans from "./DetailPageSeatPlans";
 
 import SelectionCircle from "../assets/SelectionCircle";
 
