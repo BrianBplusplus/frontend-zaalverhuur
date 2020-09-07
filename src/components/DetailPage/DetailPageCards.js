@@ -17,6 +17,7 @@ const ReservationPageCards = ({ state, setState }) => {
     backgroundColor: "#fff",
     padding: "20px",
     margin: "20px 0 20px",
+    height: "400px",
   };
 
   const ulStyle = {
@@ -35,15 +36,23 @@ const ReservationPageCards = ({ state, setState }) => {
             <SelectionCircle
               key={selectionBullet}
               isSelected={activeSelection === selectionBullet}
-              onClick={() => setState({ ...state, activeSelection: selectionBullet })}
+              onClick={() =>
+                setState({ ...state, activeSelection: selectionBullet })
+              }
             />
           ))}
         </ul>
       </AnimateSharedLayout>
 
-      {activeSelection === 0 && <ReservationPageDayPart state={state} setState={setState} />}
-      {activeSelection === 1 && <ReservationPageSeatPlans state={state} setState={setState} />}
-      {activeSelection === 2 && <ReservationPageCatering state={state} setState={setState} />}
+      {activeSelection === 0 && (
+        <ReservationPageDayPart state={state} setState={setState} />
+      )}
+      {activeSelection === 1 && (
+        <ReservationPageSeatPlans state={state} setState={setState} />
+      )}
+      {activeSelection === 2 && (
+        <ReservationPageCatering state={state} setState={setState} />
+      )}
       {activeSelection === 3 && <div>Hola</div>}
     </div>
   );
