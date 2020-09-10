@@ -60,7 +60,9 @@ const ReservationPageContainer = () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      const response = await axios.get(
+        process.env.REACT_APP_API_URL + `/api/${params.id}`
+      );
       console.log("API response Reservation page", response.data);
       setParentState({
         ...parentState,
@@ -76,6 +78,7 @@ const ReservationPageContainer = () => {
   };
 
   const sendMail = () => {
+    //TODO: Send only useful information and not the whole object
     if (pickedDate) {
       axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
         ...parentState,
@@ -87,6 +90,7 @@ const ReservationPageContainer = () => {
   };
 
   useEffect(() => {
+    //TODO: Fix console error
     window.scrollTo(0, 0);
     fetchAPI();
   }, [params.id, paramsArrayIndex]);
@@ -124,7 +128,11 @@ const ReservationPageContainer = () => {
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
-        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+        <img
+          alt="LocationImage"
+          style={imageStyle}
+          src={imageData[paramsArrayIndex]}
+        />
 
         {isError && <ErrorMessage />}
 
@@ -132,7 +140,9 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <ReservationPageInfo state={parentState} />}
 
-        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
+        {!isLoading && (
+          <ReservationPageCards state={parentState} setState={setParentState} />
+        )}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />

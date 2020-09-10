@@ -28,6 +28,7 @@ const ReservationPageCards = ({ state, setState }) => {
   };
 
   // ---------------- Render ------------------- //
+  //TODO: Better display for the cards
   return (
     <div style={divStyle}>
       <AnimateSharedLayout>
