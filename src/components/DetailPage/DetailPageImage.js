@@ -22,7 +22,7 @@ const DetailPageImage = (props) => {
     width: "100%",
     height: "200px",
     objectFit: "cover",
-    opacity: isHover ? "0.6" : "1",
+    opacity: isHover ? "0.4" : "1",
     transition: "ease 0.2s",
   };
 
@@ -45,24 +45,21 @@ const DetailPageImage = (props) => {
   const zoomedImageBackground = {
     backgroundColor: "#fff",
     position: "fixed",
-    padding: "0",
-    margin: "0",
     top: "0",
     left: "0",
     width: "100%",
     height: "100%",
     zIndex: "1",
     display: zoomedImage ? "block" : "none",
-    opacity: "0.9",
   };
 
   const svgStyle = {
-    width: "8%",
+    width: "100px",
     height: "auto",
     position: "absolute",
     opacity: isHover ? "1" : "0",
     transition: "ease 0.2s",
-    top: "80px",
+    top: "50px",
     left: "50%",
   };
 

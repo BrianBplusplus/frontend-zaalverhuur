@@ -104,9 +104,12 @@ const ReservationPageContainer = () => {
 
   const leftStyle = {
     marginRight: "10px",
+
+    width: "50%",
   };
 
   const rightStyle = {
+    width: "50%",
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",
