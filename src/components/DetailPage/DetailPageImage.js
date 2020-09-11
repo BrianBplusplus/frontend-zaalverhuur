@@ -13,6 +13,10 @@ const DetailPageImage = (props) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   // ---------------- Styling ------------------ //
+  const divStyle = {
+    position: "relative",
+  };
+
   const imageStyle = {
     marginBottom: "20px",
     width: "100%",
@@ -27,12 +31,15 @@ const DetailPageImage = (props) => {
     position: "fixed",
     zIndex: "2",
     width: "95%",
-    maxWidth: "1300px",
+    maxWidth: "1200px",
     border: "1px solid #ed008c",
 
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+
+    userDrag: "none",
+    userSelect: "none",
   };
 
   const zoomedImageBackground = {
@@ -50,16 +57,18 @@ const DetailPageImage = (props) => {
   };
 
   const svgStyle = {
-    width: "5%",
+    width: "8%",
     height: "auto",
     position: "absolute",
     opacity: isHover ? "1" : "0",
     transition: "ease 0.2s",
+    top: "80px",
+    left: "50%",
   };
 
   // ---------------- Render ------------------- //
   return (
-    <div>
+    <div style={divStyle}>
       {isMobile && <img alt="LocationImage" style={imageStyle} src={props.image} />}
 
       {!isMobile && (

@@ -14,7 +14,7 @@ const LoadingSpinner = () => {
     display: "block",
     width: "3rem",
     height: "3rem",
-    border: "0.5rem solid #e9e9e9",
+    border: "0.5rem solid #fff",
     borderTop: "0.5rem solid #ed008c",
     borderRadius: "50%",
     boxSizing: "border-box",
@@ -25,7 +25,7 @@ const LoadingSpinner = () => {
   const spinTransition = {
     loop: Infinity,
     ease: "linear",
-    duration: 1,
+    duration: 0.5,
   };
 
   // ---------------- Render ------------------- //
