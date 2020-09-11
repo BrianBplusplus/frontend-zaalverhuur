@@ -10,13 +10,14 @@ import SelectionCircle from "../assets/SelectionCircle";
 const ReservationPageCards = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const { activeSelection } = state;
-  const selectionBullets = [0, 1, 2, 3, 4, 5, 6];
+  const selectionBullets = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
   // ---------------- Styling ------------------ //
   const divStyle = {
     backgroundColor: "#fff",
     padding: "20px",
     margin: "20px 0 20px",
+    height: "400px",
   };
 
   const ulStyle = {
@@ -27,6 +28,7 @@ const ReservationPageCards = ({ state, setState }) => {
   };
 
   // ---------------- Render ------------------- //
+  //TODO: Better display for the cards
   return (
     <div style={divStyle}>
       <AnimateSharedLayout>
@@ -45,6 +47,7 @@ const ReservationPageCards = ({ state, setState }) => {
       {activeSelection === 1 && <ReservationPageSeatPlans state={state} setState={setState} />}
       {activeSelection === 2 && <ReservationPageCatering state={state} setState={setState} />}
       {activeSelection === 3 && <div>Hola</div>}
+      {activeSelection === 4 && <p>12321312321312</p>}
     </div>
   );
 };

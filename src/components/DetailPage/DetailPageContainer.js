@@ -3,6 +3,7 @@ import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
+import DetailPageImage from "./DetailPageImage";
 import ReservationPageSummary from "./DetailPageSummary";
 import ReservationPageInfo from "./DetailPageInfo";
 import ReservationPageCards from "./DetailPageCards";
@@ -76,6 +77,7 @@ const ReservationPageContainer = () => {
   };
 
   const sendMail = () => {
+    //TODO: Send only useful information and not the whole object
     if (pickedDate) {
       axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
         ...parentState,
@@ -87,6 +89,7 @@ const ReservationPageContainer = () => {
   };
 
   useEffect(() => {
+    //TODO: Fix console error
     window.scrollTo(0, 0);
     fetchAPI();
   }, [params.id, paramsArrayIndex]);
@@ -113,18 +116,11 @@ const ReservationPageContainer = () => {
     marginBottom: "20px",
   };
 
-  const imageStyle = {
-    marginBottom: "20px",
-    width: "100%",
-    height: "200px",
-    objectFit: "cover",
-  };
-
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
-        <img alt="LocationImage" style={imageStyle} src={imageData[paramsArrayIndex]} />
+        <DetailPageImage image={imageData[paramsArrayIndex]} />
 
         {isError && <ErrorMessage />}
 

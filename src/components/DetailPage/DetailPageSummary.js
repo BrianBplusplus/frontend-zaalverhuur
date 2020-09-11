@@ -2,7 +2,13 @@ import React from "react";
 
 const ReservationPageSummary = ({ state }) => {
   // ---------------- Variables ---------------- //
-  const { pickedDayPart, locationPrice, mealPrice, drinkPrice, extraCateringPrice } = state;
+  const {
+    pickedDayPart,
+    locationPrice,
+    mealPrice,
+    drinkPrice,
+    extraCateringPrice,
+  } = state;
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -25,16 +31,22 @@ const ReservationPageSummary = ({ state }) => {
   };
 
   // ---------------- Render ------------------- //
+  //TODO: A better purpose for the information that needs to be summarized
   return (
     <div>
       <div style={divStyle}>
         <h4 style={h4Style}>Bedrag Schatting</h4>
         <ul style={ulStyle}>
-          <li>Zaal: €{pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}</li>
+          <li>
+            Zaal: €
+            {pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice}
+          </li>
           <li>Catering: €{mealPrice + drinkPrice + extraCateringPrice}</li>
           <li>
             Totaal: €
-            {(pickedDayPart === "Hele dag" ? locationPrice * 2 : locationPrice) +
+            {(pickedDayPart === "Hele dag"
+              ? locationPrice * 2
+              : locationPrice) +
               mealPrice +
               drinkPrice +
               extraCateringPrice}
