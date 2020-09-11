@@ -10,7 +10,7 @@ import SelectionCircle from "../assets/SelectionCircle";
 const ReservationPageCards = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const { activeSelection } = state;
-  const selectionBullets = [0, 1, 2, 3, 4, 5, 6];
+  const selectionBullets = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -37,24 +37,17 @@ const ReservationPageCards = ({ state, setState }) => {
             <SelectionCircle
               key={selectionBullet}
               isSelected={activeSelection === selectionBullet}
-              onClick={() =>
-                setState({ ...state, activeSelection: selectionBullet })
-              }
+              onClick={() => setState({ ...state, activeSelection: selectionBullet })}
             />
           ))}
         </ul>
       </AnimateSharedLayout>
 
-      {activeSelection === 0 && (
-        <ReservationPageDayPart state={state} setState={setState} />
-      )}
-      {activeSelection === 1 && (
-        <ReservationPageSeatPlans state={state} setState={setState} />
-      )}
-      {activeSelection === 2 && (
-        <ReservationPageCatering state={state} setState={setState} />
-      )}
+      {activeSelection === 0 && <ReservationPageDayPart state={state} setState={setState} />}
+      {activeSelection === 1 && <ReservationPageSeatPlans state={state} setState={setState} />}
+      {activeSelection === 2 && <ReservationPageCatering state={state} setState={setState} />}
       {activeSelection === 3 && <div>Hola</div>}
+      {activeSelection === 4 && <p>12321312321312</p>}
     </div>
   );
 };

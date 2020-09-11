@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import ReservationPageSummary from "./DetailPageSummary";
 import ReservationPageInfo from "./DetailPageInfo";
@@ -17,6 +18,7 @@ const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState(false);
   const [parentState, setParentState] = useState({
     apiData: [],
     activeSelection: [],
@@ -60,9 +62,7 @@ const ReservationPageContainer = () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await axios.get(
-        process.env.REACT_APP_API_URL + `/api/${params.id}`
-      );
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
       console.log("API response Reservation page", response.data);
       setParentState({
         ...parentState,
@@ -124,15 +124,47 @@ const ReservationPageContainer = () => {
     objectFit: "cover",
   };
 
+  const zoomedImageStyle = {
+    display: zoomedImage ? "block" : "none",
+    position: "fixed",
+    zIndex: "2",
+    top: "75px",
+    width: "1200px",
+  };
+
+  const zoomedImageBackground = {
+    backgroundColor: "#fff",
+    position: "fixed",
+    padding: "0",
+    margin: "0",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    zIndex: "1",
+    display: zoomedImage ? "block" : "none",
+    opacity: "0.9",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
-        <img
+        <motion.img
+          whileHover={{ opacity: 0.5 }}
           alt="LocationImage"
           style={imageStyle}
           src={imageData[paramsArrayIndex]}
+          onClick={() => setZoomedImage(true)}
         />
+
+        <img
+          style={zoomedImageStyle}
+          src={imageData[paramsArrayIndex]}
+          onClick={() => setZoomedImage(false)}
+        />
+
+        <div style={zoomedImageBackground} onClick={() => setZoomedImage(false)}></div>
 
         {isError && <ErrorMessage />}
 
@@ -140,9 +172,7 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <ReservationPageInfo state={parentState} />}
 
-        {!isLoading && (
-          <ReservationPageCards state={parentState} setState={setParentState} />
-        )}
+        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
       </div>
       <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />

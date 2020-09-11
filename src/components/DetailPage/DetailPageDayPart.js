@@ -7,7 +7,9 @@ const ReservationPageDayPart = ({ state, setState }) => {
   const { activeSelection } = state;
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
-    setState({ ...state, pickedDayPart: dayPartChoice, activeSelection: activeSelection + 1 });
+    setTimeout(() => {
+      setState({ ...state, pickedDayPart: dayPartChoice, activeSelection: activeSelection + 1 });
+    }, 500);
   };
 
   // ---------------- Styling ------------------ //
@@ -35,6 +37,7 @@ const ReservationPageDayPart = ({ state, setState }) => {
   return (
     <div style={divStyle}>
       <h4 style={h4Style}>Dagdeel</h4>
+      <p>Dagdelen bestaan uit Ochtend: 9:00 - 12:00 Middag 12:30 - 16:00 Avond 17:00 - 20:00</p>
       <ul style={ulStyle}>
         <li onClick={() => handleClickPickedDayPart("Ochtend")}>
           <TransparentButton text="Ochtend" />
