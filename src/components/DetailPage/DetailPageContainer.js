@@ -4,9 +4,9 @@ import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
 import DetailPageImage from "./DetailPageImage";
-import ReservationPageSummary from "./DetailPageSummary";
-import ReservationPageInfo from "./DetailPageInfo";
-import ReservationPageCards from "./DetailPageCards";
+import DetailPageSummary from "./DetailPageSummary";
+import DetailPageInfo from "./DetailPageInfo";
+import DetailPageCards from "./DetailPageCards";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import LargeButton from "../assets/LargeButton";
@@ -103,9 +103,7 @@ const ReservationPageContainer = () => {
   };
 
   const leftStyle = {
-    marginRight: "10px",
-
-    width: "50%",
+    // marginRight: "10px",
   };
 
   const rightStyle = {
@@ -123,22 +121,20 @@ const ReservationPageContainer = () => {
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
-        <DetailPageImage image={imageData[paramsArrayIndex]} />
-
         {isError && <ErrorMessage />}
 
         {isLoading && <LoadingSpinner />}
 
-        {!isLoading && <ReservationPageInfo state={parentState} />}
+        {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
+        {!isLoading && <DetailPageCards state={parentState} setState={setParentState} />}
       </div>
-      <div style={rightStyle}>
+      {/* <div style={rightStyle}>
         <DatePicker state={parentState} setState={setParentState} />
-        <ReservationPageSummary state={parentState} />
+        <DetailPageSummary state={parentState} />
         <button onClick={() => sendMail()}>sendmail</button>
         <LargeButton text="Reserveren" />
-      </div>
+      </div> */}
     </div>
   );
 };

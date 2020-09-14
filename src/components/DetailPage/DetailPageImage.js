@@ -18,9 +18,10 @@ const DetailPageImage = (props) => {
   };
 
   const imageStyle = {
-    marginBottom: "20px",
+    //  marginBottom: "20px",
     width: "100%",
-    height: "200px",
+    // height: "200px",
+    maxHeight: "400px",
     objectFit: "cover",
     opacity: isHover ? "0.4" : "1",
     transition: "ease 0.2s",
