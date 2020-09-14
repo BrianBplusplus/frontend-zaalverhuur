@@ -16,20 +16,15 @@ const ReservationPageContainer = () => {
   const [isError, setIsError] = useState(false);
   const [parentState, setParentState] = useState({
     apiData: [],
-    activeSelection: [],
 
     pickedDate: null,
     pickedDayPart: null,
-    pickedMeal: null,
-    pickedDrink: null,
-    pickedExtraCatering: null,
-    pickedSeatPlan: null,
-    extraInformation: "",
+
+    inputFormName: "",
+    inputFormLastName: "",
+    inputFormEmail: "",
 
     locationPrice: 0,
-    mealPrice: 0,
-    drinkPrice: 0,
-    extraCateringPrice: 0,
   });
 
   // ---------------- Variables ---------------- //
@@ -58,7 +53,7 @@ const ReservationPageContainer = () => {
     setIsError(false);
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-      console.log("API response Reservation page", response.data);
+      console.log("API response Detail page", response.data);
       setParentState({
         ...parentState,
         apiData: response.data,
@@ -72,7 +67,7 @@ const ReservationPageContainer = () => {
     setIsLoading(false);
   };
 
-  const sendMail = () => {
+  /* const sendMail = () => {
     //TODO: Send only useful information and not the whole object
     if (pickedDate) {
       axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
@@ -82,7 +77,7 @@ const ReservationPageContainer = () => {
     } else {
       console.log("missing info");
     }
-  };
+  }; */
 
   useEffect(() => {
     //TODO: Fix console error
@@ -109,6 +104,8 @@ const ReservationPageContainer = () => {
         {!isLoading && <DetailPageInfo state={parentState} />}
 
         {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
+
+        <button onClick={() => console.log("state", parentState)}>state checker</button>
 
         {/*!isLoading && <DetailPageCards state={parentState} setState={setParentState} />*/}
       </div>

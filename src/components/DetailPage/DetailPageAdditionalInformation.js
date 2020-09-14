@@ -11,7 +11,7 @@ const DetailPageAdditionalInformation = () => {
 
   // ---------------- Render ------------------- //
   return (
-    <div>
+    <div style={divStyle}>
       <h2 style={h2Style}>Aanvullende informatie</h2>
       <br></br>
       <br></br>

@@ -9,7 +9,7 @@ const Footer = () => {
     justifyContent: "space-between",
     color: "#fff",
     backgroundColor: "#000",
-    padding: "20px 20px 40px 20px",
+    padding: "20px 20px 10px 20px",
     margin: " 0 auto 0",
   };
 

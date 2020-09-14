@@ -14,7 +14,7 @@
 }
 
 .DayPicker-Months {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -37,8 +37,8 @@
 
 .DayPicker-NavButton {
   position: absolute;
-  top: 1em;
-  right: 1.5em;
+  /* top: 1em; */
+  right: 20em;
   left: auto;
 
   display: inline-block;
