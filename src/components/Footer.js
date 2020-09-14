@@ -13,9 +13,13 @@ const Footer = () => {
     margin: " 0 auto 0",
   };
 
+  const ulStyle = {
+    listStyle: "none",
+    padding: "0",
+  };
+
   const h2Style = {
-    fontSize: "1.3rem",
-    fontWeight: "normal",
+    fontSize: "18px",
     textTransform: "uppercase",
   };
 
@@ -24,7 +28,7 @@ const Footer = () => {
     <div style={divStyle}>
       <div>
         <h2 style={h2Style}>Kunnen wij je helpen?</h2>
-        <ul>
+        <ul style={ulStyle}>
           <li>Verlengen</li>
           <li>Reserveren</li>
           <li>Regels PC gebruik</li>
@@ -34,7 +38,7 @@ const Footer = () => {
       </div>
       <div>
         <h2 style={h2Style}>Blijf op de hoogte!</h2>
-        <ul>
+        <ul style={ulStyle}>
           <li>Facebook</li>
           <li>Instagram</li>
           <li>Twitter</li>
@@ -44,7 +48,7 @@ const Footer = () => {
       </div>
       <div>
         <h2 style={h2Style}>Informatiepunten</h2>
-        <ul>
+        <ul style={ulStyle}>
           <li>ZEPservice</li>
           <li>Seats2meet</li>
           <li>Leeskringen</li>
@@ -54,7 +58,7 @@ const Footer = () => {
       </div>
       <div>
         <h2 style={h2Style}>Denieuwebibliotheek</h2>
-        <ul>
+        <ul style={ulStyle}>
           <li>Over denieuwebibliotheek</li>
           <li>Werken bij de bibliotheek</li>
           <li>Contact</li>
