@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
-import DetailPageImage from "./DetailPageImage";
-import ReservationPageSummary from "./DetailPageSummary";
-import ReservationPageInfo from "./DetailPageInfo";
-import ReservationPageCards from "./DetailPageCards";
+import DetailPageInfo from "./DetailPageInfo";
+import DetailPageDisplay from "./DetailPageDisplay";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
-import LargeButton from "../assets/LargeButton";
 import ErrorMessage from "../assets/ErrorMessage";
-import DatePicker from "../assets/DatePicker";
-import { imageData, pricesData } from "../assets/locationData";
+import { pricesData } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -20,20 +16,15 @@ const ReservationPageContainer = () => {
   const [isError, setIsError] = useState(false);
   const [parentState, setParentState] = useState({
     apiData: [],
-    activeSelection: [],
 
     pickedDate: null,
     pickedDayPart: null,
-    pickedMeal: null,
-    pickedDrink: null,
-    pickedExtraCatering: null,
-    pickedSeatPlan: null,
-    extraInformation: "",
+
+    inputFormName: "",
+    inputFormLastName: "",
+    inputFormEmail: "",
 
     locationPrice: 0,
-    mealPrice: 0,
-    drinkPrice: 0,
-    extraCateringPrice: 0,
   });
 
   // ---------------- Variables ---------------- //
@@ -57,12 +48,11 @@ const ReservationPageContainer = () => {
       : 6;
 
   // ---------------- Functions ---------------- //
-  const fetchAPI = async () => {
+  const fetchAPI = useCallback(async () => {
     setIsLoading(true);
     setIsError(false);
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-      console.log("API response Reservation page", response.data);
       setParentState({
         ...parentState,
         apiData: response.data,
@@ -74,9 +64,9 @@ const ReservationPageContainer = () => {
       console.error(error);
     }
     setIsLoading(false);
-  };
+  }, [params.id, paramsArrayIndex]);
 
-  const sendMail = () => {
+  /* const sendMail = () => {
     //TODO: Send only useful information and not the whole object
     if (pickedDate) {
       axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
@@ -86,13 +76,12 @@ const ReservationPageContainer = () => {
     } else {
       console.log("missing info");
     }
-  };
+  }; */
 
   useEffect(() => {
-    //TODO: Fix console error
     window.scrollTo(0, 0);
     fetchAPI();
-  }, [params.id, paramsArrayIndex]);
+  }, [fetchAPI]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {
@@ -102,39 +91,21 @@ const ReservationPageContainer = () => {
     minHeight: "30vh",
   };
 
-  const leftStyle = {
-    marginRight: "10px",
-  };
-
-  const rightStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    backgroundColor: "#fff",
-    marginTop: isMobile ? "20px" : "0",
-    marginBottom: "20px",
-  };
-
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      <div style={leftStyle}>
-        <DetailPageImage image={imageData[paramsArrayIndex]} />
-
+      <div>
         {isError && <ErrorMessage />}
 
         {isLoading && <LoadingSpinner />}
 
-        {!isLoading && <ReservationPageInfo state={parentState} />}
+        {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && <ReservationPageCards state={parentState} setState={setParentState} />}
-      </div>
-      <div style={rightStyle}>
-        <DatePicker state={parentState} setState={setParentState} />
-        <ReservationPageSummary state={parentState} />
-        <button onClick={() => sendMail()}>sendmail</button>
-        <LargeButton text="Reserveren" />
+        {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
+
+        <button onClick={() => console.log("state", parentState)}>state checker</button>
+
+        {/*!isLoading && <DetailPageCards state={parentState} setState={setParentState} />*/}
       </div>
     </div>
   );
