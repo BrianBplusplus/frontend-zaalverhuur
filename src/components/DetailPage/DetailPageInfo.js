@@ -55,7 +55,7 @@ const ReservationPageInfo = ({ state }) => {
 
   const priceStyle = {
     fontFamily: "Montserrat, sans-serif",
-    fontSize: "30px",
+    fontSize: "20px",
     margin: "0 20px 20px 0",
 
     position: "absolute",

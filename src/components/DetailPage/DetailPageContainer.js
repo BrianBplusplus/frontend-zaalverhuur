@@ -3,16 +3,12 @@ import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 
-import DetailPageImage from "./DetailPageImage";
-import DetailPageSummary from "./DetailPageSummary";
 import DetailPageInfo from "./DetailPageInfo";
-import DetailPageCards from "./DetailPageCards";
+import DetailPageDisplay from "./DetailPageDisplay";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
-import LargeButton from "../assets/LargeButton";
 import ErrorMessage from "../assets/ErrorMessage";
-import DatePicker from "../assets/DatePicker";
-import { imageData, pricesData } from "../assets/locationData";
+import { pricesData } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -102,39 +98,20 @@ const ReservationPageContainer = () => {
     minHeight: "30vh",
   };
 
-  const leftStyle = {
-    // marginRight: "10px",
-  };
-
-  const rightStyle = {
-    width: "50%",
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    backgroundColor: "#fff",
-    marginTop: isMobile ? "20px" : "0",
-    marginBottom: "20px",
-  };
-
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      <div style={leftStyle}>
+      <div>
         {isError && <ErrorMessage />}
 
         {isLoading && <LoadingSpinner />}
 
         {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && <DetailPageCards state={parentState} setState={setParentState} />}
+        {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
+
+        {/*!isLoading && <DetailPageCards state={parentState} setState={setParentState} />*/}
       </div>
-      {/* <div style={rightStyle}>
-        <DatePicker state={parentState} setState={setParentState} />
-        <DetailPageSummary state={parentState} />
-        <button onClick={() => sendMail()}>sendmail</button>
-        <LargeButton text="Reserveren" />
-      </div> */}
     </div>
   );
 };

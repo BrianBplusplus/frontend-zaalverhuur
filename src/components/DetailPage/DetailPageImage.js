@@ -18,9 +18,7 @@ const DetailPageImage = (props) => {
   };
 
   const imageStyle = {
-    //  marginBottom: "20px",
     width: "100%",
-    // height: "200px",
     maxHeight: "400px",
     objectFit: "cover",
     opacity: isHover ? "0.4" : "1",
@@ -74,17 +72,17 @@ const DetailPageImage = (props) => {
           alt="LocationImage"
           style={imageStyle}
           src={props.image}
-          onClick={() => setZoomedImage(true)}
-          onHoverStart={() => setIsHover(true)}
-          onHoverEnd={() => setIsHover(false)}
+          // onClick={() => setZoomedImage(true)}
+          // onHoverStart={() => setIsHover(true)}
+          // onHoverEnd={() => setIsHover(false)}
         />
       )}
       <motion.img
         style={svgStyle}
         src={zoomIcon}
-        onClick={() => setZoomedImage(true)}
-        onHoverStart={() => setIsHover(true)}
-        onHoverEnd={() => setIsHover(false)}
+        //  onClick={() => setZoomedImage(true)}
+        //  onHoverStart={() => setIsHover(true)}
+        //   onHoverEnd={() => setIsHover(false)}
       />
       <AnimatePresence>
         {zoomedImage && (
