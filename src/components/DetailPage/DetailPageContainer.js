@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
@@ -48,12 +48,11 @@ const ReservationPageContainer = () => {
       : 6;
 
   // ---------------- Functions ---------------- //
-  const fetchAPI = async () => {
+  const fetchAPI = useCallback(async () => {
     setIsLoading(true);
     setIsError(false);
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
-      console.log("API response Detail page", response.data);
       setParentState({
         ...parentState,
         apiData: response.data,
@@ -65,7 +64,7 @@ const ReservationPageContainer = () => {
       console.error(error);
     }
     setIsLoading(false);
-  };
+  }, [params.id, paramsArrayIndex]);
 
   /* const sendMail = () => {
     //TODO: Send only useful information and not the whole object
@@ -80,10 +79,9 @@ const ReservationPageContainer = () => {
   }; */
 
   useEffect(() => {
-    //TODO: Fix console error
     window.scrollTo(0, 0);
     fetchAPI();
-  }, [params.id, paramsArrayIndex]);
+  }, [fetchAPI]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {
