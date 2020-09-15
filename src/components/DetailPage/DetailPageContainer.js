@@ -102,10 +102,6 @@ const ReservationPageContainer = () => {
         {!isLoading && <DetailPageInfo state={parentState} />}
 
         {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
-
-        <button onClick={() => console.log("state", parentState)}>state checker</button>
-
-        {/*!isLoading && <DetailPageCards state={parentState} setState={setParentState} />*/}
       </div>
     </div>
   );
