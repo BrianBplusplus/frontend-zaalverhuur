@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 import HeaderForLargeScreen from "./components/HeaderForLargeScreen";
@@ -7,6 +7,8 @@ import HeaderForSmallScreen from "./components/HeaderForSmallScreen";
 import LandingPageContainer from "./components/LandingPage/LandingPageContainer";
 import DetailPageContainer from "./components/DetailPage/DetailPageContainer";
 import Footer from "./components/Footer";
+
+import Error404 from "./components/assets/Error404";
 
 function App() {
   const isDesktop = useMediaQuery({ minWidth: 1224 });
@@ -17,14 +19,19 @@ function App() {
   };
 
   return (
-    <div style={divStyle} className="react-content">
-      {isDesktop ? <HeaderForLargeScreen /> : <HeaderForSmallScreen />}
+    <Router>
+      <div style={divStyle} className="react-content">
+        {isDesktop ? <HeaderForLargeScreen /> : <HeaderForSmallScreen />}
 
-      <Route path="/" exact component={LandingPageContainer} />
-      <Route path="/:id" exact component={DetailPageContainer} />
+        <Switch>
+          <Route exact path="/zalen/:id" exact component={DetailPageContainer} />
+          <Route exact path="/" component={LandingPageContainer} />
+          <Route component={Error404} />
+        </Switch>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
