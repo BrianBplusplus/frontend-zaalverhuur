@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 import DetailPageInfo from "./DetailPageInfo";
 import DetailPageDisplay from "./DetailPageDisplay";
+import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
@@ -24,12 +25,17 @@ const ReservationPageContainer = () => {
     inputFormLastName: "",
     inputFormEmail: "",
 
+    additionalInformationDayPart: "",
+    additionalInformationCatering: "",
+    additionalInformationTextField: "",
+
+    formSubmitted: false,
     locationPrice: 0,
   });
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { pickedDate } = parentState;
+  const { pickedDate, formSubmitted } = parentState;
 
   const params = useParams();
   const paramsArrayIndex =
@@ -52,7 +58,9 @@ const ReservationPageContainer = () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      const response = await axios.get(
+        process.env.REACT_APP_API_URL + `/api/${params.id}`
+      );
       setParentState({
         ...parentState,
         apiData: response.data,
@@ -101,11 +109,11 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
+        {!isLoading && !formSubmitted && (
+          <DetailPageDisplay state={parentState} setState={setParentState} />
+        )}
 
-        <button onClick={() => console.log("state", parentState)}>state checker</button>
-
-        {/*!isLoading && <DetailPageCards state={parentState} setState={setParentState} />*/}
+        {!isLoading && formSubmitted && <DetailPageConfirmation />}
       </div>
     </div>
   );
