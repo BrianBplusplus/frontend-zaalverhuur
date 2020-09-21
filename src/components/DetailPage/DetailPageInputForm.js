@@ -28,6 +28,7 @@ const DetailPageInputForm = ({ state, setState }) => {
   const divStyle = {
     display: "flex",
     flexWrap: " wrap",
+    justifyContent: "center",
   };
 
   const formStyle = {

@@ -1,11 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 import DetailPageImage from "./DetailPageImage";
 import { descriptionData, imageData, pricesData } from "../assets/locationData";
 
 const ReservationPageInfo = ({ state }) => {
   // ---------------- Variables ---------------- //
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1000 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const { apiData } = state;
 
@@ -28,16 +31,20 @@ const ReservationPageInfo = ({ state }) => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
+    flexWrap: "wrap-reverse",
   };
 
   const leftStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    width: "55%",
     position: "relative",
+    width: isMobile ? "100%" : isTablet ? "100%" : "55%",
   };
 
-  const rightStyle = {};
+  const rightStyle = {
+    width: isMobile ? "100%" : isTablet ? "100%" : "41%",
+    marginBottom: isMobile ? "20px" : isTablet ? "20px" : "0",
+  };
 
   const h2Style = {
     fontSize: "30px",
@@ -51,6 +58,7 @@ const ReservationPageInfo = ({ state }) => {
   const pStyle = {
     whiteSpace: "pre-wrap",
     fontSize: "16px",
+    marginBottom: "30px",
   };
 
   const priceStyle = {

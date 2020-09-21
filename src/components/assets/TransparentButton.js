@@ -21,7 +21,7 @@ const TransparentButton = (props) => {
   // ---------------- Render ------------------- //
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
+      //whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       style={buttonStyle}
     >
