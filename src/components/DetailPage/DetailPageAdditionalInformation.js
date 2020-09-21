@@ -13,8 +13,8 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     });
   };
 
-  const handleClickPickedMeal = (mealChoice) => {
-    setState({ ...state, additionalInformationMeal: mealChoice });
+  const handleClickPickedMeal = (cateringChoice) => {
+    setState({ ...state, additionalInformationCatering: cateringChoice });
   };
 
   const handleExtraInformation = (userInput) => {
@@ -53,10 +53,10 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       <h3>Gewenst dagdeel</h3>
       <ul style={ulStyle}>
         <li onClick={() => handleClickPickedDayPart("Ochtend")}>
-          <TransparentButton text="Ochtend" />
+          <TransparentButton id={1} text="Ochtend" />
         </li>
         <li onClick={() => handleClickPickedDayPart("Middag")}>
-          <TransparentButton text="Middag" />
+          <TransparentButton id={2} text="Middag" />
         </li>
         <li onClick={() => handleClickPickedDayPart("Avond")}>
           <TransparentButton text="Avond" />

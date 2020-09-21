@@ -22,13 +22,14 @@ const DetailPageInputForm = ({ state, setState }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("state in inputform", state);
+    setState({ ...state, formSubmitted: true });
   };
 
   // ---------------- Styling ------------------ //
   const divStyle = {
     display: "flex",
     flexWrap: " wrap",
-    justifyContent: "center",
+    justifyContent: "space-around",
   };
 
   const formStyle = {
@@ -40,6 +41,21 @@ const DetailPageInputForm = ({ state, setState }) => {
   const h2Style = {
     color: "#ed008c",
     marginTop: "0",
+  };
+
+  const buttonStyle = {
+    color: "#fff",
+    backgroundColor: "#ed008c",
+    border: "none",
+    borderRadius: "3px",
+    marginTop: "20px",
+    padding: "20px",
+    paddingTop: "10px",
+    paddingBottom: "10px",
+
+    font: "inherit",
+    outline: "inherit",
+    cursor: "pointer",
   };
 
   // ---------------- Render ------------------- //
@@ -54,7 +70,6 @@ const DetailPageInputForm = ({ state, setState }) => {
       </p>
       <div style={divStyle}>
         <DatePicker state={state} setState={setState} />
-
         <form style={formStyle} onSubmit={handleSubmit}>
           <label>Voornaam </label>
           <br></br>
@@ -89,7 +104,12 @@ const DetailPageInputForm = ({ state, setState }) => {
             required
           ></input>
           <br></br>
-          <input type="submit" value="Aanvragen"></input>
+          <input
+            style={buttonStyle}
+            type="submit"
+            value="Aanvragen"
+            onSubmit={() => handleSubmit()}
+          ></input>
         </form>
       </div>
     </div>

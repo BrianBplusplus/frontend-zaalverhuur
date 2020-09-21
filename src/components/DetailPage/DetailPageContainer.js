@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 import DetailPageInfo from "./DetailPageInfo";
 import DetailPageDisplay from "./DetailPageDisplay";
+import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
@@ -25,15 +26,16 @@ const ReservationPageContainer = () => {
     inputFormEmail: "",
 
     additionalInformationDayPart: "",
-    additionalInformationCaterng: "",
+    additionalInformationCatering: "",
     additionalInformationTextField: "",
 
+    formSubmitted: false,
     locationPrice: 0,
   });
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { pickedDate } = parentState;
+  const { pickedDate, formSubmitted } = parentState;
 
   const params = useParams();
   const paramsArrayIndex =
@@ -107,9 +109,11 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && (
+        {!isLoading && !formSubmitted && (
           <DetailPageDisplay state={parentState} setState={setParentState} />
         )}
+
+        {!isLoading && formSubmitted && <DetailPageConfirmation />}
       </div>
     </div>
   );
