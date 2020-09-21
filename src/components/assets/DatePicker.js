@@ -3,6 +3,9 @@ import DayPicker from "react-day-picker";
 import "./DatePickerStyle.css";
 
 const DatePicker = ({ state, setState }) => {
+  // ---------------- Variables ---------------- //
+  const today = new Date();
+
   // ---------------- Functions ---------------- //
   const handlePickDate = (day, { selected }) => {
     setState({
@@ -16,7 +19,7 @@ const DatePicker = ({ state, setState }) => {
     <DayPicker
       selectedDays={state.pickedDate}
       onDayClick={handlePickDate}
-      disabledDays={{ daysOfWeek: [0] }}
+      disabledDays={{ before: today, daysOfWeek: [0, 6] }}
     />
   );
 };
