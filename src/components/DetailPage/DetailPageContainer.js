@@ -24,6 +24,10 @@ const ReservationPageContainer = () => {
     inputFormLastName: "",
     inputFormEmail: "",
 
+    additionalInformationDayPart: "",
+    additionalInformationCaterng: "",
+    additionalInformationTextField: "",
+
     locationPrice: 0,
   });
 
@@ -52,7 +56,9 @@ const ReservationPageContainer = () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      const response = await axios.get(
+        process.env.REACT_APP_API_URL + `/api/${params.id}`
+      );
       setParentState({
         ...parentState,
         apiData: response.data,
@@ -101,7 +107,9 @@ const ReservationPageContainer = () => {
 
         {!isLoading && <DetailPageInfo state={parentState} />}
 
-        {!isLoading && <DetailPageDisplay state={parentState} setState={setParentState} />}
+        {!isLoading && (
+          <DetailPageDisplay state={parentState} setState={setParentState} />
+        )}
       </div>
     </div>
   );

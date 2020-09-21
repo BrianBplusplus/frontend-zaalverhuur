@@ -25,7 +25,16 @@ const DetailPageInputForm = ({ state, setState }) => {
   };
 
   // ---------------- Styling ------------------ //
-  const divStyle = {};
+  const divStyle = {
+    display: "flex",
+    flexWrap: " wrap",
+  };
+
+  const formStyle = {
+    padding: "20px",
+  };
+
+  const pStyle = {};
 
   const h2Style = {
     color: "#ed008c",
@@ -34,46 +43,54 @@ const DetailPageInputForm = ({ state, setState }) => {
 
   // ---------------- Render ------------------- //
   return (
-    <div style={divStyle}>
-      <h2 style={h2Style}>Aanvraagformulier</h2>
-      <DatePicker state={state} setState={setState} />
+    <div>
+      <h2 style={h2Style}>Informatie Aanvraag</h2>
+      <p style={pStyle}>
+        Wil je meer weten over het huren van een zaal in de nieuwe bibliotheek?
+        Of wil je de mogelijkheden weten om hier te trouwen? Hier een fotoshoot
+        organiseren of een presentatie? Vul dan onderstaand formulier in. Wij
+        nemen zo snel mogelijk contact met je op!
+      </p>
+      <div style={divStyle}>
+        <DatePicker state={state} setState={setState} />
 
-      <form onSubmit={handleSubmit}>
-        <label>Voornaam: </label>
-        <br></br>
-        <input
-          type="text"
-          id="fname"
-          name="fname"
-          value={inputFormName}
-          onChange={(event) => handleName(event.target.value)}
-          required
-        ></input>
-        <br></br>
-        <label>Achternaam: </label>
-        <br></br>
-        <input
-          type="text"
-          id="lname"
-          name="lname"
-          value={inputFormLastName}
-          onChange={(event) => handleLastName(event.target.value)}
-          required
-        ></input>
-        <br></br>
-        <label>Email</label>
-        <br></br>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={inputFormEmail}
-          onChange={(event) => handleEmail(event.target.value)}
-          required
-        ></input>
-        <br></br>
-        <input type="submit" value="Submit"></input>
-      </form>
+        <form style={formStyle} onSubmit={handleSubmit}>
+          <label>Voornaam </label>
+          <br></br>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            value={inputFormName}
+            onChange={(event) => handleName(event.target.value)}
+            required
+          ></input>
+          <br></br>
+          <label>Achternaam </label>
+          <br></br>
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            value={inputFormLastName}
+            onChange={(event) => handleLastName(event.target.value)}
+            required
+          ></input>
+          <br></br>
+          <label>Email</label>
+          <br></br>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={inputFormEmail}
+            onChange={(event) => handleEmail(event.target.value)}
+            required
+          ></input>
+          <br></br>
+          <input type="submit" value="Aanvragen"></input>
+        </form>
+      </div>
     </div>
   );
 };

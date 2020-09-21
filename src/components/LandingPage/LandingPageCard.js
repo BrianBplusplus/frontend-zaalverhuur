@@ -39,7 +39,7 @@ const LandingPageCard = (props) => {
   return (
     <Link style={divStyle} to={`/zalen/${props.link}`}>
       <motion.div
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
         onHoverStart={(event) => {
           setIsHover(true);
         }}
