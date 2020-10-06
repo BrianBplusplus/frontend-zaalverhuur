@@ -70,14 +70,14 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
         <li onClick={() => handleClickPickedMeal("Geen")}>
           <TransparentButton text="Geen" />
         </li>
-        <li onClick={() => handleClickPickedMeal("Kleine Lunch")}>
+        <li onClick={() => handleClickPickedMeal("Lunch")}>
           <TransparentButton text="Kleine Lunch" />
         </li>
         <li onClick={() => handleClickPickedMeal("Drankjes")}>
           <TransparentButton text="Drankjes" />
         </li>
-        <li onClick={() => handleClickPickedMeal("Restaurant")}>
-          <TransparentButton text="Restaurant" />
+        <li onClick={() => handleClickPickedMeal("Borrelhapjes")}>
+          <TransparentButton text="Borrelhapjes" />
         </li>
       </ul>
       <h3>Extra opmerkingen</h3>

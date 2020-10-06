@@ -25,6 +25,7 @@ const LandingPageContainer = () => {
     setIsError(false);
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api`);
+      console.log("api response", response.data);
       setApiData(response.data);
     } catch (error) {
       setIsError(true);
@@ -42,7 +43,11 @@ const LandingPageContainer = () => {
   const divStyle = {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: isMobile ? "center" : isTablet ? "space-evenly" : "space-between",
+    justifyContent: isMobile
+      ? "center"
+      : isTablet
+      ? "space-evenly"
+      : "space-between",
     maxWidth: "1300px",
     minHeight: "20vh",
   };
@@ -70,7 +75,7 @@ const LandingPageContainer = () => {
         {apiData.map((mappedApiData, index) => {
           return (
             // ---- Temporary rudementary filters. TODO: Move to back-end ---- //
-            mappedApiData.locationID !== 1366 && (
+            mappedApiData.description === "verhuurbaar" && (
               <LandingPageCard
                 link={mappedApiData.locationID}
                 key={mappedApiData.locationID}
