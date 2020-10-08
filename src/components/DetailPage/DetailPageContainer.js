@@ -9,7 +9,7 @@ import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
-import { pricesData } from "../assets/locationData";
+import { pricesData, pricesNight } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -24,13 +24,16 @@ const ReservationPageContainer = () => {
     inputFormName: "",
     inputFormLastName: "",
     inputFormEmail: "",
+    inputFormCompany: "",
 
     additionalInformationDayPart: "",
     additionalInformationCatering: "",
     additionalInformationTextField: "",
+    additionalInformationAmountOfPersons: 0,
 
     formSubmitted: false,
     locationPrice: 0,
+    locationPriceNight: 0,
   });
 
   // ---------------- Variables ---------------- //
@@ -65,6 +68,7 @@ const ReservationPageContainer = () => {
         ...parentState,
         apiData: response.data,
         locationPrice: pricesData[paramsArrayIndex],
+        locationPriceNight: pricesNight[paramsArrayIndex],
         activeSelection: 0,
       });
     } catch (error) {

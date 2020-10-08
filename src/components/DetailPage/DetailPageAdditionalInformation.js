@@ -13,8 +13,16 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     });
   };
 
-  const handleClickPickedMeal = (cateringChoice) => {
-    setState({ ...state, additionalInformationCatering: cateringChoice });
+  const handleClickPickedMeal = (cateringChoice, cateringChoicePrice) => {
+    setState({
+      ...state,
+      additionalInformationCatering: cateringChoice,
+      cateringPrice: cateringChoicePrice,
+    });
+  };
+
+  const handlePersons = (personChoice) => {
+    setState({ ...state, additionalInformationAmountOfPersons: personChoice });
   };
 
   const handleExtraInformation = (userInput) => {
@@ -71,7 +79,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
           <TransparentButton text="Geen" />
         </li>
         <li onClick={() => handleClickPickedMeal("Lunch")}>
-          <TransparentButton text="Kleine Lunch" />
+          <TransparentButton text="Lunch" />
         </li>
         <li onClick={() => handleClickPickedMeal("Drankjes")}>
           <TransparentButton text="Drankjes" />
@@ -80,6 +88,13 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
           <TransparentButton text="Borrelhapjes" />
         </li>
       </ul>
+      <h3>Aantal personen</h3>
+      <input
+        type="number"
+        id="persons"
+        name="persons"
+        onChange={(event) => handlePersons(event.target.value)}
+      ></input>
       <h3>Extra opmerkingen</h3>
       <textarea
         style={textAreaStyle}

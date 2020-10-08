@@ -19,7 +19,6 @@ const DetailPageImage = (props) => {
 
   const imageStyle = {
     width: "100%",
-    maxHeight: "400px",
     objectFit: "cover",
     opacity: isHover ? "0.4" : "1",
     transition: "ease 0.2s",
@@ -65,7 +64,9 @@ const DetailPageImage = (props) => {
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
-      {isMobile && <img alt="LocationImage" style={imageStyle} src={props.image} />}
+      {isMobile && (
+        <img alt="LocationImage" style={imageStyle} src={props.image} />
+      )}
 
       {!isMobile && (
         <motion.img

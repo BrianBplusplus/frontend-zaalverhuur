@@ -27,3 +27,5 @@ export const descriptionData = [
 ];
 
 export const pricesData = [710, 100, 100, 600, 150, 50, 200, 200];
+
+export const pricesNight = [200, 100, 100, 0, 150];
