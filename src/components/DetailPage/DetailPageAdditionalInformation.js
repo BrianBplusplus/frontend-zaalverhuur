@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TransparentButton from "../assets/TransparentButton";
 
 const DetailPageAdditionalInformation = ({ state, setState }) => {
-  // ---------------- States ------------------- //
+  // ---------------- Variables ---------------- //
+  const {apiData} = state
 
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
@@ -31,6 +32,15 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       additionalInformationTextField: userInput,
     });
   };
+
+  useEffect(() => {
+    if (apiData.locationID === 1368) {
+      console.log("This triggered")
+      handleClickPickedDayPart("Avond")
+      return
+    }
+    console.log(state, "this didnt trigger")
+  }, []);
 
   // ---------------- Styling ------------------ //
   const divStyle = {};

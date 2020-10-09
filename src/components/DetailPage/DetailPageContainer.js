@@ -34,6 +34,7 @@ const ReservationPageContainer = () => {
     formSubmitted: false,
     locationPrice: 0,
     locationPriceNight: 0,
+    cateringPrice: 0,
   });
 
   // ---------------- Variables ---------------- //
