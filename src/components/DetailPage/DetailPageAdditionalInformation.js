@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import TransparentButton from "../assets/TransparentButton";
 
 const DetailPageAdditionalInformation = ({ state, setState }) => {
+  // ---------------- States ------------------- //
+  const [selectedDayPart, setSelectedDayPart] = useState("");
+  const [selectedMeal, setSelectedMeal] = useState("");
+
   // ---------------- Variables ---------------- //
   const {apiData} = state
   const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
@@ -10,6 +14,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
 
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
+    setSelectedDayPart(dayPartChoice)
     setState({
       ...state,
       additionalInformationDayPart: dayPartChoice,
@@ -17,6 +22,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   };
 
   const handleClickPickedMeal = (cateringChoice, cateringChoicePrice) => {
+    setSelectedMeal(cateringChoice)
     setState({
       ...state,
       additionalInformationCatering: cateringChoice,
@@ -75,7 +81,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       {dayPart.map((part, index) => {
         return(
           <li key={index} onClick={() => handleClickPickedDayPart(part)}>
-            <TransparentButton id={index} text={part} />  
+            <TransparentButton isSelected={selectedDayPart === part} id={index} text={part} />  
            </li>)
           })}
       </ul>
@@ -86,7 +92,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       {meals.map((meal, index) => {
         return(
           <li key={index} onClick={() => handleClickPickedMeal(meal)}>
-            <TransparentButton id={index} text={meal} />  
+            <TransparentButton isSelected={selectedMeal === meal} id={index} text={meal} />  
            </li>)
           })}
       </ul>
