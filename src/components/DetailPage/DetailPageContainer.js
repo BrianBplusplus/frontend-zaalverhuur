@@ -18,9 +18,6 @@ const ReservationPageContainer = () => {
   const [parentState, setParentState] = useState({
     apiData: [],
 
-    pickedDate: null,
-    pickedDayPart: null,
-
     inputFormName: "",
     inputFormLastName: "",
     inputFormEmail: "",

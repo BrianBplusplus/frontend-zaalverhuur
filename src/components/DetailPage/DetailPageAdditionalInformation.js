@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import TransparentButton from "../assets/TransparentButton";
 
 const DetailPageAdditionalInformation = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const {apiData} = state
+  const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
+  const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"]
 
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
@@ -35,12 +37,10 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
 
   useEffect(() => {
     if (apiData.locationID === 1368) {
-      console.log("This triggered")
       handleClickPickedDayPart("Avond")
       return
     }
-    console.log(state, "this didnt trigger")
-  }, []);
+  },[apiData.locationID]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {};
@@ -68,43 +68,38 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   return (
     <div style={divStyle}>
       <h2 style={h2Style}>Aanvullende informatie</h2>
+
       <h3>Gewenst dagdeel</h3>
       <ul style={ulStyle}>
-        <li onClick={() => handleClickPickedDayPart("Ochtend")}>
-          <TransparentButton id={1} text="Ochtend" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Middag")}>
-          <TransparentButton id={2} text="Middag" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Avond")}>
-          <TransparentButton text="Avond" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Hele dag")}>
-          <TransparentButton text="Hele dag" />
-        </li>
+
+      {dayPart.map((part, index) => {
+        return(
+          <li key={index} onClick={() => handleClickPickedDayPart(part)}>
+            <TransparentButton id={index} text={part} />  
+           </li>)
+          })}
       </ul>
+
       <h3>Catering</h3>
       <ul style={ulStyle}>
-        <li onClick={() => handleClickPickedMeal("Geen")}>
-          <TransparentButton text="Geen" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Lunch")}>
-          <TransparentButton text="Lunch" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Drankjes")}>
-          <TransparentButton text="Drankjes" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Borrelhapjes")}>
-          <TransparentButton text="Borrelhapjes" />
-        </li>
+
+      {meals.map((meal, index) => {
+        return(
+          <li key={index} onClick={() => handleClickPickedMeal(meal)}>
+            <TransparentButton id={index} text={meal} />  
+           </li>)
+          })}
       </ul>
+
       <h3>Aantal personen</h3>
       <input
         type="number"
         id="persons"
         name="persons"
+        min="0"
         onChange={(event) => handlePersons(event.target.value)}
       ></input>
+
       <h3>Extra opmerkingen</h3>
       <textarea
         style={textAreaStyle}
