@@ -24,7 +24,7 @@ function App() {
         {isDesktop ? <HeaderForLargeScreen /> : <HeaderForSmallScreen />}
 
         <Switch>
-          <Route exact path="/zalen/:id" exact component={DetailPageContainer} />
+          <Route exact path="/zalen/:id" component={DetailPageContainer} />
           <Route exact path="/" component={LandingPageContainer} />
           <Route component={Error404} />
         </Switch>

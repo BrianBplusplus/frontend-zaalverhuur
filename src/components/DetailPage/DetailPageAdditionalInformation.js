@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TransparentButton from "../assets/TransparentButton";
 
 const DetailPageAdditionalInformation = ({ state, setState }) => {
   // ---------------- States ------------------- //
+  const [selectedDayPart, setSelectedDayPart] = useState("");
+  const [selectedMeal, setSelectedMeal] = useState("");
+
+  // ---------------- Variables ---------------- //
+  const {apiData} = state
+  const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
+  const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"]
 
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
+    setSelectedDayPart(dayPartChoice)
     setState({
       ...state,
       additionalInformationDayPart: dayPartChoice,
     });
   };
 
-  const handleClickPickedMeal = (cateringChoice) => {
-    setState({ ...state, additionalInformationCatering: cateringChoice });
+  const handleClickPickedMeal = (cateringChoice, cateringChoicePrice) => {
+    setSelectedMeal(cateringChoice)
+    setState({
+      ...state,
+      additionalInformationCatering: cateringChoice,
+      cateringPrice: cateringChoicePrice,
+    });
+  };
+
+  const handlePersons = (personChoice) => {
+    setState({ ...state, additionalInformationAmountOfPersons: personChoice });
   };
 
   const handleExtraInformation = (userInput) => {
@@ -23,6 +40,13 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       additionalInformationTextField: userInput,
     });
   };
+
+  useEffect(() => {
+    if (apiData.locationID === 1368) {
+      handleClickPickedDayPart("Avond")
+      return
+    }
+  },[apiData.locationID]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {};
@@ -50,36 +74,38 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   return (
     <div style={divStyle}>
       <h2 style={h2Style}>Aanvullende informatie</h2>
+
       <h3>Gewenst dagdeel</h3>
       <ul style={ulStyle}>
-        <li onClick={() => handleClickPickedDayPart("Ochtend")}>
-          <TransparentButton id={1} text="Ochtend" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Middag")}>
-          <TransparentButton id={2} text="Middag" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Avond")}>
-          <TransparentButton text="Avond" />
-        </li>
-        <li onClick={() => handleClickPickedDayPart("Hele dag")}>
-          <TransparentButton text="Hele dag" />
-        </li>
+
+      {dayPart.map((part, index) => {
+        return(
+          <li key={index} onClick={() => handleClickPickedDayPart(part)}>
+            <TransparentButton isSelected={selectedDayPart === part} id={index} text={part} />  
+           </li>)
+          })}
       </ul>
+
       <h3>Catering</h3>
       <ul style={ulStyle}>
-        <li onClick={() => handleClickPickedMeal("Geen")}>
-          <TransparentButton text="Geen" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Kleine Lunch")}>
-          <TransparentButton text="Kleine Lunch" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Drankjes")}>
-          <TransparentButton text="Drankjes" />
-        </li>
-        <li onClick={() => handleClickPickedMeal("Restaurant")}>
-          <TransparentButton text="Restaurant" />
-        </li>
+
+      {meals.map((meal, index) => {
+        return(
+          <li key={index} onClick={() => handleClickPickedMeal(meal)}>
+            <TransparentButton isSelected={selectedMeal === meal} id={index} text={meal} />  
+           </li>)
+          })}
       </ul>
+
+      <h3>Aantal personen</h3>
+      <input
+        type="number"
+        id="persons"
+        name="persons"
+        min="0"
+        onChange={(event) => handlePersons(event.target.value)}
+      ></input>
+
       <h3>Extra opmerkingen</h3>
       <textarea
         style={textAreaStyle}

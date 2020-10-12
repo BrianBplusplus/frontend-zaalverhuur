@@ -40,17 +40,33 @@ const LandingPageInfo = () => {
   return (
     <div style={divStyle}>
       <div style={leftStyle}>
-        <h2 style={h2Style}>Zaal huren?</h2>
+        <h2 style={h2Style}>
+          Ben je op zoek naar een modern uitgeruste locatie waar je een
+          presentatie kunt geven of een cursus kunt verzorgen?
+        </h2>
         <p>
-          Ben je op zoek naar een modern uitgeruste locatie waar je een presentatie kunt geven of
-          een cursus kunt verzorgen? Ook dan ben je bij de nieuwe bibliotheek aan het juiste adres.
-          Naast de centrale ligging van de bibliotheek beschikken wij ook over diverse zalen
+          Ook dan ben je bij de nieuwe bibliotheek aan het juiste adres. Naast
+          de centrale ligging van de bibliotheek (op vijf minuten lopen van
+          Station Almere centrum en met parkeergarages om de hoek) beschikken
+          wij ook over diverse zalen die uitstekend geschikt zijn voor de
+          ontvangst van gasten voor een presentatie of seminar enzovoort.
+          {<br></br>}
+          {<br></br>}
+          Samen zorgen we voor een geslaagde ervaring! Onderstaand tref je meer
+          informatie aan over onze zalen, tarieven en cateringmogelijkheden.
         </p>
       </div>
       <div style={rightStyle}>
-        <h2 style={h2Style}>Goed Bereikbaar</h2>
+        <h2 style={h2Style}>Attentie</h2>
         <p>
-          Nog geen 5 minuten lopen vanaf Station Almere Centrum en er zijn parkeergarages om de hoek
+          Als gevolg van het coronavirus (COVID-19) is de maximum capaciteit van
+          onze vergaderruimtes bijgesteld:
+          {<br></br>}
+          {<br></br>}De nieuwe zaal = 20 personen
+          {<br></br>}Het nieuwe lokaal = 8 personen
+          {<br></br>}Het nieuwe podium = 6 personen
+          {<br></br>} Het nieuwscafé = 15 personen
+          {<br></br>} De nieuwe kamer = 2 personen.
         </p>
       </div>
     </div>

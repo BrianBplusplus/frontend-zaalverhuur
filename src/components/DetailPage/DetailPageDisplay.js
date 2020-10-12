@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import DetailPageInputForm from "./DetailPageInputForm";
 import DetailPageAdditionalInformation from "./DetailPageAdditionalInformation";
 
-const DetailPageOptions = ({ state, setState }) => {
+const DetailPageDisplay = ({ state, setState }) => {
   // ---------------- States ------------------- //
 
   // ---------------- Variables ---------------- //
@@ -46,4 +46,4 @@ const DetailPageOptions = ({ state, setState }) => {
   );
 };
 
-export default DetailPageOptions;
+export default DetailPageDisplay;

@@ -4,7 +4,15 @@ import DatePicker from "../assets/DatePicker";
 
 const DetailPageInputForm = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
-  const { inputFormName, inputFormLastName, inputFormEmail } = state;
+  const {
+    inputFormName,
+    inputFormLastName,
+    inputFormEmail,
+    inputFormCompany,
+    locationPrice,
+    locationPriceNight,
+    additionalInformationDayPart,
+  } = state;
 
   // ---------------- Functions ---------------- //
   const handleName = (name) => {
@@ -17,6 +25,10 @@ const DetailPageInputForm = ({ state, setState }) => {
 
   const handleEmail = (email) => {
     setState({ ...state, inputFormEmail: email });
+  };
+
+  const handleCompany = (company) => {
+    setState({ ...state, inputFormCompany: company });
   };
 
   const handleSubmit = (event) => {
@@ -61,7 +73,7 @@ const DetailPageInputForm = ({ state, setState }) => {
   // ---------------- Render ------------------- //
   return (
     <div>
-      <h2 style={h2Style}>Informatie Aanvraag</h2>
+      <h2 style={h2Style}>Reserveren ?</h2>
       <p style={pStyle}>
         Wil je meer weten over het huren van een zaal in de nieuwe bibliotheek?
         Of wil je de mogelijkheden weten om hier te trouwen? Hier een fotoshoot
@@ -104,6 +116,33 @@ const DetailPageInputForm = ({ state, setState }) => {
             required
           ></input>
           <br></br>
+
+          <label>Bedrijf</label>
+          <br></br>
+          <input
+            type="text"
+            id="cname"
+            name="cname"
+            value={inputFormCompany}
+            onChange={(event) => handleCompany(event.target.value)}
+          ></input>
+          <br></br>
+
+          <p>
+            Zaal: {locationPrice}
+            <br></br>
+            Catering: {}
+            <br></br>
+            {additionalInformationDayPart === "Avond" && (
+              <span>
+                Avond tarief: {locationPriceNight}
+                <br></br>
+              </span>
+            )}
+            Totaal:
+            {}
+          </p>
+
           <input
             style={buttonStyle}
             type="submit"
