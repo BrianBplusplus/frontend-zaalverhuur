@@ -8,7 +8,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   const [selectedMeal, setSelectedMeal] = useState("");
 
   // ---------------- Variables ---------------- //
-  const {apiData} = state
+  const { apiData } = state
   const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
   const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"]
 

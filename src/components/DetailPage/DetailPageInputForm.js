@@ -9,9 +9,15 @@ const DetailPageInputForm = ({ state, setState }) => {
     inputFormLastName,
     inputFormEmail,
     inputFormCompany,
+
     locationPrice,
     locationPriceNight,
+    locationPriceCatering,
+
     additionalInformationDayPart,
+    additionalInformationCatering,
+    additionalInformationTextField,
+    additionalInformationAmountOfPersons,
   } = state;
 
   // ---------------- Functions ---------------- //
@@ -131,7 +137,7 @@ const DetailPageInputForm = ({ state, setState }) => {
           <p>
             Zaal: {locationPrice}
             <br></br>
-            Catering: {}
+            Catering: {locationPriceCatering} x {additionalInformationAmountOfPersons}
             <br></br>
             {additionalInformationDayPart === "Avond" && (
               <span>
@@ -139,8 +145,7 @@ const DetailPageInputForm = ({ state, setState }) => {
                 <br></br>
               </span>
             )}
-            Totaal:
-            {}
+            Totaal: {locationPrice + locationPriceNight}
           </p>
 
           <input
