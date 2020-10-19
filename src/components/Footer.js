@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   // ---------------- Styling ---------------- //
@@ -59,7 +60,7 @@ const Footer = () => {
       <div>
         <h2 style={h2Style}>Denieuwebibliotheek</h2>
         <ul style={ulStyle}>
-          <li>Over denieuwebibliotheek</li>
+          <li><Link to={"/test"}>Over denieuwebibliotheek</Link></li>
           <li>Werken bij de bibliotheek</li>
           <li>Contact</li>
           <li>Adressen</li>
