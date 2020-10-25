@@ -9,10 +9,20 @@ const DetailPageInputForm = ({ state, setState }) => {
     inputFormLastName,
     inputFormEmail,
     inputFormCompany,
+
     locationPrice,
     locationPriceNight,
+    locationPriceCatering,
+
     additionalInformationDayPart,
+    additionalInformationCatering,
+    additionalInformationTextField,
+    additionalInformationAmountOfPersons,
   } = state;
+
+  const EveningPriceCalculator = additionalInformationDayPart === "Avond" ? locationPriceNight : 0
+
+const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 : additionalInformationCatering === "Drankjes" ? 20 : additionalInformationCatering === "Borrelhapjes" ? 30 : 0
 
   // ---------------- Functions ---------------- //
   const handleName = (name) => {
@@ -69,9 +79,11 @@ const DetailPageInputForm = ({ state, setState }) => {
     outline: "inherit",
     cursor: "pointer",
   };
-
+  console.log(CateringPriceCalculator)
   // ---------------- Render ------------------- //
   return (
+
+
     <div>
       <h2 style={h2Style}>Reserveren ?</h2>
       <p style={pStyle}>
@@ -82,6 +94,7 @@ const DetailPageInputForm = ({ state, setState }) => {
       </p>
       <div style={divStyle}>
         <DatePicker state={state} setState={setState} />
+
         <form style={formStyle} onSubmit={handleSubmit}>
           <label>Voornaam </label>
           <br></br>
@@ -127,22 +140,6 @@ const DetailPageInputForm = ({ state, setState }) => {
             onChange={(event) => handleCompany(event.target.value)}
           ></input>
           <br></br>
-
-          <p>
-            Zaal: {locationPrice}
-            <br></br>
-            Catering: {}
-            <br></br>
-            {additionalInformationDayPart === "Avond" && (
-              <span>
-                Avond tarief: {locationPriceNight}
-                <br></br>
-              </span>
-            )}
-            Totaal:
-            {}
-          </p>
-
           <input
             style={buttonStyle}
             type="submit"
@@ -150,6 +147,16 @@ const DetailPageInputForm = ({ state, setState }) => {
             onSubmit={() => handleSubmit()}
           ></input>
         </form>
+        <p>
+            Zaal: {locationPrice}
+            <br></br>
+            Catering: {CateringPriceCalculator} x {additionalInformationAmountOfPersons}
+            <br></br>
+            Avond tarief: {additionalInformationDayPart === "Avond" ? locationPriceNight : "Geen"}
+            <br></br>
+            Totaal: {locationPrice + EveningPriceCalculator + (CateringPriceCalculator * additionalInformationAmountOfPersons)}
+          </p>
+
       </div>
     </div>
   );

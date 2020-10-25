@@ -9,7 +9,7 @@ import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
-import { pricesData, pricesNight } from "../assets/locationData";
+import { pricesData, pricesNight, pricesCatering } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -28,10 +28,11 @@ const ReservationPageContainer = () => {
     additionalInformationTextField: "",
     additionalInformationAmountOfPersons: 0,
 
-    formSubmitted: false,
     locationPrice: 0,
     locationPriceNight: 0,
-    cateringPrice: 0,
+    locationPriceCatering: 0,
+
+    formSubmitted: false,
   });
 
   // ---------------- Variables ---------------- //
