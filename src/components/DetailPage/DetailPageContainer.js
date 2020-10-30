@@ -77,18 +77,6 @@ const ReservationPageContainer = () => {
     setIsLoading(false);
   }, [params.id, paramsArrayIndex]);
 
-  /* const sendMail = () => {
-    //TODO: Send only useful information and not the whole object
-    if (pickedDate) {
-      axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
-        ...parentState,
-      });
-      console.log("All data has been entered");
-    } else {
-      console.log("missing info");
-    }
-  }; */
-
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchAPI();

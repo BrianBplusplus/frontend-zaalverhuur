@@ -7,6 +7,9 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   const [selectedDayPart, setSelectedDayPart] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("");
 
+  const [dayPartChosen, setDayPartChosen] = useState(false)
+  const [mealChosen, setMealChosen] = useState(false)
+
   // ---------------- Variables ---------------- //
   const { apiData } = state
   const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
@@ -15,6 +18,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
     setSelectedDayPart(dayPartChoice)
+    setDayPartChosen(true)
     setState({
       ...state,
       additionalInformationDayPart: dayPartChoice,
@@ -23,6 +27,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
 
   const handleClickPickedMeal = (cateringChoice, cateringChoicePrice) => {
     setSelectedMeal(cateringChoice)
+    setMealChosen(true)
     setState({
       ...state,
       additionalInformationCatering: cateringChoice,

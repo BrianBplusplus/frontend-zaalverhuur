@@ -1,10 +1,13 @@
 import React from "react";
+import axios from "axios";
 
 import DatePicker from "../assets/DatePicker";
 
 const DetailPageInputForm = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const {
+    pickedDate,
+
     inputFormName,
     inputFormLastName,
     inputFormEmail,
@@ -43,8 +46,37 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("state in inputform", state);
+    if(!pickedDate) {
+      return
+    }
+
+    if(!additionalInformationDayPart) {
+      return
+    }
+
+    if(!additionalInformationCatering) {
+      return
+    }
+
+    if(!additionalInformationAmountOfPersons) {
+      return
+    }
+
     setState({ ...state, formSubmitted: true });
+
+
+      //TODO: Send only useful information and not the whole object
+      if (pickedDate) {
+       // axios.post(process.env.REACT_APP_API_URL + `/action/sendemail`, {
+         axios.post(`http://localhost:4000/action/sendemail` , {
+          ...state,
+        });
+      } else {
+        console.log("missing info");
+      }
+
+
+
   };
 
   // ---------------- Styling ------------------ //
