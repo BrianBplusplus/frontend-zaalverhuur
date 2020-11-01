@@ -15,11 +15,11 @@ const DetailPageInputForm = ({ state, setState }) => {
 
     locationPrice,
     locationPriceNight,
-    locationPriceCatering,
+
+    validatorDayPart,
 
     additionalInformationDayPart,
     additionalInformationCatering,
-    additionalInformationTextField,
     additionalInformationAmountOfPersons,
   } = state;
 
@@ -45,38 +45,48 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
   };
 
   const handleSubmit = (event) => {
+    console.log("initial request", state)
     event.preventDefault();
+    let returner = false
     if(!pickedDate) {
-      return
+      returner = true
+      setState({...state,
+        validatorDate: false
+      })
     }
 
-    if(!additionalInformationDayPart) {
-      return
+    if(additionalInformationDayPart == false ) {
+      returner = true;
+      setState({ ...state, validatorDayPart: false })
+      console.log("triggered 1")
     }
 
-    if(!additionalInformationCatering) {
-      return
+    if(additionalInformationCatering == false) {
+      returner = true
+      setState({...state, validatorCatering: false })
+      console.log("triggered 2")
     }
 
-    if(!additionalInformationAmountOfPersons) {
+    if(additionalInformationAmountOfPersons == false) {
+      returner = true
+      setState({...state, validatorAmountOfPersons: false })
+      console.log("triggered 3")
+    }
+
+    if (returner) {
+      returner = false
+      console.log("final", state)
       return
     }
 
     setState({ ...state, formSubmitted: true });
 
-
-      //TODO: Send only useful information and not the whole object
-      if (pickedDate) {
-       // axios.post(process.env.REACT_APP_API_URL + `/action/sendemail`, {
-         axios.post(`http://localhost:4000/action/sendemail` , {
-          ...state,
-        });
-      } else {
-        console.log("missing info");
-      }
-
-
-
+    try { 
+      axios.post(`https://zalenverhuur.denieuwebibliotheek.nl/action/sendemail` , { ...state });
+    } catch(error) {
+      console.error(error)
+    }
+    
   };
 
   // ---------------- Styling ------------------ //
@@ -89,8 +99,6 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
   const formStyle = {
     padding: "20px",
   };
-
-  const pStyle = {};
 
   const h2Style = {
     color: "#ed008c",
@@ -111,14 +119,14 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
     outline: "inherit",
     cursor: "pointer",
   };
-  console.log(CateringPriceCalculator)
+
   // ---------------- Render ------------------- //
   return (
 
 
     <div>
       <h2 style={h2Style}>Reserveren ?</h2>
-      <p style={pStyle}>
+      <p>
         Wil je meer weten over het huren van een zaal in de nieuwe bibliotheek?
         Of wil je de mogelijkheden weten om hier te trouwen? Hier een fotoshoot
         organiseren of een presentatie? Vul dan onderstaand formulier in. Wij

@@ -28,6 +28,11 @@ const ReservationPageContainer = () => {
     additionalInformationTextField: "",
     additionalInformationAmountOfPersons: 0,
 
+    validatorDate: null,
+    validatorDayPart: null,
+    validatorCatering: null,
+    validatorAmountOfPersons: null,
+
     locationPrice: 0,
     locationPriceNight: 0,
     locationPriceCatering: 0,

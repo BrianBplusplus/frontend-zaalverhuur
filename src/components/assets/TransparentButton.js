@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const TransparentButton = (props) => {
-  // ---------------- States ------------------- //
-  const [isSelected, setIsSelected] = useState(false);
-
   // ---------------- Styling ---------------- //
   const buttonStyle = {
     color: "#ed008c",
