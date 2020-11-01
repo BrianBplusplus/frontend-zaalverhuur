@@ -68,10 +68,13 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     borderRadius: "5px"
   };
 
-
   const ulStyle2 = {
     ...ulStyle1,
     border: validatorCatering === false ? "1px solid red" : "none",
+  }
+
+  const inputStyle = {
+    border: validatorAmountOfPersons === false ? "1px solid red" : "none",
   }
 
   const textAreaStyle = {
@@ -112,7 +115,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       </ul>
 
       <h3>Aantal personen</h3>
-      <input
+      <input style={inputStyle}
         type="number"
         id="persons"
         name="persons"

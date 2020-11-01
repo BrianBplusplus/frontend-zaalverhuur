@@ -16,8 +16,6 @@ const DetailPageInputForm = ({ state, setState }) => {
     locationPrice,
     locationPriceNight,
 
-    validatorDayPart,
-
     additionalInformationDayPart,
     additionalInformationCatering,
     additionalInformationAmountOfPersons,
@@ -45,39 +43,39 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
   };
 
   const handleSubmit = (event) => {
-    console.log("initial request", state)
     event.preventDefault();
     let returner = false
-    if(!pickedDate) {
+    let date = null
+    let daypart = null
+    let catering = null
+    let persons = null
+    
+    if(pickedDate == false ) {
       returner = true
-      setState({...state,
-        validatorDate: false
-      })
-    }
-
+      date = false
+    } 
     if(additionalInformationDayPart == false ) {
       returner = true;
-      setState({ ...state, validatorDayPart: false })
-      console.log("triggered 1")
+      daypart = false
     }
-
     if(additionalInformationCatering == false) {
       returner = true
-      setState({...state, validatorCatering: false })
-      console.log("triggered 2")
+      catering = false
     }
-
     if(additionalInformationAmountOfPersons == false) {
       returner = true
-      setState({...state, validatorAmountOfPersons: false })
-      console.log("triggered 3")
+      persons = false
     }
-
     if (returner) {
       returner = false
-      console.log("final", state)
+      setState({...state, 
+        validatorDate: date,
+        validatorDayPart: daypart,
+        validatorCatering: catering,
+        validatorAmountOfPersons: persons
+      })
       return
-    }
+    } 
 
     setState({ ...state, formSubmitted: true });
 
@@ -134,7 +132,6 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
       </p>
       <div style={divStyle}>
         <DatePicker state={state} setState={setState} />
-
         <form style={formStyle} onSubmit={handleSubmit}>
           <label>Voornaam </label>
           <br></br>

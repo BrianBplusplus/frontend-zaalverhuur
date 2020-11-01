@@ -9,7 +9,7 @@ import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
-import { pricesData, pricesNight, pricesCatering } from "../assets/locationData";
+import { pricesData, pricesNight } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -42,7 +42,7 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { pickedDate, formSubmitted } = parentState;
+  const { formSubmitted } = parentState;
 
   const params = useParams();
   const paramsArrayIndex =
