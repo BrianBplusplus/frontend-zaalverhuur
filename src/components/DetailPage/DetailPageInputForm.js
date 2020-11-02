@@ -1,10 +1,13 @@
 import React from "react";
+import axios from "axios";
 
 import DatePicker from "../assets/DatePicker";
 
 const DetailPageInputForm = ({ state, setState }) => {
   // ---------------- Variables ---------------- //
   const {
+    pickedDate,
+
     inputFormName,
     inputFormLastName,
     inputFormEmail,
@@ -12,11 +15,9 @@ const DetailPageInputForm = ({ state, setState }) => {
 
     locationPrice,
     locationPriceNight,
-    locationPriceCatering,
 
     additionalInformationDayPart,
     additionalInformationCatering,
-    additionalInformationTextField,
     additionalInformationAmountOfPersons,
   } = state;
 
@@ -43,8 +44,47 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("state in inputform", state);
+    let returner = false
+    let date = null
+    let daypart = null
+    let catering = null
+    let persons = null
+    
+    if(pickedDate == false ) {
+      returner = true
+      date = false
+    } 
+    if(additionalInformationDayPart == false ) {
+      returner = true;
+      daypart = false
+    }
+    if(additionalInformationCatering == false) {
+      returner = true
+      catering = false
+    }
+    if(additionalInformationAmountOfPersons == false) {
+      returner = true
+      persons = false
+    }
+    if (returner) {
+      returner = false
+      setState({...state, 
+        validatorDate: date,
+        validatorDayPart: daypart,
+        validatorCatering: catering,
+        validatorAmountOfPersons: persons
+      })
+      return
+    } 
+
     setState({ ...state, formSubmitted: true });
+
+    try { 
+      axios.post(`https://zalenverhuur.denieuwebibliotheek.nl/action/sendemail` , { ...state });
+    } catch(error) {
+      console.error(error)
+    }
+    
   };
 
   // ---------------- Styling ------------------ //
@@ -57,8 +97,6 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
   const formStyle = {
     padding: "20px",
   };
-
-  const pStyle = {};
 
   const h2Style = {
     color: "#ed008c",
@@ -79,14 +117,14 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
     outline: "inherit",
     cursor: "pointer",
   };
-  console.log(CateringPriceCalculator)
+
   // ---------------- Render ------------------- //
   return (
 
 
     <div>
       <h2 style={h2Style}>Reserveren ?</h2>
-      <p style={pStyle}>
+      <p>
         Wil je meer weten over het huren van een zaal in de nieuwe bibliotheek?
         Of wil je de mogelijkheden weten om hier te trouwen? Hier een fotoshoot
         organiseren of een presentatie? Vul dan onderstaand formulier in. Wij
@@ -94,7 +132,6 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
       </p>
       <div style={divStyle}>
         <DatePicker state={state} setState={setState} />
-
         <form style={formStyle} onSubmit={handleSubmit}>
           <label>Voornaam </label>
           <br></br>

@@ -9,7 +9,7 @@ import DetailPageConfirmation from "./DetailPageConfirmation";
 
 import LoadingSpinner from "../assets/LoadingSpinner";
 import ErrorMessage from "../assets/ErrorMessage";
-import { pricesData, pricesNight, pricesCatering } from "../assets/locationData";
+import { pricesData, pricesNight } from "../assets/locationData";
 
 const ReservationPageContainer = () => {
   // ---------------- States ------------------- //
@@ -28,6 +28,11 @@ const ReservationPageContainer = () => {
     additionalInformationTextField: "",
     additionalInformationAmountOfPersons: 0,
 
+    validatorDate: null,
+    validatorDayPart: null,
+    validatorCatering: null,
+    validatorAmountOfPersons: null,
+
     locationPrice: 0,
     locationPriceNight: 0,
     locationPriceCatering: 0,
@@ -37,7 +42,7 @@ const ReservationPageContainer = () => {
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { pickedDate, formSubmitted } = parentState;
+  const { formSubmitted } = parentState;
 
   const params = useParams();
   const paramsArrayIndex =
@@ -76,18 +81,6 @@ const ReservationPageContainer = () => {
     }
     setIsLoading(false);
   }, [params.id, paramsArrayIndex]);
-
-  /* const sendMail = () => {
-    //TODO: Send only useful information and not the whole object
-    if (pickedDate) {
-      axios.post(process.env.REACT_APP_API_URL + `/mail/pickedoptions`, {
-        ...parentState,
-      });
-      console.log("All data has been entered");
-    } else {
-      console.log("missing info");
-    }
-  }; */
 
   useEffect(() => {
     window.scrollTo(0, 0);

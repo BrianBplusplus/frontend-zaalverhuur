@@ -11,16 +11,25 @@ const DatePicker = ({ state, setState }) => {
     setState({
       ...state,
       pickedDate: selected ? undefined : day,
+      validatorDate: true,
     });
   };
 
+  const spanStyle = {
+    color: "red",
+    display: !state.validatorDate ? "block" : "none"
+  }
+
   // ---------------- Render ------------------- //
   return (
+    <div>
     <DayPicker
       selectedDays={state.pickedDate}
       onDayClick={handlePickDate}
       disabledDays={{ before: today, daysOfWeek: [0, 6] }}
     />
+    {/* <span style={spanStyle}>Kies een datum</span> */}
+    </div>
   );
 };
 

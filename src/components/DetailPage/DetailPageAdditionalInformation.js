@@ -8,7 +8,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   const [selectedMeal, setSelectedMeal] = useState("");
 
   // ---------------- Variables ---------------- //
-  const { apiData } = state
+  const { apiData, validatorDayPart, validatorCatering, validatorAmountOfPersons } = state
   const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
   const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"]
 
@@ -18,6 +18,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     setState({
       ...state,
       additionalInformationDayPart: dayPartChoice,
+      validatorDayPart: true,
     });
   };
 
@@ -27,11 +28,15 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       ...state,
       additionalInformationCatering: cateringChoice,
       cateringPrice: cateringChoicePrice,
+      validatorCatering: true,
     });
   };
 
   const handlePersons = (personChoice) => {
-    setState({ ...state, additionalInformationAmountOfPersons: personChoice });
+    setState({ ...state, 
+      additionalInformationAmountOfPersons: personChoice,
+      validatorAmountOfPersons: true, 
+    });
   };
 
   const handleExtraInformation = (userInput) => {
@@ -51,14 +56,26 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   // ---------------- Styling ------------------ //
   const divStyle = {};
 
-  const ulStyle = {
+  const ulStyle1 = {
     display: "flex",
     flexWrap: "wrap",
 
     margin: "0",
     padding: "0",
     listStyle: "none",
+
+    border: validatorDayPart === false ? "1px solid red" : "none",
+    borderRadius: "5px"
   };
+
+  const ulStyle2 = {
+    ...ulStyle1,
+    border: validatorCatering === false ? "1px solid red" : "none",
+  }
+
+  const inputStyle = {
+    border: validatorAmountOfPersons === false ? "1px solid red" : "none",
+  }
 
   const textAreaStyle = {
     width: "99%",
@@ -76,7 +93,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       <h2 style={h2Style}>Aanvullende informatie</h2>
 
       <h3>Gewenst dagdeel</h3>
-      <ul style={ulStyle}>
+      <ul style={ulStyle1}>
 
       {dayPart.map((part, index) => {
         return(
@@ -87,7 +104,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       </ul>
 
       <h3>Catering</h3>
-      <ul style={ulStyle}>
+      <ul style={ulStyle2}>
 
       {meals.map((meal, index) => {
         return(
@@ -98,7 +115,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       </ul>
 
       <h3>Aantal personen</h3>
-      <input
+      <input style={inputStyle}
         type="number"
         id="persons"
         name="persons"
