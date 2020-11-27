@@ -25,6 +25,7 @@ const LandingPageContainer = () => {
     setIsError(false);
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + `/api`);
+      console.log(response.data)
       setApiData(response.data);
     } catch (error) {
       setIsError(true);
@@ -74,7 +75,7 @@ const LandingPageContainer = () => {
         {apiData.map((mappedApiData, index) => {
           return (
             // ---- Temporary rudementary filters. TODO: Move to back-end ---- //
-            mappedApiData.description === "verhuurbaar" && (
+            mappedApiData.description === "verhuurbaar" && mappedApiData.locationID !== 1366 && (
               <LandingPageCard
                 link={mappedApiData.locationID}
                 key={mappedApiData.locationID}
