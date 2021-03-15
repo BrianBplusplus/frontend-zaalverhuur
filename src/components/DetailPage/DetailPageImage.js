@@ -7,8 +7,8 @@ import zoomIcon from "../../img/zoomIcon.svg";
 const DetailPageImage = (props) => {
   // ---------------- States ------------------- //
   const [zoomedImage, setZoomedImage] = useState(false);
-  const isHover = false
- // const [isHover, setIsHover] = useState(false);
+  const isHover = false;
+  // const [isHover, setIsHover] = useState(false);
 
   // ---------------- Variables ---------------- //
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -16,9 +16,11 @@ const DetailPageImage = (props) => {
   // ---------------- Styling ------------------ //
   const divStyle = {
     position: "relative",
+    minHeight: "100%",
   };
 
   const imageStyle = {
+    minHeight: "100%",
     width: "100%",
     objectFit: "cover",
     opacity: isHover ? "0.4" : "1",

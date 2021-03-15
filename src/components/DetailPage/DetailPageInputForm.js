@@ -21,9 +21,17 @@ const DetailPageInputForm = ({ state, setState }) => {
     additionalInformationAmountOfPersons,
   } = state;
 
-  const EveningPriceCalculator = additionalInformationDayPart === "Avond" ? locationPriceNight : 0
+  const EveningPriceCalculator =
+    additionalInformationDayPart === "Avond" ? locationPriceNight : 0;
 
-const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 : additionalInformationCatering === "Drankjes" ? 20 : additionalInformationCatering === "Borrelhapjes" ? 30 : 0
+  const CateringPriceCalculator =
+    additionalInformationCatering === "Lunch"
+      ? 10
+      : additionalInformationCatering === "Drankjes"
+      ? 20
+      : additionalInformationCatering === "Borrelhapjes"
+      ? 30
+      : 0;
 
   // ---------------- Functions ---------------- //
   const handleName = (name) => {
@@ -44,47 +52,50 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let returner = false
-    let date = null
-    let daypart = null
-    let catering = null
-    let persons = null
-    
-    if(pickedDate == false ) {
-      returner = true
-      date = false
-    } 
-    if(additionalInformationDayPart == false ) {
+    let returner = false;
+    let date = null;
+    let daypart = null;
+    let catering = null;
+    let persons = null;
+
+    if (pickedDate == false) {
       returner = true;
-      daypart = false
+      date = false;
     }
-    if(additionalInformationCatering == false) {
-      returner = true
-      catering = false
+    if (additionalInformationDayPart == false) {
+      returner = true;
+      daypart = false;
     }
-    if(additionalInformationAmountOfPersons == false) {
-      returner = true
-      persons = false
+    if (additionalInformationCatering == false) {
+      returner = true;
+      catering = false;
+    }
+    if (additionalInformationAmountOfPersons == false) {
+      returner = true;
+      persons = false;
     }
     if (returner) {
-      returner = false
-      setState({...state, 
+      returner = false;
+      setState({
+        ...state,
         validatorDate: date,
         validatorDayPart: daypart,
         validatorCatering: catering,
-        validatorAmountOfPersons: persons
-      })
-      return
-    } 
+        validatorAmountOfPersons: persons,
+      });
+      return;
+    }
 
     setState({ ...state, formSubmitted: true });
 
-    try { 
-      axios.post(`https://zalenverhuur.denieuwebibliotheek.nl/action/sendemail` , { ...state });
-    } catch(error) {
-      console.error(error)
+    try {
+      axios.post(
+        `https://zalenverhuur.denieuwebibliotheek.nl/action/sendemail`,
+        { ...state }
+      );
+    } catch (error) {
+      console.error(error);
     }
-    
   };
 
   // ---------------- Styling ------------------ //
@@ -94,6 +105,17 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
     justifyContent: "space-around",
   };
 
+  const dividerLineStyle = {
+    color: "#C0C0C0",
+  };
+
+  const pStyle = {
+    color: "#696969",
+    fontSize: "13px",
+    textAlign: "right",
+    width: "100%",
+  };
+
   const formStyle = {
     padding: "20px",
   };
@@ -101,6 +123,14 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
   const h2Style = {
     color: "#ed008c",
     marginTop: "0",
+  };
+
+  const ulStyle = {
+    width: "100%",
+    listStyle: "none",
+    display: "flex",
+    justifyContent: "space-around",
+    textAlign: "center",
   };
 
   const buttonStyle = {
@@ -120,8 +150,6 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
 
   // ---------------- Render ------------------- //
   return (
-
-
     <div>
       <h2 style={h2Style}>Reserveren ?</h2>
       <p>
@@ -184,16 +212,34 @@ const CateringPriceCalculator = additionalInformationCatering === "Lunch" ? 10 :
             onSubmit={() => handleSubmit()}
           ></input>
         </form>
-        <p>
-            Zaal: {locationPrice}
-            <br></br>
-            Catering: {CateringPriceCalculator} x {additionalInformationAmountOfPersons}
-            <br></br>
-            Avond tarief: {additionalInformationDayPart === "Avond" ? locationPriceNight : "Geen"}
-            <br></br>
-            Totaal: {locationPrice + EveningPriceCalculator + (CateringPriceCalculator * additionalInformationAmountOfPersons)}
-          </p>
 
+        <div style={dividerLineStyle}>
+          ---------------------------------------------------
+        </div>
+        <ul style={ulStyle}>
+          <li>
+            Zaal <br></br> € {locationPrice}
+          </li>
+          <li>
+            Catering <br></br>
+            {additionalInformationAmountOfPersons} x € {CateringPriceCalculator}
+          </li>
+          <li>
+            Avond tarief <br></br>€{" "}
+            {additionalInformationDayPart === "Avond"
+              ? locationPriceNight
+              : "Geen"}
+          </li>
+          <li>
+            Totaal <br></br>€{" "}
+            {locationPrice +
+              EveningPriceCalculator +
+              CateringPriceCalculator * additionalInformationAmountOfPersons}
+          </li>
+        </ul>
+        <p style={pStyle}>
+          * Deze prijs is een schatting op basis van uw selectie
+        </p>
       </div>
     </div>
   );
