@@ -8,13 +8,18 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   const [selectedMeal, setSelectedMeal] = useState("");
 
   // ---------------- Variables ---------------- //
-  const { apiData, validatorDayPart, validatorCatering, validatorAmountOfPersons } = state
-  const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"]
-  const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"]
+  const {
+    apiData,
+    validatorDayPart,
+    validatorCatering,
+    validatorAmountOfPersons,
+  } = state;
+  const dayPart = ["Ochtend", "Middag", "Avond", "Hele Dag"];
+  const meals = ["Geen", "Lunch", "Drankjes", "Borrelhapjes"];
 
   // ---------------- Functions ---------------- //
   const handleClickPickedDayPart = (dayPartChoice) => {
-    setSelectedDayPart(dayPartChoice)
+    setSelectedDayPart(dayPartChoice);
     setState({
       ...state,
       additionalInformationDayPart: dayPartChoice,
@@ -23,7 +28,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   };
 
   const handleClickPickedMeal = (cateringChoice, cateringChoicePrice) => {
-    setSelectedMeal(cateringChoice)
+    setSelectedMeal(cateringChoice);
     setState({
       ...state,
       additionalInformationCatering: cateringChoice,
@@ -33,9 +38,10 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
   };
 
   const handlePersons = (personChoice) => {
-    setState({ ...state, 
+    setState({
+      ...state,
       additionalInformationAmountOfPersons: personChoice,
-      validatorAmountOfPersons: true, 
+      validatorAmountOfPersons: true,
     });
   };
 
@@ -48,10 +54,10 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
 
   useEffect(() => {
     if (apiData.locationID === 1368) {
-      handleClickPickedDayPart("Avond")
-      return
+      handleClickPickedDayPart("Avond");
+      return;
     }
-  },[apiData.locationID]);
+  }, [apiData.locationID]);
 
   // ---------------- Styling ------------------ //
   const divStyle = {};
@@ -65,17 +71,20 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     listStyle: "none",
 
     border: validatorDayPart === false ? "1px solid red" : "none",
-    borderRadius: "5px"
+    borderRadius: "5px",
   };
 
   const ulStyle2 = {
     ...ulStyle1,
     border: validatorCatering === false ? "1px solid red" : "none",
-  }
+  };
 
   const inputStyle = {
-    border: validatorAmountOfPersons === false ? "1px solid red" : "none",
-  }
+    border:
+      validatorAmountOfPersons === false
+        ? "1px solid red"
+        : "1px solid #dedede",
+  };
 
   const textAreaStyle = {
     width: "99%",
@@ -94,28 +103,37 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
 
       <h3>Gewenst dagdeel</h3>
       <ul style={ulStyle1}>
-
-      {dayPart.map((part, index) => {
-        return(
-          <li key={index} onClick={() => handleClickPickedDayPart(part)}>
-            <TransparentButton isSelected={selectedDayPart === part} id={index} text={part} />  
-           </li>)
-          })}
+        {dayPart.map((part, index) => {
+          return (
+            <li key={index} onClick={() => handleClickPickedDayPart(part)}>
+              <TransparentButton
+                isSelected={selectedDayPart === part}
+                id={index}
+                text={part}
+              />
+            </li>
+          );
+        })}
       </ul>
 
       <h3>Catering</h3>
       <ul style={ulStyle2}>
-
-      {meals.map((meal, index) => {
-        return(
-          <li key={index} onClick={() => handleClickPickedMeal(meal)}>
-            <TransparentButton isSelected={selectedMeal === meal} id={index} text={meal} />  
-           </li>)
-          })}
+        {meals.map((meal, index) => {
+          return (
+            <li key={index} onClick={() => handleClickPickedMeal(meal)}>
+              <TransparentButton
+                isSelected={selectedMeal === meal}
+                id={index}
+                text={meal}
+              />
+            </li>
+          );
+        })}
       </ul>
 
       <h3>Aantal personen</h3>
-      <input style={inputStyle}
+      <input
+        style={inputStyle}
         type="number"
         id="persons"
         name="persons"
