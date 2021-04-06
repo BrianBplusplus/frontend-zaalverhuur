@@ -58,13 +58,18 @@ const ReservationPageContainer = () => {
       ? 4
       : params.id === "1370"
       ? 5
+      : params.id === "1386"
+      ? 6
       : params.id === "1386";
+
   // ---------------- Functions ---------------- //
   const fetchAPI = useCallback(async () => {
     setIsLoading(true);
     setIsError(false);
     try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/api/${params.id}`);
+      const response = await axios.get(
+        process.env.REACT_APP_API_URL + `/api/${params.id}`
+      );
       setParentState({
         ...parentState,
         apiData: response.data,

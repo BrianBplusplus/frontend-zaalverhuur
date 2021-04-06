@@ -26,8 +26,8 @@ export const descriptionData = [
   "In onze businesslounge is het goed toeven als je een plek zoekt om te werken of te studeren én om gelijkgestemden te ontmoeten.\n\nEr zijn genoeg fijne werkplekken, er is een vergaderzaal in de buurt en er is gratis wifi. Ook kun je deze ruimte goed gebruiken als je bijvoorbeeld een congres organiseert in de nieuwe zaal, of een presentatie geeft in het nieuwe podium. \n\nEr is ook een kleine koffiepantry in de buurt.",
 ];
 
-export const pricesData = [710, 275, 100, 600, 150, 50, 450, 2450];
+export const pricesData = [710, 275, 100, 600, 150, 50, 450, 33333];
 
-export const pricesNight = [200, 100, 100, 0, 150];
+export const pricesNight = [200, 100, 100, 0, 150, 100, 100];
 
-export const pricesCatering = [0, 20, 40, 80];
+export const pricesCatering = [0, 10, 3, 3];

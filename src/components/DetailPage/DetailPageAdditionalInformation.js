@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import TransparentButton from "../assets/TransparentButton";
+import MenuPDF from "../../img/menuKaart.pdf";
 
 const DetailPageAdditionalInformation = ({ state, setState }) => {
   // ---------------- States ------------------- //
@@ -96,6 +97,12 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     marginTop: "0",
   };
 
+  const aStyle = {
+    color: "#ed008c",
+    display: "flex",
+    justifyContent: "center",
+  };
+
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
@@ -150,6 +157,15 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
         name="description"
         placeholder="beschrijf hier uw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"
       ></textarea>
+
+      <br></br>
+      <br></br>
+      <a
+        style={aStyle}
+        href="https://www.denieuwebibliotheek.nl/dam/Bestanden/algemene-voorwaarden-verhuur-2018.pdf"
+      >
+        Algemene voorwaarden
+      </a>
     </div>
   );
 };

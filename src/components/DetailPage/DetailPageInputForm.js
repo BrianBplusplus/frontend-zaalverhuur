@@ -21,6 +21,11 @@ const DetailPageInputForm = ({ state, setState }) => {
     additionalInformationAmountOfPersons,
   } = state;
 
+  const LocationPriceCalculator =
+    additionalInformationDayPart === "Hele Dag"
+      ? locationPrice * 2
+      : locationPrice;
+
   const EveningPriceCalculator =
     additionalInformationDayPart === "Avond" ? locationPriceNight : 0;
 
@@ -28,9 +33,9 @@ const DetailPageInputForm = ({ state, setState }) => {
     additionalInformationCatering === "Lunch"
       ? 10
       : additionalInformationCatering === "Drankjes"
-      ? 20
+      ? 3
       : additionalInformationCatering === "Borrelhapjes"
-      ? 30
+      ? 3
       : 0;
 
   // ---------------- Functions ---------------- //
@@ -232,7 +237,7 @@ const DetailPageInputForm = ({ state, setState }) => {
           </li>
           <li>
             Totaal <br></br>€{" "}
-            {locationPrice +
+            {LocationPriceCalculator +
               EveningPriceCalculator +
               CateringPriceCalculator * additionalInformationAmountOfPersons}
           </li>
