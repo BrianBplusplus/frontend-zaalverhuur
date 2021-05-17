@@ -61,10 +61,6 @@ const ReservationPageInfo = ({ state }) => {
     marginBottom: "30px",
   };
 
-  const aStyle = {
-    color: "#ed008c",
-  };
-
   const priceStyle = {
     fontFamily: "Montserrat, sans-serif",
     fontSize: "20px",
@@ -75,6 +71,7 @@ const ReservationPageInfo = ({ state }) => {
     right: "0",
   };
 
+  console.log("technische rider", apiData);
   // ---------------- Render ------------------- //
   return (
     <div style={divStyle}>
@@ -87,17 +84,18 @@ const ReservationPageInfo = ({ state }) => {
           huren? Dat kan!
         </h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>
-        <p>
-          Voor meer technische details verwijzen wij je naar onze{" "}
+
+        {apiData.locationID === 1364 && (
           <a
-            style={aStyle}
+            style={{ color: "#ed008c" }}
             href="https://www.denieuwebibliotheek.nl/dam/Bestanden/technische-rider-de-nieuwe-zaal---versie-11-2019.pdf"
           >
             Technische Rider
+            <br></br>
+            <br></br>
           </a>
-          <br></br>
-          <br></br>
-        </p>
+        )}
+
         <p style={priceStyle}>
           Vanaf <strong>{pricesData[paramsArrayIndex]} euro</strong>
         </p>

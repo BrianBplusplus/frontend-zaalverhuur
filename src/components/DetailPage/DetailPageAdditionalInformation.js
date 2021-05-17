@@ -155,7 +155,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
         onChange={(event) => handleExtraInformation(event.target.value)}
         rows="4"
         name="description"
-        placeholder="beschrijf hier uw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"
+        placeholder="beschrijf hier jouw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"
       ></textarea>
 
       <br></br>
