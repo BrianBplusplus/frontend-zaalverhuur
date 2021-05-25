@@ -47,7 +47,7 @@ const LandingPageCard = (props) => {
           setIsHover(false);
         }}
       >
-        <h2 style={h2Style}>{props.title.slice(4)}</h2>
+        <h2 style={h2Style}>{props.title}</h2>
 
         <img alt="roomimage" style={imageStyle} src={props.image} />
       </motion.div>

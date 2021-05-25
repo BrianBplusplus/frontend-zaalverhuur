@@ -77,10 +77,7 @@ const ReservationPageInfo = ({ state }) => {
     <div style={divStyle}>
       <div style={leftStyle}>
         <h2 style={h2Style}>
-          Wil je{" "}
-          <span style={spanStyle}>
-            {apiData.name && apiData.name.slice(4)}{" "}
-          </span>
+          Wil je <span style={spanStyle}>{apiData.name && apiData.name} </span>
           huren? Dat kan!
         </h2>
         <p style={pStyle}>{descriptionData[paramsArrayIndex]}</p>

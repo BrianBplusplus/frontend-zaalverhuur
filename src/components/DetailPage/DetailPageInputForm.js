@@ -217,7 +217,7 @@ const DetailPageInputForm = ({ state, setState }) => {
             onSubmit={() => handleSubmit()}
           ></input>
         </form>
-
+        {/*
         <div style={dividerLineStyle}>
           ---------------------------------------------------
         </div>
@@ -244,7 +244,7 @@ const DetailPageInputForm = ({ state, setState }) => {
         </ul>
         <p style={pStyle}>
           * Deze prijs is een schatting op basis van uw selectie
-        </p>
+            </p> */}
       </div>
     </div>
   );

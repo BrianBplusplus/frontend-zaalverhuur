@@ -80,6 +80,10 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
     border: validatorCatering === false ? "1px solid red" : "none",
   };
 
+  const errorMessageCatering = {
+    display: validatorCatering === false ? "none" : "block",
+  };
+
   const inputStyle = {
     border:
       validatorAmountOfPersons === false
@@ -109,6 +113,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       <h2 style={h2Style}>Aanvullende informatie</h2>
 
       <h3>Gewenst dagdeel</h3>
+      {validatorDayPart && <p>test</p>}
       <ul style={ulStyle1}>
         {dayPart.map((part, index) => {
           return (
@@ -124,7 +129,19 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       </ul>
 
       <h3>Catering</h3>
-      <ul style={ulStyle2}>
+      <p>
+        Bekijk hier ons aanbod en vul je gewenste catering opties hier onder in
+      </p>
+      <a
+        href={
+          "https://www.denieuwebibliotheek.nl/dam/Nieuws/cateringassortiment-de-nieuwe-bibliotheek-2020.pdf"
+        }
+        target={"_blank"}
+        style={aStyle}
+      >
+        Menu kaart
+      </a>
+      {/*<ul style={ulStyle2}>
         {meals.map((meal, index) => {
           return (
             <li key={index} onClick={() => handleClickPickedMeal(meal)}>
@@ -136,26 +153,18 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
 
-      <h3>Aantal personen</h3>
-      <input
-        style={inputStyle}
-        type="number"
-        id="persons"
-        name="persons"
-        min="0"
-        onChange={(event) => handlePersons(event.target.value)}
-      ></input>
+      <br></br>
+      <br></br>
 
-      <h3>Extra opmerkingen</h3>
       <textarea
         style={textAreaStyle}
         value={state.additionalInformationTextField}
         onChange={(event) => handleExtraInformation(event.target.value)}
         rows="4"
         name="description"
-        placeholder="beschrijf hier jouw extra wensen bijvoorbeeld allergieën of dieetwensen of als u een specifieke maaltijd in gedachte heeft"
+        placeholder="Beschrijf hier de gewenste catering"
       ></textarea>
 
       <br></br>
