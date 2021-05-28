@@ -93,6 +93,17 @@ const ReservationPageInfo = ({ state }) => {
           </a>
         )}
 
+        {apiData.locationID === 1366 && (
+          <a
+            style={{ color: "#ed008c" }}
+            href="https://www.denieuwebibliotheek.nl/dam/Bestanden/201229-technische-rider-het-nieuwe-podium-def.pdf"
+          >
+            Technische Rider
+            <br></br>
+            <br></br>
+          </a>
+        )}
+
         <p style={priceStyle}>
           Vanaf <strong>{pricesData[paramsArrayIndex]} euro</strong>
         </p>

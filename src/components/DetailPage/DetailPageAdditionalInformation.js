@@ -113,7 +113,7 @@ const DetailPageAdditionalInformation = ({ state, setState }) => {
       <h2 style={h2Style}>Aanvullende informatie</h2>
 
       <h3>Gewenst dagdeel</h3>
-      {validatorDayPart && <p>test</p>}
+      {/*validatorDayPart && <p>test</p>*/}
       <ul style={ulStyle1}>
         {dayPart.map((part, index) => {
           return (
